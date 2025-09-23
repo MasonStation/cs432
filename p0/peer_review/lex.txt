@@ -1,0 +1,7 @@
+DECLIT   [line 001]  0
+ID       [line 001]  x
+HEXLIT   [line 002]  0x1
+HEXLIT   [line 003]  0xd75
+HEXLIT   [line 004]  0xDDD
+DECLIT   [line 005]  0
+ID       [line 005]  XFFF

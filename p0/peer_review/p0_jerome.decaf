@@ -1,0 +1,318 @@
+// CS 432 PROJECT 0: DECAF PROGRAMMING
+// Jerome Donfack
+
+def int fact(int n)
+{
+    int total;
+    int cur_num;
+    total = 1;
+    cur_num = n;
+    while(cur_num > 0)
+    {
+        total = total * cur_num;
+        cur_num = cur_num - 1;
+    }
+    return total;
+}
+
+def int fib(int n)
+{
+    int cur_pos;
+    int prev_val;
+    int cur_val;
+    
+    cur_pos = 2;
+    prev_val = 0;
+    cur_val = 1;
+    
+    if (n == 0){
+        return 0;
+    }
+    
+    if (n == 1){
+        return 1;
+    }
+    
+    while(cur_pos <= n){
+        int new_val;
+        new_val = prev_val + cur_val;
+        prev_val = cur_val;
+        cur_val = new_val;
+        cur_pos = cur_pos + 1;
+    }
+    return cur_val;
+}
+
+def bool is_prime(int n)
+{
+    int cur_divider;
+    cur_divider = 2;
+    if(n <= 1){
+        return false;
+    }
+    
+    while(cur_divider < n){
+        if(n % cur_divider == 0){
+            return false;
+        }
+        cur_divider = cur_divider + 1;
+    }
+    return true;
+}
+
+def int gcd(int a, int b)
+{
+    while(a != b){
+        if(a > b){
+            a = a - b;
+        } else {
+            b = b - a;
+        }
+    }
+    return a;
+}
+
+int nums[100];
+
+def int sum_nums(int len)
+{
+    int sum;
+    int cur_index;
+    sum = 0;
+    cur_index = 0;
+    
+    while(cur_index < len){
+        sum = sum + nums[cur_index];
+        cur_index = cur_index + 1;
+    }
+    return sum;
+}
+
+def void sort_nums(int len)
+{
+    int cur_index;
+    cur_index = 1;
+    if(len == 0){
+        return;
+    }
+    while(cur_index < len){
+        int cur_swap_index;
+        cur_swap_index = cur_index;
+        while(cur_swap_index > 0 && nums[cur_swap_index] < nums[cur_swap_index - 1]){
+            int temp_val;
+            temp_val = nums[cur_swap_index];
+            nums[cur_swap_index] = nums[cur_swap_index - 1];
+            nums[cur_swap_index - 1] = temp_val;
+            cur_swap_index = cur_swap_index - 1;
+        }
+        cur_index = cur_index + 1;
+    }
+    return;
+}
+
+def void draw_triangle(int base)
+{
+    int cur_val;
+    if(base % 2 == 0){
+        cur_val = 2;
+    } else {
+        cur_val = 1;
+    }
+    
+    while(cur_val <= base){
+        int cur_pound_index;
+        int l_index;
+        int r_index;
+        int side_space;
+        cur_pound_index = 0;
+        l_index = 0;
+        r_index = 0;
+        side_space = (base - cur_val) / 2;
+        
+        while(l_index < side_space){
+            print_str(" ");
+            l_index = l_index + 1;
+        }
+        while(cur_pound_index < cur_val){
+            print_str("#");
+            cur_pound_index = cur_pound_index + 1;
+        }
+        while(r_index < side_space){
+            print_str(" ");
+            r_index = r_index + 1;
+        }
+        
+        print_str("\n");
+        cur_val = cur_val + 2;
+    }
+    return;
+}
+
+def int main()
+{
+    // fact
+    print_str("\nfact\n");
+    print_int(fact(0));
+    print_str("\n");
+
+    print_int(fact(1));
+    print_str("\n");
+
+    print_int(fact(2));
+    print_str("\n");
+
+    print_int(fact(3));
+    print_str("\n");
+
+    print_int(fact(4));
+    print_str("\n");
+
+    print_int(fact(5));
+    print_str("\n");
+
+    print_int(fact(6));
+    print_str("\n");
+
+    print_int(fact(7));
+    print_str("\n");
+
+    print_int(fact(8));
+    print_str("\n");
+
+
+    // FIB---------------------
+
+    print_str("\nfib\n");
+    print_int(fib(0));
+    print_str("\n");
+
+    print_int(fib(1));
+    print_str("\n");
+
+    print_int(fib(2));
+    print_str("\n");
+
+    print_int(fib(3));
+    print_str("\n");
+
+    print_int(fib(4));
+    print_str("\n");
+
+    print_int(fib(5));
+    print_str("\n");
+
+    print_int(fib(6));
+    print_str("\n");
+
+    print_int(fib(7));
+    print_str("\n");
+
+    print_int(fib(8));
+    print_str("\n");
+
+    // IS_PRIME---------------------
+
+    print_str("\nis_prime\n");
+
+    print_bool(is_prime(0));   // expect false
+    print_str("\n");
+
+    print_bool(is_prime(1));   // expect false
+    print_str("\n");
+
+    print_bool(is_prime(2));   // expect true
+    print_str("\n");
+
+    print_bool(is_prime(3));   // expect true
+    print_str("\n");
+
+    print_bool(is_prime(4));   // expect false
+    print_str("\n");
+
+    print_bool(is_prime(5));   // expect true
+    print_str("\n");
+
+    print_bool(is_prime(6));   // expect false
+    print_str("\n");
+
+    print_bool(is_prime(7));   // expect true
+    print_str("\n");
+
+    print_bool(is_prime(8));   // expect false
+    print_str("\n");
+
+    print_bool(is_prime(9));   // expect false
+    print_str("\n");
+
+    print_bool(is_prime(10));  // expect false
+    print_str("\n");
+
+    // GCD---------------------
+
+    print_str("\ngcd\n");
+
+    print_int(gcd(1, 1));     // expect 1
+    print_str("\n");
+
+    print_int(gcd(2, 3));     // expect 1
+    print_str("\n");
+
+    print_int(gcd(4, 6));     // expect 2
+    print_str("\n");
+
+    print_int(gcd(8, 12));    // expect 4
+    print_str("\n");
+
+    print_int(gcd(9, 6));     // expect 3
+    print_str("\n");
+
+    print_int(gcd(14, 21));   // expect 7
+    print_str("\n");
+
+    print_int(gcd(25, 10));   // expect 5
+    print_str("\n");
+
+    print_int(gcd(17, 13));   // expect 1 (both primes)
+    print_str("\n");
+
+    print_int(gcd(100, 85));  // expect 5
+    print_str("\n");
+
+    print_int(gcd(81, 27));   // expect 27
+    print_str("\n");
+
+    // DRAW_TRIANGLE---------------------
+
+    print_str("\ndraw_triangle\n");
+
+    draw_triangle(0);   // expect nothing
+    print_str("\n---\n");
+
+    draw_triangle(1);   // expect 1 star
+    print_str("\n---\n");
+
+    draw_triangle(2);   // expect 2-row triangle
+    print_str("\n---\n");
+
+    draw_triangle(3);   // small triangle
+    print_str("\n---\n");
+
+    draw_triangle(4);   // base width 4
+    print_str("\n---\n");
+
+    draw_triangle(5);   // base width 5
+    print_str("\n---\n");
+
+    draw_triangle(6);   // base width 6
+    print_str("\n---\n");
+
+    draw_triangle(7);   // base width 7
+    print_str("\n---\n");
+
+    draw_triangle(8);   // base width 8
+    print_str("\n---\n");
+
+    draw_triangle(10);  // bigger triangle
+    print_str("\n---\n");
+
+}

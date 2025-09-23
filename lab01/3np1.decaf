@@ -1,0 +1,60 @@
+// CS 432 Decaf Lab: 3n+1 problem
+//
+// Names: Alex Macauley, Mason Scofield, Matthew Galbreith, Logan Munrow
+//
+
+// Calculates maximum 3n+1 sequence length for all starting n-values between low
+// and high (inclusive). Returns this maximum.
+//
+def int max_seq_len(int low, int high)
+{
+    int max;
+    max = 0;
+    while (low <= high){
+        
+        int count;
+        int n;
+        count = 1;
+        n = low;
+        while (n != 1){
+            if (n % 2 != 0){
+                n = 3 * n + 1;
+            } else {
+                n = n / 2;
+            }
+            count = count + 1;
+        }
+
+        if (max < count){
+            max = count;
+        }
+        low = low + 1;
+    }
+    return max;
+}
+
+
+def void do_test(int a, int b, int correct)
+{
+    int max;
+    max = max_seq_len(a, b);
+    print_int(a); print_str(" ");
+    print_int(b); print_str(" ");
+    print_int(max);
+    if (max != correct) {
+        print_str(" INCORRECT!");
+    }
+    print_str("\n");
+    return;
+}
+
+def int main()
+{
+    // TODO: think about edge cases not covered by these tests!
+    do_test(1, 10, 20);
+    do_test(100, 200, 125);
+    do_test(201, 210, 89);
+    do_test(900, 1000, 174);
+    return 0;
+}
+

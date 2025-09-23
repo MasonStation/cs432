@@ -1,0 +1,261 @@
+// CS 432 PROJECT 0: DECAF PROGRAMMING
+
+//AI use: I generated 100 random array elements using an llm, and to review merge sort ( i did not use this, i used a different algorithm )
+//
+
+def int fact(int n)
+{
+    int count;
+    int answer;
+    answer = 1;
+    count = 1;
+    if (n == 0){return 1;}
+    while (count <= n){
+        answer = answer * count;
+        count = count + 1;
+    }
+    return answer;
+}
+
+def int fib(int n)
+{
+    if (n == 0){return 0;}
+    if (n == 1){return 1;}
+    else {
+        return fib(n-1) + fib(n-2);
+    }
+}
+
+def bool is_prime(int n)
+{
+    int count;
+    count = 2;
+    if (n == 0){return false;}
+
+    while (count < n){
+        if (n % count == 0){return false;}
+        count = count + 1;
+    }
+    return true;
+}
+
+def int gcd(int a, int b)
+{
+    int count;
+    int s;
+    int gcd;
+
+    count = 1;
+    s = a;
+    if (b < a){s = b;}
+    while (count < s){
+        if (a % count == 0){
+            if (b % count == 0){
+                if (count > gcd){gcd = count;}
+            }
+        }
+        count = count + 1;
+    }
+    return gcd;
+}
+
+int nums[100];
+
+def int sum_nums(int len)
+{
+    int count;
+    int total;
+    init_nums();
+    total = 0;
+    count = 0;
+    while (count < len){
+        total = total + nums[count];
+        count = count + 1;
+    }
+    return total;
+}
+
+def void sort_nums(int len)
+{
+    int i;
+    i = 0;
+    while (i < len){
+        int j;
+        j = i + 1;
+        while (j < len){
+            if (nums[j] < nums[i]){
+                int temp;
+                temp = nums[j];
+                nums[j] = nums[i];
+                nums[i] = temp;
+            }
+            j = j + 1;
+        }
+        i = i + 1;
+    }
+}
+
+
+
+def void draw_triangle(int base)
+{
+    int count;
+    if (base % 2 == 0){count = 2;}
+    else {count = 1;}
+    while (count <= base){
+        int space;
+        int i;
+        int i2;
+        space = (base - count) / 2;
+        i = 0;
+        while (i < space){
+            print_str(" ");
+            i = i + 1;
+        }
+        i2 = 0;
+        while (i2 < count){
+            print_str("#");
+            i2 = i2 + 1;
+        }
+        i = 0;
+        while (i < space){
+            print_str(" ");
+            i = i + 1;
+        }
+        print_str("\n");
+        count = count + 2;
+    }
+
+}
+
+def int main()
+{
+    init_nums();
+    print_nums();
+    sort_nums(5);
+    print_str("\n\n");
+    print_nums();
+}
+
+def void print_nums(){
+    int count;
+    count = 0;
+    while (count < 100){
+        print_int(nums[count]);
+        print_str(" ");
+        count = count + 1;
+    }
+    print_str(" ");
+}
+
+def void init_nums() {
+    nums[0] = 237;
+    nums[1] = 18;
+    nums[2] = 491;
+    nums[3] = 76;
+    nums[4] = 304;
+    nums[5] = 129;
+    nums[6] = 412;
+    nums[7] = 57;
+    nums[8] = 265;
+    nums[9] = 98;
+
+    nums[10] = 443;
+    nums[11] = 221;
+    nums[12] = 365;
+    nums[13] = 14;
+    nums[14] = 500;
+    nums[15] = 73;
+    nums[16] = 292;
+    nums[17] = 408;
+    nums[18] = 176;
+    nums[19] = 331;
+
+    nums[20] = 45;
+    nums[21] = 287;
+    nums[22] = 92;
+    nums[23] = 365;
+    nums[24] = 159;
+    nums[25] = 248;
+    nums[26] = 401;
+    nums[27] = 310;
+    nums[28] = 85;
+    nums[29] = 229;
+
+    nums[30] = 56;
+    nums[31] = 197;
+    nums[32] = 278;
+    nums[33] = 492;
+    nums[34] = 114;
+    nums[35] = 361;
+    nums[36] = 299;
+    nums[37] = 7;
+    nums[38] = 333;
+    nums[39] = 426;
+
+    nums[40] = 138;
+    nums[41] = 467;
+    nums[42] = 241;
+    nums[43] = 60;
+    nums[44] = 186;
+    nums[45] = 412;
+    nums[46] = 83;
+    nums[47] = 355;
+    nums[48] = 91;
+    nums[49] = 255;
+
+    nums[50] = 314;
+    nums[51] = 77;
+    nums[52] = 402;
+    nums[53] = 219;
+    nums[54] = 146;
+    nums[55] = 372;
+    nums[56] = 495;
+    nums[57] = 132;
+    nums[58] = 267;
+    nums[59] = 315;
+
+    nums[60] = 488;
+    nums[61] = 12;
+    nums[62] = 278;
+    nums[63] = 390;
+    nums[64] = 204;
+    nums[65] = 339;
+    nums[66] = 421;
+    nums[67] = 105;
+    nums[68] = 249;
+    nums[69] = 367;
+
+    nums[70] = 58;
+    nums[71] = 193;
+    nums[72] = 482;
+    nums[73] = 306;
+    nums[74] = 174;
+    nums[75] = 94;
+    nums[76] = 360;
+    nums[77] = 415;
+    nums[78] = 152;
+    nums[79] = 289;
+
+    nums[80] = 109;
+    nums[81] = 444;
+    nums[82] = 27;
+    nums[83] = 311;
+    nums[84] = 120;
+    nums[85] = 252;
+    nums[86] = 376;
+    nums[87] = 430;
+    nums[88] = 201;
+    nums[89] = 56;
+
+    nums[90] = 489;
+    nums[91] = 165;
+    nums[92] = 71;
+    nums[93] = 234;
+    nums[94] = 398;
+    nums[95] = 320;
+    nums[96] = 142;
+    nums[97] = 66;
+    nums[98] = 223;
+    nums[99] = 351;
+}

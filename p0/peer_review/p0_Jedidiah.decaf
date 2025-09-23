@@ -1,0 +1,315 @@
+// CS 432 PROJECT 0: DECAF PROGRAMMING
+//
+// Written by Jedidiah Miller
+//
+// I did not use any AI-assist tools while creating this solution.
+
+def int fact(int n)
+{
+    if (n == 1) {
+        return 1;
+    }
+    return n * fact(n - 1);
+}
+
+def void test_fact()
+{
+    print_int(fact(1));
+    print_str(" should be 1\n");
+
+    print_int(fact(2));
+    print_str(" should be 2\n");
+
+    print_int(fact(3));
+    print_str(" should be 6\n");
+
+    print_int(fact(4));
+    print_str(" should be 24\n");
+}
+
+def int fib(int n)
+{
+    int a;
+    int b;
+    int temp;
+    int digit;
+
+    a = 0;
+    b = 1;
+    digit = 0;
+
+    while (digit != n) {
+        temp = a + b;
+        a = b;
+        b = temp;
+
+        digit = digit + 1;
+    }
+        
+    return a;
+}
+
+def void test_fib()
+{
+    print_int(fib(0));
+    print_str(" should be 0\n");
+
+    print_int(fib(1));
+    print_str(" should be 1\n");
+
+    print_int(fib(2));
+    print_str(" should be 1\n");
+
+    print_int(fib(3));
+    print_str(" should be 2\n");
+
+    print_int(fib(4));
+    print_str(" should be 3\n");
+}
+
+def bool is_prime(int n)
+{
+    int i;
+    i = 2;
+
+    while (i < n) {
+        if (n % i == 0) {
+            return false;
+        }
+        i = i + 1;
+    }
+
+    return true;
+}
+
+def void test_is_prime()
+{
+    print_bool(is_prime(0));
+    print_str(" should be true\n");
+
+    print_bool(is_prime(1));
+    print_str(" should be true\n");
+
+    print_bool(is_prime(2));
+    print_str(" should be true\n");
+
+    print_bool(is_prime(5));
+    print_str(" should be true\n");
+
+    print_bool(is_prime(6));
+    print_str(" should be false\n");
+
+    print_bool(is_prime(10));
+    print_str(" should be false\n");
+
+    print_bool(is_prime(27));
+    print_str(" should be false\n");
+}
+
+def int gcd(int a, int b)
+{
+    int i;
+    i = a;
+
+    while (i > 1) {
+        if (a % i == 0 && b % i == 0) {
+            return i;
+        }
+        i = i - 1;
+    }
+
+    return 1;
+}
+
+def void test_gcd()
+{
+    print_int(gcd(1, 1));
+    print_str(" should be 1\n");
+
+    print_int(gcd(1, 5));
+    print_str(" should be 1\n");
+
+    print_int(gcd(5, 1));
+    print_str(" should be 1\n");
+
+    print_int(gcd(5, 5));
+    print_str(" should be 5\n");
+
+    print_int(gcd(125, 5));
+    print_str(" should be 1\n");
+
+    print_int(gcd(5, 125));
+    print_str(" should be 1\n");
+
+    print_int(gcd(27, 36));
+    print_str(" should be 9\n");
+}
+
+int nums[100];
+
+def int sum_nums(int len)
+{
+    int sum;
+    int i;
+
+    sum = 0;
+    i = 0;
+
+    while (i < len) {
+        sum = sum + nums[i];
+        i = i + 1;
+    }
+
+    return sum;
+}
+
+def void test_sum()
+{
+    print_int(sum_nums(0));
+    print_str(" should be 0\n");
+
+    print_int(sum_nums(1));
+    print_str(" should be 100\n");
+
+    print_int(sum_nums(2));
+    print_str(" should be 199\n");
+}
+
+def void sort_nums(int len)
+{
+    int end;
+    int i;
+    int temp;
+
+    end = len - 1;
+
+    while (end > 0) {
+        i = 0;
+
+        while (i < end) {
+            if (nums[i] > nums[i + 1]) {
+                temp = nums[i];
+                nums[i] = nums[i + 1];
+                nums[i + 1] = temp;
+            }
+
+            i = i + 1;
+        }
+
+        end = end - 1;
+    }   
+    
+    return;
+}
+
+def void test_sort()
+{
+    print_str("No sort\n");
+    sort_nums(0);
+    print_nums(5);
+
+    print_str("Sort 1\n");
+    sort_nums(1);
+    print_nums(5);
+
+    print_str("Sort 2\n");
+    sort_nums(2);
+    print_nums(5);
+
+    print_str("Sort 3\n");
+    sort_nums(3);
+    print_nums(5);
+
+    print_str("Sort 5\n");
+    sort_nums(5);
+    print_nums(6);
+
+    print_str("Sort all\n");
+    sort_nums(100);
+    print_nums(100);
+}
+
+def void draw_triangle(int base)
+{
+    int i;
+    int width;
+
+    width = 2 - base % 2;
+
+    while (width <= base) {
+        i = 0;
+        
+        while (i < (base / 2) - (width / 2)) {
+            print_str(" ");
+            i = i + 1;
+        }
+
+        i = 0;
+
+        while (i < width) {
+            print_str("#");
+            i = i + 1;
+        }
+
+        print_str("\n");
+
+        width = width + 2;
+    }
+        
+    return;
+}
+
+def void test_triangle()
+{
+    print_str("Base 1\n");
+    draw_triangle(1);
+
+    print_str("Base 2\n");
+    draw_triangle(2);
+
+    print_str("Base 3\n");
+    draw_triangle(3);
+
+    print_str("Base 4\n");
+    draw_triangle(4);
+
+    print_str("Base 10\n");
+    draw_triangle(10);
+
+    print_str("Base 11\n");
+    draw_triangle(11);
+}
+
+def void print_nums(int count) {
+    int i;
+    i = 0;
+
+    while (i < count) {
+        print_int(nums[i]);
+        print_str(" ");
+        i = i + 1;
+    }
+
+    print_str("\n");
+}
+
+def int main()
+{
+    int i;
+    i = 0;
+    while (i < 100) {
+        nums[i] = 100 - i;
+        i = i + 1;
+    }
+
+    test_fact();
+    test_fib();
+    test_is_prime();
+    test_gcd();
+    test_sum();
+    test_sort();
+    test_triangle();
+
+    return 0;
+}
+
