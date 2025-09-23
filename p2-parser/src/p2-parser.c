@@ -162,8 +162,10 @@ ASTNode* parse_program (TokenQueue* input)
 {
     NodeList* vars = NodeList_new();
     NodeList* funcs = NodeList_new();
-    while (!TokenQueue_is_empty){
+    while (!TokenQueue_is_empty(input)){
+        
         NodeList_add(vars, parse_vardecl(input));
+        
     }
     return ProgramNode_new(vars, funcs);
 }

@@ -1,15 +1,40 @@
-==4006226== Memcheck, a memory error detector
-==4006226== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
-==4006226== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
-==4006226== Command: ../decaf inputs/add.decaf
-==4006226== 
-Program [line 1]
-==4006226== 
-==4006226== HEAP SUMMARY:
-==4006226==     in use at exit: 0 bytes in 0 blocks
-==4006226==   total heap usage: 1,736 allocs, 1,736 frees, 201,384 bytes allocated
-==4006226== 
-==4006226== All heap blocks were freed -- no leaks are possible
-==4006226== 
-==4006226== For lists of detected and suppressed errors, rerun with: -s
-==4006226== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==1898513== Memcheck, a memory error detector
+==1898513== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==1898513== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==1898513== Command: ../decaf inputs/add.decaf
+==1898513== 
+Invalid type 'def' on line 1
+==1898513== 
+==1898513== HEAP SUMMARY:
+==1898513==     in use at exit: 320 bytes in 3 blocks
+==1898513==   total heap usage: 1,726 allocs, 1,723 frees, 183,024 bytes allocated
+==1898513== 
+==1898513== 24 bytes in 1 blocks are definitely lost in loss record 1 of 3
+==1898513==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1898513==    by 0x10C62E: NodeList_new (ast.c:44)
+==1898513==    by 0x10990E: parse_program (p2-parser.c:163)
+==1898513==    by 0x10997F: parse (p2-parser.c:174)
+==1898513==    by 0x10DFD0: main (main.c:98)
+==1898513== 
+==1898513== 24 bytes in 1 blocks are definitely lost in loss record 2 of 3
+==1898513==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1898513==    by 0x10C62E: NodeList_new (ast.c:44)
+==1898513==    by 0x109917: parse_program (p2-parser.c:164)
+==1898513==    by 0x10997F: parse (p2-parser.c:174)
+==1898513==    by 0x10DFD0: main (main.c:98)
+==1898513== 
+==1898513== 272 bytes in 1 blocks are definitely lost in loss record 3 of 3
+==1898513==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1898513==    by 0x10DA49: Token_new (token.c:56)
+==1898513==    by 0x10E407: lex (p1-lexer.c:78)
+==1898513==    by 0x10DFBA: main (main.c:95)
+==1898513== 
+==1898513== LEAK SUMMARY:
+==1898513==    definitely lost: 320 bytes in 3 blocks
+==1898513==    indirectly lost: 0 bytes in 0 blocks
+==1898513==      possibly lost: 0 bytes in 0 blocks
+==1898513==    still reachable: 0 bytes in 0 blocks
+==1898513==         suppressed: 0 bytes in 0 blocks
+==1898513== 
+==1898513== For lists of detected and suppressed errors, rerun with: -s
+==1898513== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 0 from 0)
