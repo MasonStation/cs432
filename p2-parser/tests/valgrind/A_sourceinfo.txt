@@ -1,40 +1,92 @@
-==1898513== Memcheck, a memory error detector
-==1898513== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
-==1898513== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
-==1898513== Command: ../decaf inputs/add.decaf
-==1898513== 
-Invalid type 'def' on line 1
-==1898513== 
-==1898513== HEAP SUMMARY:
-==1898513==     in use at exit: 320 bytes in 3 blocks
-==1898513==   total heap usage: 1,726 allocs, 1,723 frees, 183,024 bytes allocated
-==1898513== 
-==1898513== 24 bytes in 1 blocks are definitely lost in loss record 1 of 3
-==1898513==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==1898513==    by 0x10C62E: NodeList_new (ast.c:44)
-==1898513==    by 0x10990E: parse_program (p2-parser.c:163)
-==1898513==    by 0x10997F: parse (p2-parser.c:174)
-==1898513==    by 0x10DFD0: main (main.c:98)
-==1898513== 
-==1898513== 24 bytes in 1 blocks are definitely lost in loss record 2 of 3
-==1898513==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==1898513==    by 0x10C62E: NodeList_new (ast.c:44)
-==1898513==    by 0x109917: parse_program (p2-parser.c:164)
-==1898513==    by 0x10997F: parse (p2-parser.c:174)
-==1898513==    by 0x10DFD0: main (main.c:98)
-==1898513== 
-==1898513== 272 bytes in 1 blocks are definitely lost in loss record 3 of 3
-==1898513==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==1898513==    by 0x10DA49: Token_new (token.c:56)
-==1898513==    by 0x10E407: lex (p1-lexer.c:78)
-==1898513==    by 0x10DFBA: main (main.c:95)
-==1898513== 
-==1898513== LEAK SUMMARY:
-==1898513==    definitely lost: 320 bytes in 3 blocks
-==1898513==    indirectly lost: 0 bytes in 0 blocks
-==1898513==      possibly lost: 0 bytes in 0 blocks
-==1898513==    still reachable: 0 bytes in 0 blocks
-==1898513==         suppressed: 0 bytes in 0 blocks
-==1898513== 
-==1898513== For lists of detected and suppressed errors, rerun with: -s
-==1898513== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 0 from 0)
+==982540== Memcheck, a memory error detector
+==982540== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==982540== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==982540== Command: ../decaf inputs/add.decaf
+==982540== 
+Expected ';' but found '+' on line 4
+==982540== 
+==982540== HEAP SUMMARY:
+==982540==     in use at exit: 1,304 bytes in 9 blocks
+==982540==   total heap usage: 1,732 allocs, 1,723 frees, 184,008 bytes allocated
+==982540== 
+==982540== 24 bytes in 1 blocks are definitely lost in loss record 1 of 9
+==982540==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==982540==    by 0x10CF32: NodeList_new (ast.c:44)
+==982540==    by 0x1098FD: parse_program (p2-parser.c:187)
+==982540==    by 0x10A283: parse (p2-parser.c:386)
+==982540==    by 0x10E8D4: main (main.c:98)
+==982540== 
+==982540== 24 bytes in 1 blocks are definitely lost in loss record 2 of 9
+==982540==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==982540==    by 0x10CF32: NodeList_new (ast.c:44)
+==982540==    by 0x109906: parse_program (p2-parser.c:188)
+==982540==    by 0x10A283: parse (p2-parser.c:386)
+==982540==    by 0x10E8D4: main (main.c:98)
+==982540== 
+==982540== 24 bytes in 1 blocks are definitely lost in loss record 3 of 9
+==982540==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==982540==    by 0x10D07E: ParameterList_new (ast.c:45)
+==982540==    by 0x109A31: parse_funcdecl (p2-parser.c:213)
+==982540==    by 0x109934: parse_program (p2-parser.c:193)
+==982540==    by 0x10A283: parse (p2-parser.c:386)
+==982540==    by 0x10E8D4: main (main.c:98)
+==982540== 
+==982540== 24 bytes in 1 blocks are definitely lost in loss record 4 of 9
+==982540==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==982540==    by 0x10CF32: NodeList_new (ast.c:44)
+==982540==    by 0x109C41: parse_block (p2-parser.c:254)
+==982540==    by 0x109B14: parse_funcdecl (p2-parser.c:235)
+==982540==    by 0x109934: parse_program (p2-parser.c:193)
+==982540==    by 0x10A283: parse (p2-parser.c:386)
+==982540==    by 0x10E8D4: main (main.c:98)
+==982540== 
+==982540== 272 bytes in 1 blocks are definitely lost in loss record 5 of 9
+==982540==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==982540==    by 0x10E34D: Token_new (token.c:56)
+==982540==    by 0x10EFF6: lex (p1-lexer.c:102)
+==982540==    by 0x10E8BE: main (main.c:95)
+==982540== 
+==982540== 304 bytes in 1 blocks are definitely lost in loss record 7 of 9
+==982540==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==982540==    by 0x10D267: ASTNode_new (ast.c:61)
+==982540==    by 0x10DCEC: LocationNode_new (ast.c:348)
+==982540==    by 0x10A09E: parse_location (p2-parser.c:341)
+==982540==    by 0x109D3B: parse_assignment (p2-parser.c:273)
+==982540==    by 0x109DC8: parse_statement (p2-parser.c:284)
+==982540==    by 0x109CAB: parse_block (p2-parser.c:263)
+==982540==    by 0x109B14: parse_funcdecl (p2-parser.c:235)
+==982540==    by 0x109934: parse_program (p2-parser.c:193)
+==982540==    by 0x10A283: parse (p2-parser.c:386)
+==982540==    by 0x10E8D4: main (main.c:98)
+==982540== 
+==982540== 304 bytes in 1 blocks are definitely lost in loss record 8 of 9
+==982540==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==982540==    by 0x10D267: ASTNode_new (ast.c:61)
+==982540==    by 0x10DDB5: LiteralNode_new_int (ast.c:364)
+==982540==    by 0x10A231: parse_expression (p2-parser.c:376)
+==982540==    by 0x109D63: parse_assignment (p2-parser.c:275)
+==982540==    by 0x109DC8: parse_statement (p2-parser.c:284)
+==982540==    by 0x109CAB: parse_block (p2-parser.c:263)
+==982540==    by 0x109B14: parse_funcdecl (p2-parser.c:235)
+==982540==    by 0x109934: parse_program (p2-parser.c:193)
+==982540==    by 0x10A283: parse (p2-parser.c:386)
+==982540==    by 0x10E8D4: main (main.c:98)
+==982540== 
+==982540== 328 (24 direct, 304 indirect) bytes in 1 blocks are definitely lost in loss record 9 of 9
+==982540==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==982540==    by 0x10CF32: NodeList_new (ast.c:44)
+==982540==    by 0x109C38: parse_block (p2-parser.c:253)
+==982540==    by 0x109B14: parse_funcdecl (p2-parser.c:235)
+==982540==    by 0x109934: parse_program (p2-parser.c:193)
+==982540==    by 0x10A283: parse (p2-parser.c:386)
+==982540==    by 0x10E8D4: main (main.c:98)
+==982540== 
+==982540== LEAK SUMMARY:
+==982540==    definitely lost: 1,000 bytes in 8 blocks
+==982540==    indirectly lost: 304 bytes in 1 blocks
+==982540==      possibly lost: 0 bytes in 0 blocks
+==982540==    still reachable: 0 bytes in 0 blocks
+==982540==         suppressed: 0 bytes in 0 blocks
+==982540== 
+==982540== For lists of detected and suppressed errors, rerun with: -s
+==982540== ERROR SUMMARY: 8 errors from 8 contexts (suppressed: 0 from 0)
