@@ -172,12 +172,13 @@ void parse_id(TokenQueue *input, char *buffer)
 
 ASTNode *parse_vardecl(TokenQueue *input)
 {
+    int line = get_next_token_line(input);
     DecafType type = parse_type(input);
     char id[MAX_TOKEN_LEN];
     parse_id(input, id);
     match_and_discard_next_token(input, SYM, ";");
     // printf("type: %s\n", DecafType_to_string(type));
-    return VarDeclNode_new(id, type, false, 1, 1);
+    return VarDeclNode_new(id, type, false, 1, line);
 }
 
 /*
@@ -302,13 +303,7 @@ ASTNode *parse_if(TokenQueue *input)
     }
     return ConditionalNode_new(condition, then, else_block, line);
 }
-// ASTNode* parse_primary(TokenQueue* input){
-//     if(TokenQueue_is_empty(input)){
-//         Error_throw_printf("Unexpected end of input (expected primary expression)\n");
-//     }
-//     int line = get_next_token_line(input);
-//     if()
-// }
+
 ASTNode *parse_statement(TokenQueue *input)
 {
     if (check_next_token_type(input, ID))

@@ -1,0 +1,7 @@
+Program [line 1]
+  FuncDecl name="main" return_type=int parameters={} [line 1]
+    Block [line 2]
+      Return [line 3]
+        Binaryop op="&&" [line 3]
+          Literal type=bool value=true [line 3]
+          Literal type=bool value=false [line 3]

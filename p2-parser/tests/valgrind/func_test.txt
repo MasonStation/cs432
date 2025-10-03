@@ -1,0 +1,80 @@
+==1064658== Memcheck, a memory error detector
+==1064658== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==1064658== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==1064658== Command: ../decaf inputs/func_test.decaf
+==1064658== 
+Expected ';' but found '&&' on line 3
+==1064658== 
+==1064658== HEAP SUMMARY:
+==1064658==     in use at exit: 696 bytes in 7 blocks
+==1064658==   total heap usage: 1,749 allocs, 1,742 frees, 192,100 bytes allocated
+==1064658== 
+==1064658== 24 bytes in 1 blocks are definitely lost in loss record 1 of 7
+==1064658==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1064658==    by 0x10D672: NodeList_new (ast.c:44)
+==1064658==    by 0x109935: parse_program (p2-parser.c:191)
+==1064658==    by 0x10A9C3: parse (p2-parser.c:522)
+==1064658==    by 0x10F014: main (main.c:98)
+==1064658== 
+==1064658== 24 bytes in 1 blocks are definitely lost in loss record 2 of 7
+==1064658==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1064658==    by 0x10D672: NodeList_new (ast.c:44)
+==1064658==    by 0x10993E: parse_program (p2-parser.c:192)
+==1064658==    by 0x10A9C3: parse (p2-parser.c:522)
+==1064658==    by 0x10F014: main (main.c:98)
+==1064658== 
+==1064658== 24 bytes in 1 blocks are definitely lost in loss record 3 of 7
+==1064658==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1064658==    by 0x10D7BE: ParameterList_new (ast.c:45)
+==1064658==    by 0x109A69: parse_funcdecl (p2-parser.c:217)
+==1064658==    by 0x10996C: parse_program (p2-parser.c:197)
+==1064658==    by 0x10A9C3: parse (p2-parser.c:522)
+==1064658==    by 0x10F014: main (main.c:98)
+==1064658== 
+==1064658== 24 bytes in 1 blocks are definitely lost in loss record 4 of 7
+==1064658==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1064658==    by 0x10D672: NodeList_new (ast.c:44)
+==1064658==    by 0x109C70: parse_block (p2-parser.c:257)
+==1064658==    by 0x109B4C: parse_funcdecl (p2-parser.c:239)
+==1064658==    by 0x10996C: parse_program (p2-parser.c:197)
+==1064658==    by 0x10A9C3: parse (p2-parser.c:522)
+==1064658==    by 0x10F014: main (main.c:98)
+==1064658== 
+==1064658== 24 bytes in 1 blocks are definitely lost in loss record 5 of 7
+==1064658==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1064658==    by 0x10D672: NodeList_new (ast.c:44)
+==1064658==    by 0x109C79: parse_block (p2-parser.c:258)
+==1064658==    by 0x109B4C: parse_funcdecl (p2-parser.c:239)
+==1064658==    by 0x10996C: parse_program (p2-parser.c:197)
+==1064658==    by 0x10A9C3: parse (p2-parser.c:522)
+==1064658==    by 0x10F014: main (main.c:98)
+==1064658== 
+==1064658== 272 bytes in 1 blocks are definitely lost in loss record 6 of 7
+==1064658==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1064658==    by 0x10EA8D: Token_new (token.c:56)
+==1064658==    by 0x10F6DE: lex (p1-lexer.c:100)
+==1064658==    by 0x10EFFE: main (main.c:95)
+==1064658== 
+==1064658== 304 bytes in 1 blocks are definitely lost in loss record 7 of 7
+==1064658==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1064658==    by 0x10D9A7: ASTNode_new (ast.c:61)
+==1064658==    by 0x10E537: LiteralNode_new_bool (ast.c:372)
+==1064658==    by 0x10A2E4: parse_primary (p2-parser.c:387)
+==1064658==    by 0x10A706: parse_unary (p2-parser.c:459)
+==1064658==    by 0x10A724: parse_multiply (p2-parser.c:464)
+==1064658==    by 0x10A893: parse_add (p2-parser.c:493)
+==1064658==    by 0x10A9A5: parse_expression (p2-parser.c:517)
+==1064658==    by 0x10A18A: parse_return (p2-parser.c:362)
+==1064658==    by 0x109F7D: parse_statement (p2-parser.c:319)
+==1064658==    by 0x109CE3: parse_block (p2-parser.c:267)
+==1064658==    by 0x109B4C: parse_funcdecl (p2-parser.c:239)
+==1064658== 
+==1064658== LEAK SUMMARY:
+==1064658==    definitely lost: 696 bytes in 7 blocks
+==1064658==    indirectly lost: 0 bytes in 0 blocks
+==1064658==      possibly lost: 0 bytes in 0 blocks
+==1064658==    still reachable: 0 bytes in 0 blocks
+==1064658==         suppressed: 0 bytes in 0 blocks
+==1064658== 
+==1064658== For lists of detected and suppressed errors, rerun with: -s
+==1064658== ERROR SUMMARY: 7 errors from 7 contexts (suppressed: 0 from 0)

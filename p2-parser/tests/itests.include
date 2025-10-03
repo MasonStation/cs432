@@ -4,4 +4,5 @@
 #    <ARGS>     command-line arguments to test
 
 run_test    A_sourceinfo                "inputs/add.decaf"
-
+run_test    func_test                   "inputs/func_test.decaf"
+run_test    test_empty_function         "inputs/test_empty_function.decaf"
