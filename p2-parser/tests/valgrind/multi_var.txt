@@ -1,19 +1,19 @@
-==1660018== Memcheck, a memory error detector
-==1660018== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
-==1660018== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
-==1660018== Command: ../decaf inputs/multi_var.decaf
-==1660018== 
+==1687056== Memcheck, a memory error detector
+==1687056== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==1687056== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==1687056== Command: ../decaf inputs/multi_var.decaf
+==1687056== 
 Program [line 1]
   FuncDecl name="main" return_type=int parameters={} [line 1]
     Block [line 1]
       VarDecl name="x" type=int is_array=no array_length=1 [line 2]
       VarDecl name="ready" type=bool is_array=no array_length=1 [line 3]
-==1660018== 
-==1660018== HEAP SUMMARY:
-==1660018==     in use at exit: 0 bytes in 0 blocks
-==1660018==   total heap usage: 1,698 allocs, 1,698 frees, 190,184 bytes allocated
-==1660018== 
-==1660018== All heap blocks were freed -- no leaks are possible
-==1660018== 
-==1660018== For lists of detected and suppressed errors, rerun with: -s
-==1660018== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==1687056== 
+==1687056== HEAP SUMMARY:
+==1687056==     in use at exit: 0 bytes in 0 blocks
+==1687056==   total heap usage: 1,698 allocs, 1,698 frees, 190,184 bytes allocated
+==1687056== 
+==1687056== All heap blocks were freed -- no leaks are possible
+==1687056== 
+==1687056== For lists of detected and suppressed errors, rerun with: -s
+==1687056== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

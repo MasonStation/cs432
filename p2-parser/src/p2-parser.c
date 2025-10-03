@@ -371,8 +371,7 @@ ASTNode *parse_assignment(TokenQueue *input)
  */
 ASTNode *parse_if(TokenQueue *input)
 {
-    if (TokenQueue_is_empty(input))
-    {
+    if (TokenQueue_is_empty(input)) {
         Error_throw_printf("Unexpected end of input (expected 'if')\n");
     }
     int line = get_next_token_line(input);
@@ -380,17 +379,45 @@ ASTNode *parse_if(TokenQueue *input)
     match_and_discard_next_token(input, SYM, "(");
     ASTNode *condition = parse_expression(input);
     match_and_discard_next_token(input, SYM, ")");
-    ASTNode *then = parse_block(input);
+
+    // then-part: block or single statement wrapped as a block
+    ASTNode *then_block;
+    if (check_next_token(input, SYM, "{")) {
+        then_block = parse_block(input);
+    } else {
+        ASTNode *stmt = parse_statement(input);
+        NodeList *vars = NodeList_new();
+        NodeList *stmts = NodeList_new();
+        if (stmt) NodeList_add(stmts, stmt);
+        then_block = BlockNode_new(vars, stmts, line);
+    }
 
     ASTNode *else_block = NULL;
-
-    if (!TokenQueue_is_empty(input) && check_next_token(input, KEY, "else"))
-    {
+    if (!TokenQueue_is_empty(input) && check_next_token(input, KEY, "else")) {
         match_and_discard_next_token(input, KEY, "else");
-        else_block = parse_block(input);
+
+        if (check_next_token(input, KEY, "if")) {
+            // else-if: parse another if, then wrap it in a block for your AST
+            ASTNode *nested_if = parse_if(input);
+            NodeList *vars = NodeList_new();
+            NodeList *stmts = NodeList_new();
+            NodeList_add(stmts, nested_if);
+            else_block = BlockNode_new(vars, stmts, line);
+        } else if (check_next_token(input, SYM, "{")) {
+            else_block = parse_block(input);
+        } else {
+            // single statement else; wrap it in a block
+            ASTNode *stmt = parse_statement(input);
+            NodeList *vars = NodeList_new();
+            NodeList *stmts = NodeList_new();
+            if (stmt) NodeList_add(stmts, stmt);
+            else_block = BlockNode_new(vars, stmts, line);
+        }
     }
-    return ConditionalNode_new(condition, then, else_block, line);
+
+    return ConditionalNode_new(condition, then_block, else_block, line);
 }
+
 /**
  * Checks and determines which statement needed to be parsed based on the next token.
  * @param input Token queue to modify.

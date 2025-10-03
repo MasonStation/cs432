@@ -1,5 +1,5 @@
 literal                        pass
-c_test                         FAIL (see outputs/c_test.diff for details)
+c_test                         pass
 b_test                         FAIL (see outputs/b_test.diff for details)
 a_test                         FAIL (see outputs/a_test.diff for details)
 d_test                         pass

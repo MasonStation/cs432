@@ -1,6 +1,0 @@
-def int main() {
-    int total;
-    init();
-    total = sweep();
-    return total;
-}
