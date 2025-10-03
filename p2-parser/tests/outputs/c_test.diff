@@ -1,5 +1,5 @@
---- outputs/c_test.txt	2025-10-03 03:03:39.252053834 -0400
-+++ expected/c_test.txt	2025-10-02 22:00:13.808686412 -0400
+--- outputs/c_test.txt	2025-10-03 05:01:46.173883621 -0400
++++ expected/c_test.txt	2025-10-03 03:54:43.478368187 -0400
 @@ -0,0 +1,86 @@
 +Program [line 1]
 +  VarDecl name="A" type=int is_array=yes array_length=4 [line 2]
@@ -87,4 +87,3 @@
 +        FuncCall name="sweep" [line 35]
 +      Return [line 36]
 +        Location name="total" [line 36]
-\ No newline at end of file

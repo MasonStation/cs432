@@ -1,12 +1,20 @@
-A_sourceinfo                   pass
-func_test                      pass
-test_empty_function            pass
-d_test                         FAIL (see outputs/d_test.diff for details)
+literal                        pass
 c_test                         FAIL (see outputs/c_test.diff for details)
 b_test                         FAIL (see outputs/b_test.diff for details)
 a_test                         FAIL (see outputs/a_test.diff for details)
+d_test                         pass
+test_empty_function            pass
+func_test                      pass
+A_sourceinfo                   pass
 intx                           pass
-multi_var                      FAIL (see outputs/multi_var.diff for details)
+while                          pass
+multi_var                      pass
+dec_init                       pass
+bool_return                    pass
+array_decl                     pass
+arr_main_init                  pass
+block                          pass
+conditional                    pass
 No memory leak found.
 No uninitialized value found.
 ========================================

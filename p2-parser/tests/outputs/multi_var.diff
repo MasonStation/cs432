@@ -1,9 +1,0 @@
---- outputs/multi_var.txt	2025-10-03 03:03:42.341212404 -0400
-+++ expected/multi_var.txt	2025-10-03 02:55:45.602741015 -0400
-@@ -2,4 +2,4 @@
-   FuncDecl name="main" return_type=int parameters={} [line 1]
-     Block [line 1]
-       VarDecl name="x" type=int is_array=no array_length=1 [line 2]
--      VarDecl name="ready" type=bool is_array=no array_length=1 [line 3]
-+      VarDecl name="ready" type=bool is_array=no array_length=1 [line 3]
-\ No newline at end of file

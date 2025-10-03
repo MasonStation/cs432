@@ -1,4 +1,4 @@
-def int main() {
-    int x;
-    bool ready;
-}
+    def int main() {
+        int x;
+        bool ready;
+    }

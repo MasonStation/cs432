@@ -1,0 +1,9 @@
+// Arrays are global in Decaf.
+int A[4];
+bool B[4];
+
+def int main() {
+    A[0] = 1;
+    B[2] = true;
+    return 0;
+}

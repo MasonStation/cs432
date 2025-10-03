@@ -1,34 +1,3 @@
-// Arrays are global in Decaf.
-int A[4];
-bool B[4];
-
-def void init() {
-    int i;
-    i = 0;
-    while (i < 4) {
-        A[i] = i + 1;          // locations
-        B[i] = (i % 2 == 0);   // literals & locations
-        i = i + 1;
-    }
-}
-
-def int sweep() {
-    int i;
-    int sum;
-    i = 0;
-    sum = 0;
-    while (i < 4) {
-        if (B[i]) {
-            sum = sum + A[i];
-            i = i + 1;
-            continue;
-        }
-        if (i > 10) { break; } // reachable form but harmless
-        i = i + 1;
-    }
-    return sum;
-}
-
 def int main() {
     int total;
     init();

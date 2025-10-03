@@ -1,0 +1,6 @@
+Program [line 1]
+  FuncDecl name="m" return_type=void parameters={} [line 5]
+    Block [line 5]
+      Whileloop [line 8]
+        Literal type=bool value=true [line 8]
+        Block [line 8]

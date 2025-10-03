@@ -1,0 +1,10 @@
+def void init() {
+    int i;
+    i = 0;
+    while (i < 4) {
+        A[i] = i + 1;          // locations
+        B[i] = (i % 2 == 0);   // literals & locations
+        i = i + 1;
+        return false;
+    }
+}

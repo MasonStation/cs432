@@ -3,14 +3,23 @@
 #    <TAG>      used as the root for all filenames (i.e., "expected/$TAG.txt")
 #    <ARGS>     command-line arguments to test
 
-run_test    A_sourceinfo                "inputs/add.decaf"
-run_test    func_test                   "inputs/func_test.decaf"
-run_test    test_empty_function         "inputs/test_empty_function.decaf"
 
-run_test    d_test                      "inputs/d_test.decaf"
+run_test    literal                     "inputs/literal.decaf"
 run_test    c_test                      "inputs/c_test.decaf"
 run_test    b_test                      "inputs/b_test.decaf"
 run_test    a_test                      "inputs/a_test.decaf"
+
+run_test    d_test                      "inputs/d_test.decaf"
+run_test    test_empty_function         "inputs/test_empty_function.decaf"
+run_test    func_test                   "inputs/func_test.decaf"
+run_test    A_sourceinfo                "inputs/add.decaf"
 run_test    intx                        "inputs/intx.decaf"
 
+run_test    while                       "inputs/while.decaf"
 run_test    multi_var                   "inputs/multi_var.decaf"
+run_test    dec_init                    "inputs/dec_init.decaf"
+run_test    bool_return                 "inputs/bool_return.decaf"
+run_test    array_decl                  "inputs/array_decl.decaf"
+run_test    arr_main_init               "inputs/arr_main_init.decaf"
+run_test    block                       "inputs/block.decaf"
+run_test    conditional                 "inputs/conditional.decaf"

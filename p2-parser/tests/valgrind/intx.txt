@@ -1,16 +1,16 @@
-==1592700== Memcheck, a memory error detector
-==1592700== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
-==1592700== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
-==1592700== Command: ../decaf inputs/intx.decaf
-==1592700== 
+==1659991== Memcheck, a memory error detector
+==1659991== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==1659991== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==1659991== Command: ../decaf inputs/intx.decaf
+==1659991== 
 Program [line 1]
   VarDecl name="x" type=int is_array=no array_length=1 [line 1]
-==1592700== 
-==1592700== HEAP SUMMARY:
-==1592700==     in use at exit: 0 bytes in 0 blocks
-==1592700==   total heap usage: 1,616 allocs, 1,616 frees, 164,640 bytes allocated
-==1592700== 
-==1592700== All heap blocks were freed -- no leaks are possible
-==1592700== 
-==1592700== For lists of detected and suppressed errors, rerun with: -s
-==1592700== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==1659991== 
+==1659991== HEAP SUMMARY:
+==1659991==     in use at exit: 0 bytes in 0 blocks
+==1659991==   total heap usage: 1,616 allocs, 1,616 frees, 164,640 bytes allocated
+==1659991== 
+==1659991== All heap blocks were freed -- no leaks are possible
+==1659991== 
+==1659991== For lists of detected and suppressed errors, rerun with: -s
+==1659991== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
