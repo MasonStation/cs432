@@ -1,0 +1,9 @@
+def int main() {
+    int x;
+    bool ready;
+
+    x = 3;
+    ready = true;
+
+    return x;
+}

@@ -1,6 +1,21 @@
-A_sourceinfo                   pass
-func_test                      pass
+A_sourceinfo                   FAIL (see outputs/A_sourceinfo.diff for details)
+func_test                      FAIL (see outputs/func_test.diff for details)
+test_empty_function            FAIL (see outputs/test_empty_function.diff for details)
+d_test                         FAIL (see outputs/d_test.diff for details)
+c_test                         FAIL (see outputs/c_test.diff for details)
+b_test                         FAIL (see outputs/b_test.diff for details)
+a_test                         FAIL (see outputs/a_test.diff for details)
+intx                           pass
 Memory leak(s) found. See files listed below for details.
+  - valgrind/A_sourceinfo.txt
+  - valgrind/A_sourceinfo.txt
+  - valgrind/A_sourceinfo.txt
+  - valgrind/A_sourceinfo.txt
+  - valgrind/A_sourceinfo.txt
+  - valgrind/A_sourceinfo.txt
+  - valgrind/A_sourceinfo.txt
+  - valgrind/A_sourceinfo.txt
+  - valgrind/A_sourceinfo.txt
   - valgrind/func_test.txt
   - valgrind/func_test.txt
   - valgrind/func_test.txt
@@ -9,6 +24,9 @@ Memory leak(s) found. See files listed below for details.
   - valgrind/func_test.txt
   - valgrind/func_test.txt
   - valgrind/func_test.txt
+  - valgrind/test_empty_function.txt
+  - valgrind/test_empty_function.txt
+  - valgrind/test_empty_function.txt
 No uninitialized value found.
 ========================================
  NOTICE: THIS TESTSUITE IS INCOMPLETE.
