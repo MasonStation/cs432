@@ -1,7 +1,2 @@
 Running suite(s): Default
-86%: Checks: 30, Failures: 3, Errors: 1
-public.c:55:F:Public:B_add_expr:0: Assertion 'valid_program("def int main () { return " "3+7" " ; }")' failed
-public.c:56:F:Public:B_add_expr_bool:0: Assertion 'valid_program("def int main () { return " "true && false" " ; }")' failed
-public.c:81:F:Public:A_newline:0: Assertion 'value == "ab\nc"' failed: value == "ab\nc", "ab\nc" == "ab
-c"
-private.c:5:E:Private:A_null_token_queue:0: (after this point) Received signal 11 (Segmentation fault)
+100%: Checks: 30, Failures: 0, Errors: 0

@@ -12,3 +12,5 @@ run_test    c_test                      "inputs/c_test.decaf"
 run_test    b_test                      "inputs/b_test.decaf"
 run_test    a_test                      "inputs/a_test.decaf"
 run_test    intx                        "inputs/intx.decaf"
+
+run_test    multi_var                   "inputs/multi_var.decaf"

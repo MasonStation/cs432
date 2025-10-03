@@ -1,3 +1,0 @@
-Program [line 1]
-  FuncDecl name="func" return_type=int parameters={} [line 1]
-    Block [line 1]

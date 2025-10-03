@@ -1,0 +1,5 @@
+Program [line 1]
+  FuncDecl name="main" return_type=int parameters={} [line 1]
+    Block [line 1]
+      VarDecl name="x" type=int is_array=no array_length=1 [line 2]
+      VarDecl name="ready" type=bool is_array=no array_length=1 [line 3]

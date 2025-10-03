@@ -239,7 +239,8 @@ ASTNode *parse_program(TokenQueue *input)
     // Phase 2: functions (def)*
     while (!TokenQueue_is_empty(input))
     {
-        if (!check_next_token(input, KEY, "def")) {
+        if (!check_next_token(input, KEY, "def"))
+        {
             int line = get_next_token_line(input);
             Error_throw_printf("Unexpected token at top level on line %d (expected 'def' or end of file)\n", line);
         }
@@ -340,7 +341,6 @@ ASTNode *parse_block(TokenQueue *input)
     return BlockNode_new(vars, stmts, line);
 }
 
-
 /**
  * Parses an assignment statement (e.g., the "=" operator in the x = 5; statement);
  * @param input Token queue to modify.
@@ -392,6 +392,10 @@ ASTNode *parse_statement(TokenQueue *input)
     if (TokenQueue_is_empty(input))
     {
         Error_throw_printf("Unexpected end of input (expected statement)\n");
+    }
+    if (check_next_token(input, SYM, "{"))
+    {
+        return parse_block(input); // delegate here
     }
     if (check_next_token_type(input, ID))
     {
@@ -492,6 +496,50 @@ ASTNode *parse_location(TokenQueue *input)
  * @param input Token queue to modify.
  * @return The parsed primary AST Node.
  */
+static void unescape_basic(const char *src, char *dst, size_t cap)
+{
+    if (!src || !dst || cap == 0)
+        return;
+    size_t i = 0, di = 0, len = strlen(src);
+
+    // strip surrounding quotes if present
+    size_t start = 0, end = len;
+    if (len >= 2 && src[0] == '"' && src[len - 1] == '"')
+    {
+        start = 1;
+        end = len - 1;
+    }
+
+    for (i = start; i < end && di + 1 < cap;)
+    {
+        char c = src[i++];
+        if (c == '\\' && i < end)
+        {
+            char e = src[i++];
+            if (e == 'n')
+                c = '\n';
+            else if (e == '"')
+                c = '"';
+            else if (e == '\\')
+                c = '\\';
+            else
+            { // unknown escape: keep as-is literally
+                if (di + 2 < cap)
+                {
+                    dst[di++] = '\\';
+                    dst[di++] = e;
+                }
+                else if (di + 1 < cap)
+                {
+                    dst[di++] = '\\';
+                }
+                continue;
+            }
+        }
+        dst[di++] = c;
+    }
+    dst[di] = '\0';
+}
 ASTNode *parse_base(TokenQueue *input)
 {
     if (TokenQueue_is_empty(input))
@@ -570,20 +618,9 @@ ASTNode *parse_base(TokenQueue *input)
     if (check_next_token_type(input, STRLIT))
     {
         Token *t = TokenQueue_remove(input);
+        int line = t->line;
         char buf[MAX_TOKEN_LEN];
-        size_t len = strlen(t->text);
-        if (len >= 2 && t->text[0] == '"' && t->text[len - 1] == '"')
-        {
-            size_t inner = len - 2;
-            if (inner >= MAX_TOKEN_LEN)
-                inner = MAX_TOKEN_LEN - 1;
-            memcpy(buf, t->text + 1, inner);
-            buf[inner] = '\0';
-        }
-        else
-        {
-            snprintf(buf, sizeof(buf), "%s", t->text);
-        }
+        unescape_basic(t->text, buf, sizeof(buf));
         ASTNode *n = LiteralNode_new_string(buf, line);
         Token_free(t);
         return n;
@@ -710,10 +747,69 @@ ASTNode *parse_binexpr(TokenQueue *input)
  * @param input Token queue to modify.
  * @return The parsed binary expression AST Node.
  */
+// ...existing code...
+
+// ...existing code...
+
 ASTNode *parse_expression(TokenQueue *input)
 {
-    return parse_binexpr(input);
+    // multiplicative handled in parse_binexpr; build additive layer here
+    ASTNode *left = parse_binexpr(input);
+
+    while (!TokenQueue_is_empty(input) &&
+           (check_next_token(input, SYM, "+") ||
+            check_next_token(input, SYM, "-")))
+    {
+        int line = get_next_token_line(input);
+        BinaryOpType op;
+        if (check_next_token(input, SYM, "+"))
+        {
+            op = ADDOP;
+            match_and_discard_next_token(input, SYM, "+");
+        }
+        else
+        {
+            op = SUBOP;
+            match_and_discard_next_token(input, SYM, "-");
+        }
+        ASTNode *right = parse_binexpr(input);
+        left = BinaryOpNode_new(op, left, right, line);
+    }
+
+    // logical AND (lower precedence than + -)
+    while (!TokenQueue_is_empty(input) && check_next_token(input, SYM, "&&"))
+    {
+        int line = get_next_token_line(input);
+        match_and_discard_next_token(input, SYM, "&&");
+
+        // parse right side (additive level again)
+        ASTNode *right = parse_binexpr(input);
+        while (!TokenQueue_is_empty(input) &&
+               (check_next_token(input, SYM, "+") ||
+                check_next_token(input, SYM, "-")))
+        {
+            int line2 = get_next_token_line(input);
+            BinaryOpType op2;
+            if (check_next_token(input, SYM, "+"))
+            {
+                op2 = ADDOP;
+                match_and_discard_next_token(input, SYM, "+");
+            }
+            else
+            {
+                op2 = SUBOP;
+                match_and_discard_next_token(input, SYM, "-");
+            }
+            ASTNode *r2 = parse_binexpr(input);
+            right = BinaryOpNode_new(op2, right, r2, line2);
+        }
+
+        left = BinaryOpNode_new(ANDOP, left, right, line);
+    }
+
+    return left;
 }
+
 /**
  * The whole program.
  * @param input Token queue to modify.
@@ -721,5 +817,9 @@ ASTNode *parse_expression(TokenQueue *input)
  */
 ASTNode *parse(TokenQueue *input)
 {
+    if (input == NULL)
+    {
+        Error_throw_printf("No input provided to parser.\n");
+    }
     return parse_program(input);
 }

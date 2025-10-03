@@ -1,5 +1,11 @@
 digraph AST {
-1 [shape=box, label="VarDecl name='x'"];
+3 [shape=box, label="VarDecl name='x'"];
+4 [shape=box, label="VarDecl name='ready'"];
+2 [shape=box, label="Block"];
+2 -> 3;
+2 -> 4;
+1 [shape=box, label="FuncDecl name='main'"];
+1 -> 2;
 0 [shape=box, label="Program"];
 0 -> 1;
 }
