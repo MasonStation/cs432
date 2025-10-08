@@ -3,12 +3,18 @@
 #    <TAG>      used as the root for all filenames (i.e., "expected/$TAG.txt")
 #    <ARGS>     command-line arguments to test
 
+run_test    a_test3                     "inputs/a_test3.decaf"
+run_test    a_test2                     "inputs/a_test2.decaf"
+run_test    a_test1                     "inputs/a_test1.decaf"
+run_test    b01params_return            "inputs/b01params_return.decaf"
+run_test    b02ifelsewhile            "inputs/b02ifelsewhile.decaf"
+run_test    b03callsexpressions            "inputs/b03callsexpressions.decaf"
+run_test    b04unarybinary        "inputs/b04unarybinary.decaf"
 
-run_test    literal                     "inputs/literal.decaf"
-run_test    c_test                      "inputs/c_test.decaf"
-run_test    b_test                      "inputs/b_test.decaf"
 run_test    a_test                      "inputs/a_test.decaf"
 
+run_test    c_test                      "inputs/c_test.decaf"
+run_test    literal                     "inputs/literal.decaf"
 run_test    d_test                      "inputs/d_test.decaf"
 run_test    test_empty_function         "inputs/test_empty_function.decaf"
 run_test    func_test                   "inputs/func_test.decaf"

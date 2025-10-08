@@ -1,8 +1,8 @@
-==1686877== Memcheck, a memory error detector
-==1686877== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
-==1686877== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
-==1686877== Command: ../decaf inputs/c_test.decaf
-==1686877== 
+==2346862== Memcheck, a memory error detector
+==2346862== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==2346862== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==2346862== Command: ../decaf inputs/c_test.decaf
+==2346862== 
 Program [line 1]
   VarDecl name="A" type=int is_array=yes array_length=4 [line 2]
   VarDecl name="B" type=bool is_array=yes array_length=4 [line 3]
@@ -89,12 +89,12 @@ Program [line 1]
         FuncCall name="sweep" [line 35]
       Return [line 36]
         Location name="total" [line 36]
-==1686877== 
-==1686877== HEAP SUMMARY:
-==1686877==     in use at exit: 0 bytes in 0 blocks
-==1686877==   total heap usage: 2,493 allocs, 2,493 frees, 352,380 bytes allocated
-==1686877== 
-==1686877== All heap blocks were freed -- no leaks are possible
-==1686877== 
-==1686877== For lists of detected and suppressed errors, rerun with: -s
-==1686877== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==2346862== 
+==2346862== HEAP SUMMARY:
+==2346862==     in use at exit: 0 bytes in 0 blocks
+==2346862==   total heap usage: 2,493 allocs, 2,493 frees, 352,380 bytes allocated
+==2346862== 
+==2346862== All heap blocks were freed -- no leaks are possible
+==2346862== 
+==2346862== For lists of detected and suppressed errors, rerun with: -s
+==2346862== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

@@ -1,0 +1,8 @@
+int Arr[5];
+bool Flags[3];
+
+def int twice(int z, int w) {
+    int t;
+    t = z + w;
+    return t + t;           // simple param use
+}

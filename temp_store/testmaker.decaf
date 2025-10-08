@@ -1,0 +1,5 @@
+def int main (){
+    if ( (a < b) || (c == 0) && !false ) {
+        r = r + 1;
+    }
+}

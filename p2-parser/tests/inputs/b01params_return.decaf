@@ -1,0 +1,12 @@
+// Should parse: func decl w/ params, return of binary expr
+def int add(int x, int y) {
+    return x + y;
+}
+
+def int main() {
+    int a;
+    int b;
+    a = 3;
+    b = 4;
+    return add(a, b);
+}

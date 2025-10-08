@@ -1,7 +1,13 @@
-literal                        pass
+a_test3                        pass
+a_test2                        pass
+a_test1                        pass
+b01params_return               pass
+b02ifelsewhile                 pass
+b03callsexpressions            pass
+b04unarybinary                 pass
+a_test                         pass
 c_test                         pass
-b_test                         FAIL (see outputs/b_test.diff for details)
-a_test                         FAIL (see outputs/a_test.diff for details)
+literal                        pass
 d_test                         pass
 test_empty_function            pass
 func_test                      pass

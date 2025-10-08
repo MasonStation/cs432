@@ -1,0 +1,13 @@
+KEYWORD  [line 001]  def
+KEYWORD  [line 001]  int
+ID       [line 001]  main
+SYMBOL   [line 001]  (
+SYMBOL   [line 001]  )
+SYMBOL   [line 002]  {
+KEYWORD  [line 003]  return
+KEYWORD  [line 003]  true
+SYMBOL   [line 003]  &&
+KEYWORD  [line 003]  false
+SYMBOL   [line 003]  ;
+SYMBOL   [line 004]  }
+Type mismatch: int expected but bool found on line 3

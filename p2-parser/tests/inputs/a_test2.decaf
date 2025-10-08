@@ -1,0 +1,13 @@
+def int blend(int a, int b, int c) {
+    int r;
+    // precedence & associativity checks:
+    // * and / before + and -, left-assoc for + and -
+    r = a + b * c - 10 / 2;         // r = a + (b*c) - (10/2)
+    r = r + (a - b) * (c + 1);      // explicit subexprs
+    // boolean precedence: ! > && > ||
+    // (a < b) || (c == 0) && !false  ->  (a<b) || ((c==0) && true)
+    if ( (a < b) || (c == 0) && !false ) {
+        r = r + 1;
+    }
+    return r;
+}

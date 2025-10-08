@@ -1,0 +1,13 @@
+// Should parse: unary ! and -, mixed with binary ops
+def int f(int v, bool ok) {
+    // ok participates in boolean expr; unary minus on DEC literal
+    if ((!ok) || (v < -5)) {
+        return -v;
+    } else {
+        return v + 10;
+    }
+}
+
+def int main() {
+    return f(3, false);
+}

@@ -1,0 +1,24 @@
+// Should parse: if (...) { ... } else { ... }, while (...) { ... }, returns
+def bool ge(int a, int b) {
+    return a >= b;
+}
+
+def int main() {
+    int i;
+    int sum;
+    i = 0;
+    sum = 0;
+
+    if (ge(3, 2)) {
+        sum = sum + 1;
+    } else {
+        sum = sum - 1;
+    }
+
+    while (i < 5) {
+        sum = sum + i;
+        i = i + 1;
+    }
+
+    return sum;
+}
