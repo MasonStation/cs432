@@ -1,0 +1,997 @@
+\doxysection{include/ast.h File Reference}
+\hypertarget{ast_8h}{}\label{ast_8h}\index{include/ast.h@{include/ast.h}}
+
+
+AST nodes and attributes.  
+
+
+{\ttfamily \#include "{}common.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_program_node}{Program\+Node}}
+\begin{DoxyCompactList}\small\item\em AST root structure. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_var_decl_node}{Var\+Decl\+Node}}
+\begin{DoxyCompactList}\small\item\em AST variable structure. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_parameter}{Parameter}}
+\begin{DoxyCompactList}\small\item\em AST parameter (used in function declarations) \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_parameter_list}{Parameter\+List}}
+\begin{DoxyCompactList}\small\item\em Linked list of struct Parameter\texorpdfstring{$\ast$}{*} elements. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_func_decl_node}{Func\+Decl\+Node}}
+\begin{DoxyCompactList}\small\item\em AST function structure. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_block_node}{Block\+Node}}
+\begin{DoxyCompactList}\small\item\em AST block structure. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_assignment_node}{Assignment\+Node}}
+\begin{DoxyCompactList}\small\item\em AST assignment structure. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_conditional_node}{Conditional\+Node}}
+\begin{DoxyCompactList}\small\item\em AST conditional structure. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_while_loop_node}{While\+Loop\+Node}}
+\begin{DoxyCompactList}\small\item\em AST while loop structure. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_return_node}{Return\+Node}}
+\begin{DoxyCompactList}\small\item\em AST return statement structure. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_binary_op_node}{Binary\+Op\+Node}}
+\begin{DoxyCompactList}\small\item\em AST binary operation expression structure. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_unary_op_node}{Unary\+Op\+Node}}
+\begin{DoxyCompactList}\small\item\em AST unary operation expression structure. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_location_node}{Location\+Node}}
+\begin{DoxyCompactList}\small\item\em AST location expression structure. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_func_call_node}{Func\+Call\+Node}}
+\begin{DoxyCompactList}\small\item\em AST function call expression structure. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_literal_node}{Literal\+Node}}
+\begin{DoxyCompactList}\small\item\em AST literal expression structure. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_attribute}{Attribute}}
+\begin{DoxyCompactList}\small\item\em AST attribute (basically a key-\/value store for nodes) \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}
+\begin{DoxyCompactList}\small\item\em Main AST node structure. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_node_list}{Node\+List}}
+\begin{DoxyCompactList}\small\item\em Linked list of struct ASTNode\texorpdfstring{$\ast$}{*} elements. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{ast_8h_a4295dd28ac38a7b4bcafc3186023ed25}\label{ast_8h_a4295dd28ac38a7b4bcafc3186023ed25} 
+typedef void(\texorpdfstring{$\ast$}{*} {\bfseries Attribute\+Value\+DOTPrinter}) (void \texorpdfstring{$\ast$}{*}, FILE \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Function pointer used to store references to custom DOT output routines. \end{DoxyCompactList}\item 
+\Hypertarget{ast_8h_af55431eb8c62b9e786386abd9c88d964}\label{ast_8h_af55431eb8c62b9e786386abd9c88d964} 
+typedef void(\texorpdfstring{$\ast$}{*} {\bfseries Destructor}) (void \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Function pointer used to store references to custom "{}free"{} routines. \end{DoxyCompactList}\item 
+\Hypertarget{ast_8h_a9117e76d99fa50a469565a9acd465b5a}\label{ast_8h_a9117e76d99fa50a469565a9acd465b5a} 
+typedef enum \mbox{\hyperlink{ast_8h_acac9cbaeea226ed297804c012dc12b16}{Node\+Type}} {\bfseries Node\+Type}
+\begin{DoxyCompactList}\small\item\em AST node type tag. \end{DoxyCompactList}\item 
+\Hypertarget{ast_8h_a3233481872706cb2e4bb09efefe34ea5}\label{ast_8h_a3233481872706cb2e4bb09efefe34ea5} 
+typedef struct \mbox{\hyperlink{struct_program_node}{Program\+Node}} {\bfseries Program\+Node}
+\begin{DoxyCompactList}\small\item\em AST root structure. \end{DoxyCompactList}\item 
+\Hypertarget{ast_8h_ad39a51768ea191753f2074cb04b371d4}\label{ast_8h_ad39a51768ea191753f2074cb04b371d4} 
+typedef struct \mbox{\hyperlink{struct_var_decl_node}{Var\+Decl\+Node}} {\bfseries Var\+Decl\+Node}
+\begin{DoxyCompactList}\small\item\em AST variable structure. \end{DoxyCompactList}\item 
+\Hypertarget{ast_8h_a82c33befb67cc6f130e0940c84b0e078}\label{ast_8h_a82c33befb67cc6f130e0940c84b0e078} 
+typedef struct \mbox{\hyperlink{struct_parameter}{Parameter}} {\bfseries Parameter}
+\begin{DoxyCompactList}\small\item\em AST parameter (used in function declarations) \end{DoxyCompactList}\item 
+\Hypertarget{ast_8h_a0fed47a20477d93b7311ff5c2dfb0af6}\label{ast_8h_a0fed47a20477d93b7311ff5c2dfb0af6} 
+typedef struct \mbox{\hyperlink{struct_parameter_list}{Parameter\+List}} {\bfseries Parameter\+List}
+\begin{DoxyCompactList}\small\item\em Linked list of struct Parameter\texorpdfstring{$\ast$}{*} elements. \end{DoxyCompactList}\item 
+\Hypertarget{ast_8h_a79d0bfbe397f230798bb886c83c5665b}\label{ast_8h_a79d0bfbe397f230798bb886c83c5665b} 
+typedef struct \mbox{\hyperlink{struct_func_decl_node}{Func\+Decl\+Node}} {\bfseries Func\+Decl\+Node}
+\begin{DoxyCompactList}\small\item\em AST function structure. \end{DoxyCompactList}\item 
+\Hypertarget{ast_8h_a6e31341d14124463911c2bdbcb6eee74}\label{ast_8h_a6e31341d14124463911c2bdbcb6eee74} 
+typedef struct \mbox{\hyperlink{struct_block_node}{Block\+Node}} {\bfseries Block\+Node}
+\begin{DoxyCompactList}\small\item\em AST block structure. \end{DoxyCompactList}\item 
+\Hypertarget{ast_8h_a9a4064ee0b338e276fa8bca0e60f7d40}\label{ast_8h_a9a4064ee0b338e276fa8bca0e60f7d40} 
+typedef struct \mbox{\hyperlink{struct_assignment_node}{Assignment\+Node}} {\bfseries Assignment\+Node}
+\begin{DoxyCompactList}\small\item\em AST assignment structure. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{struct_conditional_node}{Conditional\+Node}} \mbox{\hyperlink{ast_8h_a9a13618fd5ded971c8985e04be20599f}{Conditional\+Node}}
+\begin{DoxyCompactList}\small\item\em AST conditional structure. \end{DoxyCompactList}\item 
+\Hypertarget{ast_8h_a4deaedc8186fa00dd02bb390153226a4}\label{ast_8h_a4deaedc8186fa00dd02bb390153226a4} 
+typedef struct \mbox{\hyperlink{struct_while_loop_node}{While\+Loop\+Node}} {\bfseries While\+Loop\+Node}
+\begin{DoxyCompactList}\small\item\em AST while loop structure. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{struct_return_node}{Return\+Node}} \mbox{\hyperlink{ast_8h_a67ec0270a17d2d3c70f5981af590eef0}{Return\+Node}}
+\begin{DoxyCompactList}\small\item\em AST return statement structure. \end{DoxyCompactList}\item 
+\Hypertarget{ast_8h_ac3dd2396eeb6bd71ce6b0da756237f7d}\label{ast_8h_ac3dd2396eeb6bd71ce6b0da756237f7d} 
+typedef enum \mbox{\hyperlink{ast_8h_a41ef0fe64d0a177e2749cd27c49d07da}{Binary\+Op\+Type}} {\bfseries Binary\+Op\+Type}
+\begin{DoxyCompactList}\small\item\em Binary operator. \end{DoxyCompactList}\item 
+\Hypertarget{ast_8h_afc2c21f2c4520009fddd491fdb338900}\label{ast_8h_afc2c21f2c4520009fddd491fdb338900} 
+typedef struct \mbox{\hyperlink{struct_binary_op_node}{Binary\+Op\+Node}} {\bfseries Binary\+Op\+Node}
+\begin{DoxyCompactList}\small\item\em AST binary operation expression structure. \end{DoxyCompactList}\item 
+\Hypertarget{ast_8h_a5d6a15090ff49e389b9f85f5f0ccf2a3}\label{ast_8h_a5d6a15090ff49e389b9f85f5f0ccf2a3} 
+typedef enum \mbox{\hyperlink{ast_8h_a74e29410145add8d916ee79e6e3fcde0}{Unary\+Op\+Type}} {\bfseries Unary\+Op\+Type}
+\begin{DoxyCompactList}\small\item\em Unary operator. \end{DoxyCompactList}\item 
+\Hypertarget{ast_8h_a7424caa2e4be93d90fbe9eea00ed0939}\label{ast_8h_a7424caa2e4be93d90fbe9eea00ed0939} 
+typedef struct \mbox{\hyperlink{struct_unary_op_node}{Unary\+Op\+Node}} {\bfseries Unary\+Op\+Node}
+\begin{DoxyCompactList}\small\item\em AST unary operation expression structure. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{struct_location_node}{Location\+Node}} \mbox{\hyperlink{ast_8h_ac2218d9351cffeb00baa38af954f2477}{Location\+Node}}
+\begin{DoxyCompactList}\small\item\em AST location expression structure. \end{DoxyCompactList}\item 
+\Hypertarget{ast_8h_addf7ffca8186823897e97099bc695dd5}\label{ast_8h_addf7ffca8186823897e97099bc695dd5} 
+typedef struct \mbox{\hyperlink{struct_func_call_node}{Func\+Call\+Node}} {\bfseries Func\+Call\+Node}
+\begin{DoxyCompactList}\small\item\em AST function call expression structure. \end{DoxyCompactList}\item 
+\Hypertarget{ast_8h_a71a024dd042e567b265170ea5c0699cd}\label{ast_8h_a71a024dd042e567b265170ea5c0699cd} 
+typedef struct \mbox{\hyperlink{struct_literal_node}{Literal\+Node}} {\bfseries Literal\+Node}
+\begin{DoxyCompactList}\small\item\em AST literal expression structure. \end{DoxyCompactList}\item 
+\Hypertarget{ast_8h_abc0b9323e60af5e90ac524718d959b41}\label{ast_8h_abc0b9323e60af5e90ac524718d959b41} 
+typedef struct \mbox{\hyperlink{struct_attribute}{Attribute}} {\bfseries Attribute}
+\begin{DoxyCompactList}\small\item\em AST attribute (basically a key-\/value store for nodes) \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \mbox{\hyperlink{ast_8h_a6b9026f45e950e06b76db629f9563f3a}{ASTNode}}
+\begin{DoxyCompactList}\small\item\em Main AST node structure. \end{DoxyCompactList}\item 
+\Hypertarget{ast_8h_ac395c41436369e06289bdf9975bc3c99}\label{ast_8h_ac395c41436369e06289bdf9975bc3c99} 
+typedef struct \mbox{\hyperlink{struct_node_list}{Node\+List}} {\bfseries Node\+List}
+\begin{DoxyCompactList}\small\item\em Linked list of struct ASTNode\texorpdfstring{$\ast$}{*} elements. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{ast_8h_acac9cbaeea226ed297804c012dc12b16}\label{ast_8h_acac9cbaeea226ed297804c012dc12b16} 
+enum \mbox{\hyperlink{ast_8h_acac9cbaeea226ed297804c012dc12b16}{Node\+Type}} \{ \newline
+{\bfseries PROGRAM}
+, {\bfseries VARDECL}
+, {\bfseries FUNCDECL}
+, {\bfseries BLOCK}
+, \newline
+{\bfseries ASSIGNMENT}
+, {\bfseries CONDITIONAL}
+, {\bfseries WHILELOOP}
+, {\bfseries RETURNSTMT}
+, \newline
+{\bfseries BREAKSTMT}
+, {\bfseries CONTINUESTMT}
+, {\bfseries BINARYOP}
+, {\bfseries UNARYOP}
+, \newline
+{\bfseries LOCATION}
+, {\bfseries FUNCCALL}
+, {\bfseries LITERAL}
+ \}
+\begin{DoxyCompactList}\small\item\em AST node type tag. \end{DoxyCompactList}\item 
+\Hypertarget{ast_8h_a41ef0fe64d0a177e2749cd27c49d07da}\label{ast_8h_a41ef0fe64d0a177e2749cd27c49d07da} 
+enum \mbox{\hyperlink{ast_8h_a41ef0fe64d0a177e2749cd27c49d07da}{Binary\+Op\+Type}} \{ \newline
+{\bfseries OROP}
+, {\bfseries ANDOP}
+, {\bfseries EQOP}
+, {\bfseries NEQOP}
+, \newline
+{\bfseries LTOP}
+, {\bfseries LEOP}
+, {\bfseries GEOP}
+, {\bfseries GTOP}
+, \newline
+{\bfseries ADDOP}
+, {\bfseries SUBOP}
+, {\bfseries MULOP}
+, {\bfseries DIVOP}
+, \newline
+{\bfseries MODOP}
+ \}
+\begin{DoxyCompactList}\small\item\em Binary operator. \end{DoxyCompactList}\item 
+\Hypertarget{ast_8h_a74e29410145add8d916ee79e6e3fcde0}\label{ast_8h_a74e29410145add8d916ee79e6e3fcde0} 
+enum \mbox{\hyperlink{ast_8h_a74e29410145add8d916ee79e6e3fcde0}{Unary\+Op\+Type}} \{ {\bfseries NEGOP}
+, {\bfseries NOTOP}
+ \}
+\begin{DoxyCompactList}\small\item\em Unary operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{ast_8h_a70d2c761ae418b0168469efd38b16d8a}{dummy\+\_\+free}} (void \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Fake "{}free"{} function that does nothing. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ast_8h_a6532e377c1c7da4b2533204982f50d4b}{dummy\+\_\+print}} (void \texorpdfstring{$\ast$}{*}, FILE \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Fake "{}print"{} function that does nothing. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ast_8h_ad0b1803edc470d3c2e35e5c342c4a123}{int\+\_\+attr\+\_\+print}} (void \texorpdfstring{$\ast$}{*}, FILE \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Simple "{}print"{} function that prints an attribute value as an integer. \end{DoxyCompactList}\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{ast_8h_a924bc16a2f95f151e5f802989970ac72}{Node\+Type\+\_\+to\+\_\+string}} (\mbox{\hyperlink{ast_8h_acac9cbaeea226ed297804c012dc12b16}{Node\+Type}} type)
+\begin{DoxyCompactList}\small\item\em Return a string representation of a node type. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{ast_8h_a0ae70703f96809efec93f83a47cec58b}{Program\+Node\+\_\+new}} (struct \mbox{\hyperlink{struct_node_list}{Node\+List}} \texorpdfstring{$\ast$}{*}vars, struct \mbox{\hyperlink{struct_node_list}{Node\+List}} \texorpdfstring{$\ast$}{*}funcs)
+\begin{DoxyCompactList}\small\item\em Allocate a new program AST node. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{ast_8h_aa9eaf1ae674859f8177375a35f4216fc}{Var\+Decl\+Node\+\_\+new}} (const char \texorpdfstring{$\ast$}{*}name, \mbox{\hyperlink{common_8h_af5878fbe98f23b780b60624fce56a45e}{Decaf\+Type}} type, bool is\+\_\+array, int array\+\_\+length, int source\+\_\+line)
+\begin{DoxyCompactList}\small\item\em Allocate a new variable declaration AST node. \end{DoxyCompactList}\item 
+\Hypertarget{ast_8h_a771a044152358f86bea727e335cb96d6}\label{ast_8h_a771a044152358f86bea727e335cb96d6} 
+\mbox{\hyperlink{struct_parameter_list}{Parameter\+List}} \texorpdfstring{$\ast$}{*} {\bfseries Parameter\+List\+\_\+new} (void)
+\begin{DoxyCompactList}\small\item\em Allocate and initialize a new, empty list. \end{DoxyCompactList}\item 
+\Hypertarget{ast_8h_ae8e1039e0d69265b38502a6eef177d04}\label{ast_8h_ae8e1039e0d69265b38502a6eef177d04} 
+void {\bfseries Parameter\+List\+\_\+add} (\mbox{\hyperlink{struct_parameter_list}{Parameter\+List}} \texorpdfstring{$\ast$}{*}list, struct \mbox{\hyperlink{struct_parameter}{Parameter}} \texorpdfstring{$\ast$}{*}item)
+\begin{DoxyCompactList}\small\item\em Add an item to the end of a list. \end{DoxyCompactList}\item 
+\Hypertarget{ast_8h_aa34286fc7b174cb137eec0494aaf6340}\label{ast_8h_aa34286fc7b174cb137eec0494aaf6340} 
+int {\bfseries Parameter\+List\+\_\+size} (\mbox{\hyperlink{struct_parameter_list}{Parameter\+List}} \texorpdfstring{$\ast$}{*}list)
+\begin{DoxyCompactList}\small\item\em Look up the size of a list. \end{DoxyCompactList}\item 
+\Hypertarget{ast_8h_a8cfdc66194a9393fab05912b33108f45}\label{ast_8h_a8cfdc66194a9393fab05912b33108f45} 
+bool {\bfseries Parameter\+List\+\_\+is\+\_\+empty} (\mbox{\hyperlink{struct_parameter_list}{Parameter\+List}} \texorpdfstring{$\ast$}{*}list)
+\begin{DoxyCompactList}\small\item\em Test a list to see if it is empty. \end{DoxyCompactList}\item 
+\Hypertarget{ast_8h_a732e708f0408fbe1b5b5fe3ba30782fe}\label{ast_8h_a732e708f0408fbe1b5b5fe3ba30782fe} 
+void {\bfseries Parameter\+List\+\_\+free} (\mbox{\hyperlink{struct_parameter_list}{Parameter\+List}} \texorpdfstring{$\ast$}{*}list)
+\begin{DoxyCompactList}\small\item\em Deallocate a list and any contained items. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ast_8h_a02b2c37ad54c8d5f5961774154b8a2cf}{Parameter\+List\+\_\+add\+\_\+new}} (\mbox{\hyperlink{struct_parameter_list}{Parameter\+List}} \texorpdfstring{$\ast$}{*}list, const char \texorpdfstring{$\ast$}{*}name, \mbox{\hyperlink{common_8h_af5878fbe98f23b780b60624fce56a45e}{Decaf\+Type}} type)
+\begin{DoxyCompactList}\small\item\em Allocate and add a new parameter to a list of parameters. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{ast_8h_af754d8f000d5f5a02cc357270fd3079f}{Func\+Decl\+Node\+\_\+new}} (const char \texorpdfstring{$\ast$}{*}name, \mbox{\hyperlink{common_8h_af5878fbe98f23b780b60624fce56a45e}{Decaf\+Type}} return\+\_\+type, \mbox{\hyperlink{struct_parameter_list}{Parameter\+List}} \texorpdfstring{$\ast$}{*}parameters, struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}body, int source\+\_\+line)
+\begin{DoxyCompactList}\small\item\em Allocate a new function declaration AST node. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{ast_8h_ac246ba919272cf0e4843dc18d5ef58b5}{Block\+Node\+\_\+new}} (struct \mbox{\hyperlink{struct_node_list}{Node\+List}} \texorpdfstring{$\ast$}{*}vars, struct \mbox{\hyperlink{struct_node_list}{Node\+List}} \texorpdfstring{$\ast$}{*}stmts, int source\+\_\+line)
+\begin{DoxyCompactList}\small\item\em Allocate a new block declaration AST node. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{ast_8h_ad5a9584dd2a85f41ce9c636791211b1c}{Assignment\+Node\+\_\+new}} (struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}location, struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}value, int source\+\_\+line)
+\begin{DoxyCompactList}\small\item\em Allocate a new assignment statement AST node. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{ast_8h_a4eb3c38814585bc1460a9dec1dd9ac14}{Conditional\+Node\+\_\+new}} (struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}condition, struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}if\+\_\+block, struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}else\+\_\+block, int source\+\_\+line)
+\begin{DoxyCompactList}\small\item\em Allocate a new conditional statement AST node. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{ast_8h_a04cf08d95b63ee0f8fa922c658247ff0}{While\+Loop\+Node\+\_\+new}} (struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}condition, struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}body, int source\+\_\+line)
+\begin{DoxyCompactList}\small\item\em Allocate a new while loop statement AST node. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{ast_8h_a274f2c4e64c877970fe29dd748da3d34}{Return\+Node\+\_\+new}} (struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}value, int source\+\_\+line)
+\begin{DoxyCompactList}\small\item\em Allocate a new return statement AST node. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{ast_8h_ad0b7fbae7bab162d36e486bdaa42f585}{Break\+Node\+\_\+new}} (int source\+\_\+line)
+\begin{DoxyCompactList}\small\item\em Allocate a new break statement AST node. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{ast_8h_aa4f64bc5c7a3e04a77d4dc4aafd7355c}{Continue\+Node\+\_\+new}} (int source\+\_\+line)
+\begin{DoxyCompactList}\small\item\em Allocate a new continue statement AST node. \end{DoxyCompactList}\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{ast_8h_ae36b9edcda0e741981b1ae9ce15f58d6}{Binary\+Op\+To\+String}} (\mbox{\hyperlink{ast_8h_a41ef0fe64d0a177e2749cd27c49d07da}{Binary\+Op\+Type}} op)
+\begin{DoxyCompactList}\small\item\em Convert a \doxylink{ast_8h_a41ef0fe64d0a177e2749cd27c49d07da}{Binary\+Op\+Type} to a string. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{ast_8h_aa069efe7f292cc84dd249a6d73e9a58f}{Binary\+Op\+Node\+\_\+new}} (\mbox{\hyperlink{ast_8h_a41ef0fe64d0a177e2749cd27c49d07da}{Binary\+Op\+Type}} operator, struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}left, struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}right, int source\+\_\+line)
+\begin{DoxyCompactList}\small\item\em Allocate a new binary operation expression AST node. \end{DoxyCompactList}\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{ast_8h_a1e30a90844ca7bb920175d32b6ea50ba}{Unary\+Op\+To\+String}} (\mbox{\hyperlink{ast_8h_a74e29410145add8d916ee79e6e3fcde0}{Unary\+Op\+Type}} op)
+\begin{DoxyCompactList}\small\item\em Convert a \doxylink{ast_8h_a74e29410145add8d916ee79e6e3fcde0}{Unary\+Op\+Type} to a string. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{ast_8h_aa3ebf056d5d28b02e0fedc4f60c44f69}{Unary\+Op\+Node\+\_\+new}} (\mbox{\hyperlink{ast_8h_a74e29410145add8d916ee79e6e3fcde0}{Unary\+Op\+Type}} operator, struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}child, int source\+\_\+line)
+\begin{DoxyCompactList}\small\item\em Allocate a new unary operation expression AST node. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{ast_8h_ad0a7213121f70da1c464822de50f8dd7}{Location\+Node\+\_\+new}} (const char \texorpdfstring{$\ast$}{*}name, struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}index, int source\+\_\+line)
+\begin{DoxyCompactList}\small\item\em Allocate a new location expression AST node. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{ast_8h_afe4a033727f1ff276d6e3dd822308f55}{Func\+Call\+Node\+\_\+new}} (const char \texorpdfstring{$\ast$}{*}name, struct \mbox{\hyperlink{struct_node_list}{Node\+List}} \texorpdfstring{$\ast$}{*}args, int source\+\_\+line)
+\begin{DoxyCompactList}\small\item\em Allocate a new function call expression AST node. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{ast_8h_a6ee7e79504a66c0575c6eb72de0550ab}{Literal\+Node\+\_\+new\+\_\+int}} (long value, int source\+\_\+line)
+\begin{DoxyCompactList}\small\item\em Allocate a new integer literal expression AST node. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{ast_8h_aac9ae28e96a66974cb79da189a6878a4}{Literal\+Node\+\_\+new\+\_\+bool}} (bool value, int source\+\_\+line)
+\begin{DoxyCompactList}\small\item\em Allocate a new boolean literal expression AST node. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{ast_8h_ad5f092d96a79bac1233a0644f55a8993}{Literal\+Node\+\_\+new\+\_\+string}} (const char \texorpdfstring{$\ast$}{*}value, int source\+\_\+line)
+\begin{DoxyCompactList}\small\item\em Allocate a new string literal expression AST node. \end{DoxyCompactList}\item 
+\Hypertarget{ast_8h_a26704aeabede98ae4feff4aaaf47ceff}\label{ast_8h_a26704aeabede98ae4feff4aaaf47ceff} 
+\mbox{\hyperlink{struct_node_list}{Node\+List}} \texorpdfstring{$\ast$}{*} {\bfseries Node\+List\+\_\+new} (void)
+\begin{DoxyCompactList}\small\item\em Allocate and initialize a new, empty list. \end{DoxyCompactList}\item 
+\Hypertarget{ast_8h_a6dc5cecbb95c403feee7ccd8209cd30d}\label{ast_8h_a6dc5cecbb95c403feee7ccd8209cd30d} 
+void {\bfseries Node\+List\+\_\+add} (\mbox{\hyperlink{struct_node_list}{Node\+List}} \texorpdfstring{$\ast$}{*}list, struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}item)
+\begin{DoxyCompactList}\small\item\em Add an item to the end of a list. \end{DoxyCompactList}\item 
+\Hypertarget{ast_8h_aba32a99bfc4e9496e5955125ce63dd18}\label{ast_8h_aba32a99bfc4e9496e5955125ce63dd18} 
+int {\bfseries Node\+List\+\_\+size} (\mbox{\hyperlink{struct_node_list}{Node\+List}} \texorpdfstring{$\ast$}{*}list)
+\begin{DoxyCompactList}\small\item\em Look up the size of a list. \end{DoxyCompactList}\item 
+\Hypertarget{ast_8h_a173f253d8c34f7ceb1b2e2ee01b80c18}\label{ast_8h_a173f253d8c34f7ceb1b2e2ee01b80c18} 
+bool {\bfseries Node\+List\+\_\+is\+\_\+empty} (\mbox{\hyperlink{struct_node_list}{Node\+List}} \texorpdfstring{$\ast$}{*}list)
+\begin{DoxyCompactList}\small\item\em Test a list to see if it is empty. \end{DoxyCompactList}\item 
+\Hypertarget{ast_8h_ab7795615486fafde4d510d14a135e6ab}\label{ast_8h_ab7795615486fafde4d510d14a135e6ab} 
+void {\bfseries Node\+List\+\_\+free} (\mbox{\hyperlink{struct_node_list}{Node\+List}} \texorpdfstring{$\ast$}{*}list)
+\begin{DoxyCompactList}\small\item\em Deallocate a list and any contained items. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{ast_8h_a4959fb61c6c3413aeb52f66f92e04aec}{ASTNode\+\_\+new}} (\mbox{\hyperlink{ast_8h_acac9cbaeea226ed297804c012dc12b16}{Node\+Type}} type, int line)
+\begin{DoxyCompactList}\small\item\em Allocate a new AST node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ast_8h_a20db59608d5d54bd3b8bea7803cce116}{ASTNode\+\_\+set\+\_\+attribute}} (\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}node, const char \texorpdfstring{$\ast$}{*}key, void \texorpdfstring{$\ast$}{*}value, \mbox{\hyperlink{ast_8h_af55431eb8c62b9e786386abd9c88d964}{Destructor}} dtor)
+\begin{DoxyCompactList}\small\item\em Add or change an attribute for an AST node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ast_8h_ae733fdacd2796ef46e2ac0d214a2e8f9}{ASTNode\+\_\+set\+\_\+printable\+\_\+attribute}} (\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}node, const char \texorpdfstring{$\ast$}{*}key, void \texorpdfstring{$\ast$}{*}value, \mbox{\hyperlink{ast_8h_a4295dd28ac38a7b4bcafc3186023ed25}{Attribute\+Value\+DOTPrinter}} dot\+\_\+printer, \mbox{\hyperlink{ast_8h_af55431eb8c62b9e786386abd9c88d964}{Destructor}} dtor)
+\begin{DoxyCompactList}\small\item\em Add or change a printable attribute for an AST node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ast_8h_a64993a4dcdbae98e8dbc5eb2bc0fe78a}{ASTNode\+\_\+set\+\_\+int\+\_\+attribute}} (\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}node, const char \texorpdfstring{$\ast$}{*}key, int value)
+\begin{DoxyCompactList}\small\item\em Add or change an integer attribute for an AST node. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{ast_8h_afee9cb41da85ce03cab12ebec7755a20}{ASTNode\+\_\+has\+\_\+attribute}} (\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}node, const char \texorpdfstring{$\ast$}{*}key)
+\begin{DoxyCompactList}\small\item\em Check to see if a node has a particular attribute. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{ast_8h_ac2b852a479f146acc9f9749d1a2fe68e}{ASTNode\+\_\+get\+\_\+attribute}} (\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}node, const char \texorpdfstring{$\ast$}{*}key)
+\begin{DoxyCompactList}\small\item\em Retrieve a particular attribute from a node. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{ast_8h_ad716046e684ebb505f08450ed0400908}{ASTNode\+\_\+get\+\_\+int\+\_\+attribute}} (\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}node, const char \texorpdfstring{$\ast$}{*}key)
+\begin{DoxyCompactList}\small\item\em Retrieve a particular integer attribute from a node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ast_8h_a4a26fe87ac8120a6e15a59792ea68f0f}{ASTNode\+\_\+free}} (\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}node)
+\begin{DoxyCompactList}\small\item\em Deallocate an AST node structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+AST nodes and attributes. 
+
+This module provides declarations of all structures and framework functions for the AST hierarchy. It is a large interface that forms the foundation of several compiler phases and will be necessary for Projects 2 (parsing), 3 (static analysis), and 4 (code generation). 
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{ast_8h_a6b9026f45e950e06b76db629f9563f3a}\label{ast_8h_a6b9026f45e950e06b76db629f9563f3a} 
+\index{ast.h@{ast.h}!ASTNode@{ASTNode}}
+\index{ASTNode@{ASTNode}!ast.h@{ast.h}}
+\doxysubsubsection{\texorpdfstring{ASTNode}{ASTNode}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}}
+
+
+
+Main AST node structure. 
+
+Provides some basic definitions used across many nodes, such as source code info and attribute management. Storage of type-\/specific node data is managed using a tagged union of the other \texorpdfstring{$\ast$}{*}\+Node structures declared earlier in this file.
+
+AST nodes are designed to be semi-\/mutable even after parsing by means of the {\ttfamily attributes} key-\/value mapping that is stored in every node. List of potential attributes (not exhaustive, and most are irrelevant to Project 2)\+:
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ Key}&\cellcolor{\tableheadbgcolor}\textbf{ Description }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ Key}&\cellcolor{\tableheadbgcolor}\textbf{ Description }\\\cline{1-2}
+\endhead
+{\ttfamily parent} &Uptree parent \doxylink{struct_a_s_t_node}{ASTNode} reference \\\cline{1-2}
+{\ttfamily depth} &Tree depth ({\ttfamily int}) \\\cline{1-2}
+{\ttfamily symbol\+Table} &\doxylink{struct_symbol}{Symbol} table reference (only in program, function, and block nodes) \\\cline{1-2}
+{\ttfamily type} &\doxylink{common_8h_af5878fbe98f23b780b60624fce56a45e}{Decaf\+Type} of node (only in expression nodes) \\\cline{1-2}
+{\ttfamily static\+Size} &Size (in bytes as {\ttfamily int}) of global variables (only in program node) \\\cline{1-2}
+{\ttfamily local\+Size} &Size (in bytes as {\ttfamily int}) of local variables (only in function nodes) \\\cline{1-2}
+{\ttfamily code} &ILOC instructions generated from the subtree rooted at this node \\\cline{1-2}
+{\ttfamily reg} &Register storing the result of the expression rooted at this node (only in expression nodes) \\\cline{1-2}
+\end{longtabu}
+
+
+Generally, the node-\/type-\/specific allocators (e.\+g., \doxylink{ast_8h_a0ae70703f96809efec93f83a47cec58b}{Program\+Node\+\_\+new}) should be used to ensure that all of the node-\/specific data members are initialized correctly. Node structures must be explicitly freed using \doxylink{ast_8h_a4a26fe87ac8120a6e15a59792ea68f0f}{ASTNode\+\_\+free}.
+
+Methods\+:
+\begin{DoxyItemize}
+\item \doxylink{ast_8h_a20db59608d5d54bd3b8bea7803cce116}{ASTNode\+\_\+set\+\_\+attribute}
+\item \doxylink{ast_8h_a64993a4dcdbae98e8dbc5eb2bc0fe78a}{ASTNode\+\_\+set\+\_\+int\+\_\+attribute}
+\item \doxylink{ast_8h_ae733fdacd2796ef46e2ac0d214a2e8f9}{ASTNode\+\_\+set\+\_\+printable\+\_\+attribute}
+\item \doxylink{ast_8h_afee9cb41da85ce03cab12ebec7755a20}{ASTNode\+\_\+has\+\_\+attribute}
+\item \doxylink{ast_8h_ac2b852a479f146acc9f9749d1a2fe68e}{ASTNode\+\_\+get\+\_\+attribute} 
+\end{DoxyItemize}\Hypertarget{ast_8h_a9a13618fd5ded971c8985e04be20599f}\label{ast_8h_a9a13618fd5ded971c8985e04be20599f} 
+\index{ast.h@{ast.h}!ConditionalNode@{ConditionalNode}}
+\index{ConditionalNode@{ConditionalNode}!ast.h@{ast.h}}
+\doxysubsubsection{\texorpdfstring{ConditionalNode}{ConditionalNode}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct_conditional_node}{Conditional\+Node}} \mbox{\hyperlink{struct_conditional_node}{Conditional\+Node}}}
+
+
+
+AST conditional structure. 
+
+{\ttfamily else\+\_\+block} can be {\ttfamily NULL} for {\ttfamily if} statements with no {\ttfamily else} clause. \Hypertarget{ast_8h_ac2218d9351cffeb00baa38af954f2477}\label{ast_8h_ac2218d9351cffeb00baa38af954f2477} 
+\index{ast.h@{ast.h}!LocationNode@{LocationNode}}
+\index{LocationNode@{LocationNode}!ast.h@{ast.h}}
+\doxysubsubsection{\texorpdfstring{LocationNode}{LocationNode}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct_location_node}{Location\+Node}} \mbox{\hyperlink{struct_location_node}{Location\+Node}}}
+
+
+
+AST location expression structure. 
+
+{\ttfamily index} can be {\ttfamily NULL} for non-\/array locations. \Hypertarget{ast_8h_a67ec0270a17d2d3c70f5981af590eef0}\label{ast_8h_a67ec0270a17d2d3c70f5981af590eef0} 
+\index{ast.h@{ast.h}!ReturnNode@{ReturnNode}}
+\index{ReturnNode@{ReturnNode}!ast.h@{ast.h}}
+\doxysubsubsection{\texorpdfstring{ReturnNode}{ReturnNode}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct_return_node}{Return\+Node}} \mbox{\hyperlink{struct_return_node}{Return\+Node}}}
+
+
+
+AST return statement structure. 
+
+{\ttfamily value} can be {\ttfamily NULL} for return statements with no value (i.\+e., in {\ttfamily void} functions). 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{ast_8h_ad5a9584dd2a85f41ce9c636791211b1c}\label{ast_8h_ad5a9584dd2a85f41ce9c636791211b1c} 
+\index{ast.h@{ast.h}!AssignmentNode\_new@{AssignmentNode\_new}}
+\index{AssignmentNode\_new@{AssignmentNode\_new}!ast.h@{ast.h}}
+\doxysubsubsection{\texorpdfstring{AssignmentNode\_new()}{AssignmentNode\_new()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*} Assignment\+Node\+\_\+new (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}}]{location,  }\item[{struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}}]{value,  }\item[{int}]{source\+\_\+line }\end{DoxyParamCaption})}
+
+
+
+Allocate a new assignment statement AST node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em location} & Left-\/hand side of assignment \\
+\hline
+{\em value} & Right-\/hand side of assignment \\
+\hline
+{\em source\+\_\+line} & Source code line where code begins \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Allocated AST node 
+\end{DoxyReturn}
+\Hypertarget{ast_8h_a4a26fe87ac8120a6e15a59792ea68f0f}\label{ast_8h_a4a26fe87ac8120a6e15a59792ea68f0f} 
+\index{ast.h@{ast.h}!ASTNode\_free@{ASTNode\_free}}
+\index{ASTNode\_free@{ASTNode\_free}!ast.h@{ast.h}}
+\doxysubsubsection{\texorpdfstring{ASTNode\_free()}{ASTNode\_free()}}
+{\footnotesize\ttfamily void ASTNode\+\_\+free (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}}]{node }\end{DoxyParamCaption})}
+
+
+
+Deallocate an AST node structure. 
+
+This will recursively free any children, so it is sufficient to free the root of a tree in order to free the entire tree.
+
+It is highly recommended that you subsequently set the pointer to {\ttfamily NULL} so that you do not unintentionally dereference an invalid pointer.
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & Pointer to structure to free \\
+\hline
+\end{DoxyParams}
+\Hypertarget{ast_8h_ac2b852a479f146acc9f9749d1a2fe68e}\label{ast_8h_ac2b852a479f146acc9f9749d1a2fe68e} 
+\index{ast.h@{ast.h}!ASTNode\_get\_attribute@{ASTNode\_get\_attribute}}
+\index{ASTNode\_get\_attribute@{ASTNode\_get\_attribute}!ast.h@{ast.h}}
+\doxysubsubsection{\texorpdfstring{ASTNode\_get\_attribute()}{ASTNode\_get\_attribute()}}
+{\footnotesize\ttfamily void \texorpdfstring{$\ast$}{*} ASTNode\+\_\+get\+\_\+attribute (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}}]{node,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{key }\end{DoxyParamCaption})}
+
+
+
+Retrieve a particular attribute from a node. 
+
+You should immediately cast the returned {\ttfamily void\texorpdfstring{$\ast$}{*}} pointer to a pointer of the appropriate type.
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & Node to access \\
+\hline
+{\em key} & Key to retrieve \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{struct_attribute}{Attribute} value 
+\end{DoxyReturn}
+\Hypertarget{ast_8h_ad716046e684ebb505f08450ed0400908}\label{ast_8h_ad716046e684ebb505f08450ed0400908} 
+\index{ast.h@{ast.h}!ASTNode\_get\_int\_attribute@{ASTNode\_get\_int\_attribute}}
+\index{ASTNode\_get\_int\_attribute@{ASTNode\_get\_int\_attribute}!ast.h@{ast.h}}
+\doxysubsubsection{\texorpdfstring{ASTNode\_get\_int\_attribute()}{ASTNode\_get\_int\_attribute()}}
+{\footnotesize\ttfamily int ASTNode\+\_\+get\+\_\+int\+\_\+attribute (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}}]{node,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{key }\end{DoxyParamCaption})}
+
+
+
+Retrieve a particular integer attribute from a node. 
+
+This function makes pointer casting unnecessary.
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & Node to access \\
+\hline
+{\em key} & Key to retrieve \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{struct_attribute}{Attribute} value 
+\end{DoxyReturn}
+\Hypertarget{ast_8h_afee9cb41da85ce03cab12ebec7755a20}\label{ast_8h_afee9cb41da85ce03cab12ebec7755a20} 
+\index{ast.h@{ast.h}!ASTNode\_has\_attribute@{ASTNode\_has\_attribute}}
+\index{ASTNode\_has\_attribute@{ASTNode\_has\_attribute}!ast.h@{ast.h}}
+\doxysubsubsection{\texorpdfstring{ASTNode\_has\_attribute()}{ASTNode\_has\_attribute()}}
+{\footnotesize\ttfamily bool ASTNode\+\_\+has\+\_\+attribute (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}}]{node,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{key }\end{DoxyParamCaption})}
+
+
+
+Check to see if a node has a particular attribute. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & Node to check \\
+\hline
+{\em key} & Key to check for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the node has the requested attribute, false if not 
+\end{DoxyReturn}
+\Hypertarget{ast_8h_a4959fb61c6c3413aeb52f66f92e04aec}\label{ast_8h_a4959fb61c6c3413aeb52f66f92e04aec} 
+\index{ast.h@{ast.h}!ASTNode\_new@{ASTNode\_new}}
+\index{ASTNode\_new@{ASTNode\_new}!ast.h@{ast.h}}
+\doxysubsubsection{\texorpdfstring{ASTNode\_new()}{ASTNode\_new()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*} ASTNode\+\_\+new (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ast_8h_acac9cbaeea226ed297804c012dc12b16}{Node\+Type}}}]{type,  }\item[{int}]{line }\end{DoxyParamCaption})}
+
+
+
+Allocate a new AST node. 
+
+Generally, the node-\/type-\/specific allocators (e.\+g., \doxylink{ast_8h_a0ae70703f96809efec93f83a47cec58b}{Program\+Node\+\_\+new}) should be used to ensure that all of the node-\/specific data members are initialized correctly.
+
+Node structures allocated by this or any other allocator must be explicitly freed using \doxylink{ast_8h_a4a26fe87ac8120a6e15a59792ea68f0f}{ASTNode\+\_\+free} (note that this will recursively free any children, so it is sufficient to free the root of a tree in order to free the entire tree).
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & Node type \\
+\hline
+{\em line} & Source line (debug info) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to allocated node structure 
+\end{DoxyReturn}
+\Hypertarget{ast_8h_a20db59608d5d54bd3b8bea7803cce116}\label{ast_8h_a20db59608d5d54bd3b8bea7803cce116} 
+\index{ast.h@{ast.h}!ASTNode\_set\_attribute@{ASTNode\_set\_attribute}}
+\index{ASTNode\_set\_attribute@{ASTNode\_set\_attribute}!ast.h@{ast.h}}
+\doxysubsubsection{\texorpdfstring{ASTNode\_set\_attribute()}{ASTNode\_set\_attribute()}}
+{\footnotesize\ttfamily void ASTNode\+\_\+set\+\_\+attribute (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}}]{node,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{key,  }\item[{void \texorpdfstring{$\ast$}{*}}]{value,  }\item[{\mbox{\hyperlink{ast_8h_af55431eb8c62b9e786386abd9c88d964}{Destructor}}}]{dtor }\end{DoxyParamCaption})}
+
+
+
+Add or change an attribute for an AST node. 
+
+Attributes are node-\/specific key-\/value pairs. Keys should be static strings and values should be either integral (i.\+e., it can fit inside a pointer) or a pointer to some structure on the heap. If the latter, you must provide a pointer to a destructor function that can be used to deallocate the attribute value when the node is deallocated.
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & Node to add the attribute to \\
+\hline
+{\em key} & \doxylink{struct_attribute}{Attribute} key (used to retrieve it later) \\
+\hline
+{\em value} & \doxylink{struct_attribute}{Attribute} value (may be a pointer) \\
+\hline
+{\em dtor} & Pointer to destructor/deallocator function that should be used to free the attribute value when the node is deallocated \\
+\hline
+\end{DoxyParams}
+\Hypertarget{ast_8h_a64993a4dcdbae98e8dbc5eb2bc0fe78a}\label{ast_8h_a64993a4dcdbae98e8dbc5eb2bc0fe78a} 
+\index{ast.h@{ast.h}!ASTNode\_set\_int\_attribute@{ASTNode\_set\_int\_attribute}}
+\index{ASTNode\_set\_int\_attribute@{ASTNode\_set\_int\_attribute}!ast.h@{ast.h}}
+\doxysubsubsection{\texorpdfstring{ASTNode\_set\_int\_attribute()}{ASTNode\_set\_int\_attribute()}}
+{\footnotesize\ttfamily void ASTNode\+\_\+set\+\_\+int\+\_\+attribute (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}}]{node,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{key,  }\item[{int}]{value }\end{DoxyParamCaption})}
+
+
+
+Add or change an integer attribute for an AST node. 
+
+This is an overload of \doxylink{ast_8h_a20db59608d5d54bd3b8bea7803cce116}{ASTNode\+\_\+set\+\_\+attribute} for attributes that are integral; DOT printing and deallocation are handled automatically if you use this function.
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & Node to add the attribute to \\
+\hline
+{\em key} & \doxylink{struct_attribute}{Attribute} key (used to retrieve it later) \\
+\hline
+{\em value} & \doxylink{struct_attribute}{Attribute} value (may be a pointer) \\
+\hline
+\end{DoxyParams}
+\Hypertarget{ast_8h_ae733fdacd2796ef46e2ac0d214a2e8f9}\label{ast_8h_ae733fdacd2796ef46e2ac0d214a2e8f9} 
+\index{ast.h@{ast.h}!ASTNode\_set\_printable\_attribute@{ASTNode\_set\_printable\_attribute}}
+\index{ASTNode\_set\_printable\_attribute@{ASTNode\_set\_printable\_attribute}!ast.h@{ast.h}}
+\doxysubsubsection{\texorpdfstring{ASTNode\_set\_printable\_attribute()}{ASTNode\_set\_printable\_attribute()}}
+{\footnotesize\ttfamily void ASTNode\+\_\+set\+\_\+printable\+\_\+attribute (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}}]{node,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{key,  }\item[{void \texorpdfstring{$\ast$}{*}}]{value,  }\item[{\mbox{\hyperlink{ast_8h_a4295dd28ac38a7b4bcafc3186023ed25}{Attribute\+Value\+DOTPrinter}}}]{dot\+\_\+printer,  }\item[{\mbox{\hyperlink{ast_8h_af55431eb8c62b9e786386abd9c88d964}{Destructor}}}]{dtor }\end{DoxyParamCaption})}
+
+
+
+Add or change a printable attribute for an AST node. 
+
+This is an overload of \doxylink{ast_8h_a20db59608d5d54bd3b8bea7803cce116}{ASTNode\+\_\+set\+\_\+attribute} that requires an additional function pointer that handles printing the value to the DOT graph format.
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & Node to add the attribute to \\
+\hline
+{\em key} & \doxylink{struct_attribute}{Attribute} key (used to retrieve it later) \\
+\hline
+{\em value} & \doxylink{struct_attribute}{Attribute} value (may be a pointer) \\
+\hline
+{\em dot\+\_\+printer} & Pointer to printing function that will be used to include the attribute value in DOT graph output \\
+\hline
+{\em dtor} & Pointer to destructor/deallocator function that should be used to free the attribute value when the node is deallocated \\
+\hline
+\end{DoxyParams}
+\Hypertarget{ast_8h_aa069efe7f292cc84dd249a6d73e9a58f}\label{ast_8h_aa069efe7f292cc84dd249a6d73e9a58f} 
+\index{ast.h@{ast.h}!BinaryOpNode\_new@{BinaryOpNode\_new}}
+\index{BinaryOpNode\_new@{BinaryOpNode\_new}!ast.h@{ast.h}}
+\doxysubsubsection{\texorpdfstring{BinaryOpNode\_new()}{BinaryOpNode\_new()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*} Binary\+Op\+Node\+\_\+new (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ast_8h_a41ef0fe64d0a177e2749cd27c49d07da}{Binary\+Op\+Type}}}]{operator,  }\item[{struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}}]{left,  }\item[{struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}}]{right,  }\item[{int}]{source\+\_\+line }\end{DoxyParamCaption})}
+
+
+
+Allocate a new binary operation expression AST node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em operator} & \doxylink{ast_8h_a41ef0fe64d0a177e2749cd27c49d07da}{Binary\+Op\+Type} flag \\
+\hline
+{\em left} & Left-\/hand operand \\
+\hline
+{\em right} & Right-\/hand operand \\
+\hline
+{\em source\+\_\+line} & Source code line where code begins \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Allocated AST node 
+\end{DoxyReturn}
+\Hypertarget{ast_8h_ae36b9edcda0e741981b1ae9ce15f58d6}\label{ast_8h_ae36b9edcda0e741981b1ae9ce15f58d6} 
+\index{ast.h@{ast.h}!BinaryOpToString@{BinaryOpToString}}
+\index{BinaryOpToString@{BinaryOpToString}!ast.h@{ast.h}}
+\doxysubsubsection{\texorpdfstring{BinaryOpToString()}{BinaryOpToString()}}
+{\footnotesize\ttfamily const char \texorpdfstring{$\ast$}{*} Binary\+Op\+To\+String (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ast_8h_a41ef0fe64d0a177e2749cd27c49d07da}{Binary\+Op\+Type}}}]{op }\end{DoxyParamCaption})}
+
+
+
+Convert a \doxylink{ast_8h_a41ef0fe64d0a177e2749cd27c49d07da}{Binary\+Op\+Type} to a string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em op} & Operand to convert \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+String representation of binary operator 
+\end{DoxyReturn}
+\Hypertarget{ast_8h_ac246ba919272cf0e4843dc18d5ef58b5}\label{ast_8h_ac246ba919272cf0e4843dc18d5ef58b5} 
+\index{ast.h@{ast.h}!BlockNode\_new@{BlockNode\_new}}
+\index{BlockNode\_new@{BlockNode\_new}!ast.h@{ast.h}}
+\doxysubsubsection{\texorpdfstring{BlockNode\_new()}{BlockNode\_new()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*} Block\+Node\+\_\+new (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{struct_node_list}{Node\+List}} \texorpdfstring{$\ast$}{*}}]{vars,  }\item[{struct \mbox{\hyperlink{struct_node_list}{Node\+List}} \texorpdfstring{$\ast$}{*}}]{stmts,  }\item[{int}]{source\+\_\+line }\end{DoxyParamCaption})}
+
+
+
+Allocate a new block declaration AST node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vars} & List of local variable declarations \\
+\hline
+{\em stmts} & List of body statements \\
+\hline
+{\em source\+\_\+line} & Source code line where code begins \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Allocated AST node 
+\end{DoxyReturn}
+\Hypertarget{ast_8h_ad0b7fbae7bab162d36e486bdaa42f585}\label{ast_8h_ad0b7fbae7bab162d36e486bdaa42f585} 
+\index{ast.h@{ast.h}!BreakNode\_new@{BreakNode\_new}}
+\index{BreakNode\_new@{BreakNode\_new}!ast.h@{ast.h}}
+\doxysubsubsection{\texorpdfstring{BreakNode\_new()}{BreakNode\_new()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*} Break\+Node\+\_\+new (\begin{DoxyParamCaption}\item[{int}]{source\+\_\+line }\end{DoxyParamCaption})}
+
+
+
+Allocate a new break statement AST node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em source\+\_\+line} & Source code line where code begins \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Allocated AST node 
+\end{DoxyReturn}
+\Hypertarget{ast_8h_a4eb3c38814585bc1460a9dec1dd9ac14}\label{ast_8h_a4eb3c38814585bc1460a9dec1dd9ac14} 
+\index{ast.h@{ast.h}!ConditionalNode\_new@{ConditionalNode\_new}}
+\index{ConditionalNode\_new@{ConditionalNode\_new}!ast.h@{ast.h}}
+\doxysubsubsection{\texorpdfstring{ConditionalNode\_new()}{ConditionalNode\_new()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*} Conditional\+Node\+\_\+new (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}}]{condition,  }\item[{struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}}]{if\+\_\+block,  }\item[{struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}}]{else\+\_\+block,  }\item[{int}]{source\+\_\+line }\end{DoxyParamCaption})}
+
+
+
+Allocate a new conditional statement AST node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em condition} & Conditional expression \\
+\hline
+{\em if\+\_\+block} & Block to be executed if conditional is true \\
+\hline
+{\em else\+\_\+block} & Block to be executed if conditional is false (may be {\ttfamily NULL} if there is no such block) \\
+\hline
+{\em source\+\_\+line} & Source code line where code begins \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Allocated AST node 
+\end{DoxyReturn}
+\Hypertarget{ast_8h_aa4f64bc5c7a3e04a77d4dc4aafd7355c}\label{ast_8h_aa4f64bc5c7a3e04a77d4dc4aafd7355c} 
+\index{ast.h@{ast.h}!ContinueNode\_new@{ContinueNode\_new}}
+\index{ContinueNode\_new@{ContinueNode\_new}!ast.h@{ast.h}}
+\doxysubsubsection{\texorpdfstring{ContinueNode\_new()}{ContinueNode\_new()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*} Continue\+Node\+\_\+new (\begin{DoxyParamCaption}\item[{int}]{source\+\_\+line }\end{DoxyParamCaption})}
+
+
+
+Allocate a new continue statement AST node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em source\+\_\+line} & Source code line where code begins \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Allocated AST node 
+\end{DoxyReturn}
+\Hypertarget{ast_8h_a70d2c761ae418b0168469efd38b16d8a}\label{ast_8h_a70d2c761ae418b0168469efd38b16d8a} 
+\index{ast.h@{ast.h}!dummy\_free@{dummy\_free}}
+\index{dummy\_free@{dummy\_free}!ast.h@{ast.h}}
+\doxysubsubsection{\texorpdfstring{dummy\_free()}{dummy\_free()}}
+{\footnotesize\ttfamily void dummy\+\_\+free (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{data }\end{DoxyParamCaption})}
+
+
+
+Fake "{}free"{} function that does nothing. 
+
+Useful as a destructor for integral attributes that are smaller than machine pointers (and so can be stored directly in the "{}value"{} field of the \doxylink{struct_attribute}{Attribute} struct). \Hypertarget{ast_8h_a6532e377c1c7da4b2533204982f50d4b}\label{ast_8h_a6532e377c1c7da4b2533204982f50d4b} 
+\index{ast.h@{ast.h}!dummy\_print@{dummy\_print}}
+\index{dummy\_print@{dummy\_print}!ast.h@{ast.h}}
+\doxysubsubsection{\texorpdfstring{dummy\_print()}{dummy\_print()}}
+{\footnotesize\ttfamily void dummy\+\_\+print (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{data,  }\item[{FILE \texorpdfstring{$\ast$}{*}}]{output }\end{DoxyParamCaption})}
+
+
+
+Fake "{}print"{} function that does nothing. 
+
+Useful as a printer for attributes that have no useful representation (e.\+g., pointers to other nodes). \Hypertarget{ast_8h_afe4a033727f1ff276d6e3dd822308f55}\label{ast_8h_afe4a033727f1ff276d6e3dd822308f55} 
+\index{ast.h@{ast.h}!FuncCallNode\_new@{FuncCallNode\_new}}
+\index{FuncCallNode\_new@{FuncCallNode\_new}!ast.h@{ast.h}}
+\doxysubsubsection{\texorpdfstring{FuncCallNode\_new()}{FuncCallNode\_new()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*} Func\+Call\+Node\+\_\+new (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name,  }\item[{struct \mbox{\hyperlink{struct_node_list}{Node\+List}} \texorpdfstring{$\ast$}{*}}]{args,  }\item[{int}]{source\+\_\+line }\end{DoxyParamCaption})}
+
+
+
+Allocate a new function call expression AST node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name of function \\
+\hline
+{\em args} & List of actual arguments \\
+\hline
+{\em source\+\_\+line} & Source code line where code begins \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Allocated AST node 
+\end{DoxyReturn}
+\Hypertarget{ast_8h_af754d8f000d5f5a02cc357270fd3079f}\label{ast_8h_af754d8f000d5f5a02cc357270fd3079f} 
+\index{ast.h@{ast.h}!FuncDeclNode\_new@{FuncDeclNode\_new}}
+\index{FuncDeclNode\_new@{FuncDeclNode\_new}!ast.h@{ast.h}}
+\doxysubsubsection{\texorpdfstring{FuncDeclNode\_new()}{FuncDeclNode\_new()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*} Func\+Decl\+Node\+\_\+new (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name,  }\item[{\mbox{\hyperlink{common_8h_af5878fbe98f23b780b60624fce56a45e}{Decaf\+Type}}}]{return\+\_\+type,  }\item[{\mbox{\hyperlink{struct_parameter_list}{Parameter\+List}} \texorpdfstring{$\ast$}{*}}]{parameters,  }\item[{struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}}]{body,  }\item[{int}]{source\+\_\+line }\end{DoxyParamCaption})}
+
+
+
+Allocate a new function declaration AST node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Function name \\
+\hline
+{\em return\+\_\+type} & Function return type \\
+\hline
+{\em parameters} & List of function parameters \\
+\hline
+{\em body} & Body of function (block) \\
+\hline
+{\em source\+\_\+line} & Source code line where code begins \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Allocated AST node 
+\end{DoxyReturn}
+\Hypertarget{ast_8h_ad0b1803edc470d3c2e35e5c342c4a123}\label{ast_8h_ad0b1803edc470d3c2e35e5c342c4a123} 
+\index{ast.h@{ast.h}!int\_attr\_print@{int\_attr\_print}}
+\index{int\_attr\_print@{int\_attr\_print}!ast.h@{ast.h}}
+\doxysubsubsection{\texorpdfstring{int\_attr\_print()}{int\_attr\_print()}}
+{\footnotesize\ttfamily void int\+\_\+attr\+\_\+print (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{data,  }\item[{FILE \texorpdfstring{$\ast$}{*}}]{output }\end{DoxyParamCaption})}
+
+
+
+Simple "{}print"{} function that prints an attribute value as an integer. 
+
+Useful as a printer for integral attributes that are smaller than machine pointers (and so can be stored directly in the "{}value"{} field of the \doxylink{struct_attribute}{Attribute} struct). \Hypertarget{ast_8h_aac9ae28e96a66974cb79da189a6878a4}\label{ast_8h_aac9ae28e96a66974cb79da189a6878a4} 
+\index{ast.h@{ast.h}!LiteralNode\_new\_bool@{LiteralNode\_new\_bool}}
+\index{LiteralNode\_new\_bool@{LiteralNode\_new\_bool}!ast.h@{ast.h}}
+\doxysubsubsection{\texorpdfstring{LiteralNode\_new\_bool()}{LiteralNode\_new\_bool()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*} Literal\+Node\+\_\+new\+\_\+bool (\begin{DoxyParamCaption}\item[{bool}]{value,  }\item[{int}]{source\+\_\+line }\end{DoxyParamCaption})}
+
+
+
+Allocate a new boolean literal expression AST node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & Literal value \\
+\hline
+{\em source\+\_\+line} & Source code line where code begins \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Allocated AST node 
+\end{DoxyReturn}
+\Hypertarget{ast_8h_a6ee7e79504a66c0575c6eb72de0550ab}\label{ast_8h_a6ee7e79504a66c0575c6eb72de0550ab} 
+\index{ast.h@{ast.h}!LiteralNode\_new\_int@{LiteralNode\_new\_int}}
+\index{LiteralNode\_new\_int@{LiteralNode\_new\_int}!ast.h@{ast.h}}
+\doxysubsubsection{\texorpdfstring{LiteralNode\_new\_int()}{LiteralNode\_new\_int()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*} Literal\+Node\+\_\+new\+\_\+int (\begin{DoxyParamCaption}\item[{long}]{value,  }\item[{int}]{source\+\_\+line }\end{DoxyParamCaption})}
+
+
+
+Allocate a new integer literal expression AST node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & Literal value \\
+\hline
+{\em source\+\_\+line} & Source code line where code begins \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Allocated AST node 
+\end{DoxyReturn}
+\Hypertarget{ast_8h_ad5f092d96a79bac1233a0644f55a8993}\label{ast_8h_ad5f092d96a79bac1233a0644f55a8993} 
+\index{ast.h@{ast.h}!LiteralNode\_new\_string@{LiteralNode\_new\_string}}
+\index{LiteralNode\_new\_string@{LiteralNode\_new\_string}!ast.h@{ast.h}}
+\doxysubsubsection{\texorpdfstring{LiteralNode\_new\_string()}{LiteralNode\_new\_string()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*} Literal\+Node\+\_\+new\+\_\+string (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{value,  }\item[{int}]{source\+\_\+line }\end{DoxyParamCaption})}
+
+
+
+Allocate a new string literal expression AST node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & Literal value \\
+\hline
+{\em source\+\_\+line} & Source code line where code begins \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Allocated AST node 
+\end{DoxyReturn}
+\Hypertarget{ast_8h_ad0a7213121f70da1c464822de50f8dd7}\label{ast_8h_ad0a7213121f70da1c464822de50f8dd7} 
+\index{ast.h@{ast.h}!LocationNode\_new@{LocationNode\_new}}
+\index{LocationNode\_new@{LocationNode\_new}!ast.h@{ast.h}}
+\doxysubsubsection{\texorpdfstring{LocationNode\_new()}{LocationNode\_new()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*} Location\+Node\+\_\+new (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name,  }\item[{struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}}]{index,  }\item[{int}]{source\+\_\+line }\end{DoxyParamCaption})}
+
+
+
+Allocate a new location expression AST node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name of location \\
+\hline
+{\em index} & Index expression (or {\ttfamily NULL} if not an array location) \\
+\hline
+{\em source\+\_\+line} & Source code line where code begins \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Allocated AST node 
+\end{DoxyReturn}
+\Hypertarget{ast_8h_a924bc16a2f95f151e5f802989970ac72}\label{ast_8h_a924bc16a2f95f151e5f802989970ac72} 
+\index{ast.h@{ast.h}!NodeType\_to\_string@{NodeType\_to\_string}}
+\index{NodeType\_to\_string@{NodeType\_to\_string}!ast.h@{ast.h}}
+\doxysubsubsection{\texorpdfstring{NodeType\_to\_string()}{NodeType\_to\_string()}}
+{\footnotesize\ttfamily const char \texorpdfstring{$\ast$}{*} Node\+Type\+\_\+to\+\_\+string (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ast_8h_acac9cbaeea226ed297804c012dc12b16}{Node\+Type}}}]{type }\end{DoxyParamCaption})}
+
+
+
+Return a string representation of a node type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & Type to convert to string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+String representation 
+\end{DoxyReturn}
+\Hypertarget{ast_8h_a02b2c37ad54c8d5f5961774154b8a2cf}\label{ast_8h_a02b2c37ad54c8d5f5961774154b8a2cf} 
+\index{ast.h@{ast.h}!ParameterList\_add\_new@{ParameterList\_add\_new}}
+\index{ParameterList\_add\_new@{ParameterList\_add\_new}!ast.h@{ast.h}}
+\doxysubsubsection{\texorpdfstring{ParameterList\_add\_new()}{ParameterList\_add\_new()}}
+{\footnotesize\ttfamily void Parameter\+List\+\_\+add\+\_\+new (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_parameter_list}{Parameter\+List}} \texorpdfstring{$\ast$}{*}}]{list,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{name,  }\item[{\mbox{\hyperlink{common_8h_af5878fbe98f23b780b60624fce56a45e}{Decaf\+Type}}}]{type }\end{DoxyParamCaption})}
+
+
+
+Allocate and add a new parameter to a list of parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & List to add the new parameter to \\
+\hline
+{\em name} & Name of new parameter \\
+\hline
+{\em type} & Type of new parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Allocated parameter 
+\end{DoxyReturn}
+\Hypertarget{ast_8h_a0ae70703f96809efec93f83a47cec58b}\label{ast_8h_a0ae70703f96809efec93f83a47cec58b} 
+\index{ast.h@{ast.h}!ProgramNode\_new@{ProgramNode\_new}}
+\index{ProgramNode\_new@{ProgramNode\_new}!ast.h@{ast.h}}
+\doxysubsubsection{\texorpdfstring{ProgramNode\_new()}{ProgramNode\_new()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*} Program\+Node\+\_\+new (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{struct_node_list}{Node\+List}} \texorpdfstring{$\ast$}{*}}]{vars,  }\item[{struct \mbox{\hyperlink{struct_node_list}{Node\+List}} \texorpdfstring{$\ast$}{*}}]{funcs }\end{DoxyParamCaption})}
+
+
+
+Allocate a new program AST node. 
+
+This allocator does not require a source code line because it is assumed that the program begins on line 1. 
+\begin{DoxyParams}{Parameters}
+{\em vars} & List of global variable declarations \\
+\hline
+{\em funcs} & List of function declarations \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Allocated AST node 
+\end{DoxyReturn}
+\Hypertarget{ast_8h_a274f2c4e64c877970fe29dd748da3d34}\label{ast_8h_a274f2c4e64c877970fe29dd748da3d34} 
+\index{ast.h@{ast.h}!ReturnNode\_new@{ReturnNode\_new}}
+\index{ReturnNode\_new@{ReturnNode\_new}!ast.h@{ast.h}}
+\doxysubsubsection{\texorpdfstring{ReturnNode\_new()}{ReturnNode\_new()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*} Return\+Node\+\_\+new (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}}]{value,  }\item[{int}]{source\+\_\+line }\end{DoxyParamCaption})}
+
+
+
+Allocate a new return statement AST node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & Return expression (can be {\ttfamily NULL}) \\
+\hline
+{\em source\+\_\+line} & Source code line where code begins \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Allocated AST node 
+\end{DoxyReturn}
+\Hypertarget{ast_8h_aa3ebf056d5d28b02e0fedc4f60c44f69}\label{ast_8h_aa3ebf056d5d28b02e0fedc4f60c44f69} 
+\index{ast.h@{ast.h}!UnaryOpNode\_new@{UnaryOpNode\_new}}
+\index{UnaryOpNode\_new@{UnaryOpNode\_new}!ast.h@{ast.h}}
+\doxysubsubsection{\texorpdfstring{UnaryOpNode\_new()}{UnaryOpNode\_new()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*} Unary\+Op\+Node\+\_\+new (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ast_8h_a74e29410145add8d916ee79e6e3fcde0}{Unary\+Op\+Type}}}]{operator,  }\item[{struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}}]{child,  }\item[{int}]{source\+\_\+line }\end{DoxyParamCaption})}
+
+
+
+Allocate a new unary operation expression AST node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em operator} & \doxylink{ast_8h_a74e29410145add8d916ee79e6e3fcde0}{Unary\+Op\+Type} flag \\
+\hline
+{\em child} & Child operand \\
+\hline
+{\em source\+\_\+line} & Source code line where code begins \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Allocated AST node 
+\end{DoxyReturn}
+\Hypertarget{ast_8h_a1e30a90844ca7bb920175d32b6ea50ba}\label{ast_8h_a1e30a90844ca7bb920175d32b6ea50ba} 
+\index{ast.h@{ast.h}!UnaryOpToString@{UnaryOpToString}}
+\index{UnaryOpToString@{UnaryOpToString}!ast.h@{ast.h}}
+\doxysubsubsection{\texorpdfstring{UnaryOpToString()}{UnaryOpToString()}}
+{\footnotesize\ttfamily const char \texorpdfstring{$\ast$}{*} Unary\+Op\+To\+String (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ast_8h_a74e29410145add8d916ee79e6e3fcde0}{Unary\+Op\+Type}}}]{op }\end{DoxyParamCaption})}
+
+
+
+Convert a \doxylink{ast_8h_a74e29410145add8d916ee79e6e3fcde0}{Unary\+Op\+Type} to a string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em op} & Operand to convert \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+String representation of unary operator 
+\end{DoxyReturn}
+\Hypertarget{ast_8h_aa9eaf1ae674859f8177375a35f4216fc}\label{ast_8h_aa9eaf1ae674859f8177375a35f4216fc} 
+\index{ast.h@{ast.h}!VarDeclNode\_new@{VarDeclNode\_new}}
+\index{VarDeclNode\_new@{VarDeclNode\_new}!ast.h@{ast.h}}
+\doxysubsubsection{\texorpdfstring{VarDeclNode\_new()}{VarDeclNode\_new()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*} Var\+Decl\+Node\+\_\+new (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name,  }\item[{\mbox{\hyperlink{common_8h_af5878fbe98f23b780b60624fce56a45e}{Decaf\+Type}}}]{type,  }\item[{bool}]{is\+\_\+array,  }\item[{int}]{array\+\_\+length,  }\item[{int}]{source\+\_\+line }\end{DoxyParamCaption})}
+
+
+
+Allocate a new variable declaration AST node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Variable name \\
+\hline
+{\em type} & Variable type \\
+\hline
+{\em is\+\_\+array} & Whether the variable is an array \\
+\hline
+{\em array\+\_\+length} & If {\ttfamily is\+\_\+array}, the length of the array \\
+\hline
+{\em source\+\_\+line} & Source code line where code begins \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Allocated AST node 
+\end{DoxyReturn}
+\Hypertarget{ast_8h_a04cf08d95b63ee0f8fa922c658247ff0}\label{ast_8h_a04cf08d95b63ee0f8fa922c658247ff0} 
+\index{ast.h@{ast.h}!WhileLoopNode\_new@{WhileLoopNode\_new}}
+\index{WhileLoopNode\_new@{WhileLoopNode\_new}!ast.h@{ast.h}}
+\doxysubsubsection{\texorpdfstring{WhileLoopNode\_new()}{WhileLoopNode\_new()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*} While\+Loop\+Node\+\_\+new (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}}]{condition,  }\item[{struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}}]{body,  }\item[{int}]{source\+\_\+line }\end{DoxyParamCaption})}
+
+
+
+Allocate a new while loop statement AST node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em condition} & Conditional expression \\
+\hline
+{\em body} & Block to be executed as long as condition is true \\
+\hline
+{\em source\+\_\+line} & Source code line where code begins \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Allocated AST node 
+\end{DoxyReturn}

@@ -1,0 +1,42 @@
+\doxysection{include/p2-\/parser.h File Reference}
+\hypertarget{p2-parser_8h}{}\label{p2-parser_8h}\index{include/p2-\/parser.h@{include/p2-\/parser.h}}
+
+
+Interface for Project 2 (Parser)  
+
+
+{\ttfamily \#include "{}common.\+h"{}}\newline
+{\ttfamily \#include "{}token.\+h"{}}\newline
+{\ttfamily \#include "{}ast.\+h"{}}\newline
+{\ttfamily \#include "{}visitor.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{p2-parser_8h_a1e38510797cfa5d1e62c73e211d43064}{parse}} (\mbox{\hyperlink{struct_token_queue}{Token\+Queue}} \texorpdfstring{$\ast$}{*}input)
+\begin{DoxyCompactList}\small\item\em Convert a queue of tokens into an abstract syntax tree (AST) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface for Project 2 (Parser) 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{p2-parser_8h_a1e38510797cfa5d1e62c73e211d43064}\label{p2-parser_8h_a1e38510797cfa5d1e62c73e211d43064} 
+\index{p2-\/parser.h@{p2-\/parser.h}!parse@{parse}}
+\index{parse@{parse}!p2-\/parser.h@{p2-\/parser.h}}
+\doxysubsubsection{\texorpdfstring{parse()}{parse()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*} parse (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_token_queue}{Token\+Queue}} \texorpdfstring{$\ast$}{*}}]{input }\end{DoxyParamCaption})}
+
+
+
+Convert a queue of tokens into an abstract syntax tree (AST) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & Tokens to parse \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Root of abstract syntax tree 
+\end{DoxyReturn}

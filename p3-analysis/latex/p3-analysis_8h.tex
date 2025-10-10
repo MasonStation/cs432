@@ -1,0 +1,43 @@
+\doxysection{include/p3-\/analysis.h File Reference}
+\hypertarget{p3-analysis_8h}{}\label{p3-analysis_8h}\index{include/p3-\/analysis.h@{include/p3-\/analysis.h}}
+
+
+Interface for Project 3 (Analysis)  
+
+
+{\ttfamily \#include "{}common.\+h"{}}\newline
+{\ttfamily \#include "{}token.\+h"{}}\newline
+{\ttfamily \#include "{}ast.\+h"{}}\newline
+{\ttfamily \#include "{}visitor.\+h"{}}\newline
+{\ttfamily \#include "{}symbol.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_error_list}{Error\+List}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{p3-analysis_8h_ac9c170d0da6d27d940fd81f51af4b9c9}{analyze}} (\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}tree)
+\begin{DoxyCompactList}\small\item\em Perform static analysis on an AST and return a list of errors. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface for Project 3 (Analysis) 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{p3-analysis_8h_ac9c170d0da6d27d940fd81f51af4b9c9}\label{p3-analysis_8h_ac9c170d0da6d27d940fd81f51af4b9c9} 
+\index{p3-\/analysis.h@{p3-\/analysis.h}!analyze@{analyze}}
+\index{analyze@{analyze}!p3-\/analysis.h@{p3-\/analysis.h}}
+\doxysubsubsection{\texorpdfstring{analyze()}{analyze()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_error_list}{Error\+List}} \texorpdfstring{$\ast$}{*} analyze (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}}]{tree }\end{DoxyParamCaption})}
+
+
+
+Perform static analysis on an AST and return a list of errors. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tree} & Root of AST \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+List of static analysis errors found (the list should be empty if no errors were found) 
+\end{DoxyReturn}

@@ -1,0 +1,121 @@
+\doxysection{common.\+h}
+\hypertarget{common_8h_source}{}\label{common_8h_source}\index{include/common.h@{include/common.h}}
+\mbox{\hyperlink{common_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#ifndef\ \_\_COMMON\_H}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ \_\_COMMON\_H}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00020\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00021\ \textcolor{comment}{\ *\ DEPENDENCIES}}
+\DoxyCodeLine{00022\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <inttypes.h>}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ <regex.h>}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ <setjmp.h>}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ <stdarg.h>}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#define\ MAX\_FILE\_SIZE\ 65536}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ MAX\_LINE\_LEN\ \ \ \ 256}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#define\ MAX\_TOKEN\_LEN\ \ \ 256}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#define\ MAX\_ERROR\_LEN\ \ \ 256}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#define\ MAX\_ID\_LEN\ \ \ \ \ \ 256}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00066\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{common_8h_af5878fbe98f23b780b60624fce56a45e}{DecafType}}\{}
+\DoxyCodeLine{00067\ \ \ \ \ UNKNOWN,\ INT,\ BOOL,\ VOID,\ STR}
+\DoxyCodeLine{00068\ \}\ \mbox{\hyperlink{common_8h_af5878fbe98f23b780b60624fce56a45e}{DecafType}};}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00076\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{common_8h_ae4d5f5c8f6c4f9679174f22a73952f1b}{DecafType\_to\_string}}(\mbox{\hyperlink{common_8h_af5878fbe98f23b780b60624fce56a45e}{DecafType}}\ type);}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00084\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{common_8h_ac2dc33991ba3b54583d4fc8951e92714}{print\_escaped\_string}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \textcolor{keywordtype}{string},\ FILE*\ output);}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00094\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{common_8h_a6b628d8dac492f0c37854d2772384393}{print\_doubly\_escaped\_string}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \textcolor{keywordtype}{string},\ FILE*\ output);}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00110\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{common_8h_a023af5b30140788044b1702f78bf67d2}{Error\_throw\_printf}}\ (\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ format,\ ...);}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00117\ \textcolor{preprocessor}{\#define\ CHECK\_MALLOC\_PTR(P)\ \(\backslash\)}}
+\DoxyCodeLine{00118\ \textcolor{preprocessor}{\ \ \ \ if\ (P\ ==\ NULL)\ \{\ \(\backslash\)}}
+\DoxyCodeLine{00119\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ printf("{}Out\ of\ memory!\(\backslash\)n"{});\ \(\backslash\)}}
+\DoxyCodeLine{00120\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ exit(EXIT\_FAILURE);\ \(\backslash\)}}
+\DoxyCodeLine{00121\ \textcolor{preprocessor}{\ \ \ \ \}}}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00132\ \textcolor{preprocessor}{\#define\ DECL\_LIST\_TYPE(NAME,\ ELEMTYPE)\ \(\backslash\)}}
+\DoxyCodeLine{00133\ \textcolor{preprocessor}{\ \ \(\backslash\)}}
+\DoxyCodeLine{00134\ \textcolor{preprocessor}{\ \ \ \ typedef\ struct\ NAME\ \#\#\ List\ \{\ \(\backslash\)}}
+\DoxyCodeLine{00135\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ ELEMTYPE\ head;\ \ \(\backslash\)}}
+\DoxyCodeLine{00136\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ ELEMTYPE\ tail;\ \ \(\backslash\)}}
+\DoxyCodeLine{00137\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ int\ size;\ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00138\ \textcolor{preprocessor}{\ \ \ \ \}\ NAME\ \#\#\ List;\ \(\backslash\)}}
+\DoxyCodeLine{00139\ \textcolor{preprocessor}{\ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00140\ \textcolor{preprocessor}{\ \(\backslash\)}}
+\DoxyCodeLine{00141\ \textcolor{preprocessor}{\ \ \ \ NAME\ \#\#\ List*\ NAME\ \#\#\ List\_new\ (void);\ \(\backslash\)}}
+\DoxyCodeLine{00142\ \textcolor{preprocessor}{\ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00143\ \textcolor{preprocessor}{\ \(\backslash\)}}
+\DoxyCodeLine{00144\ \textcolor{preprocessor}{\ \ \ \ void\ NAME\ \#\#\ List\_add\ (NAME\ \#\#\ List*\ list,\ ELEMTYPE\ item);\ \(\backslash\)}}
+\DoxyCodeLine{00145\ \textcolor{preprocessor}{\ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00146\ \textcolor{preprocessor}{\ \(\backslash\)}}
+\DoxyCodeLine{00147\ \textcolor{preprocessor}{\ \ \ \ int\ NAME\ \#\#\ List\_size\ (NAME\ \#\#\ List*\ list);\ \(\backslash\)}}
+\DoxyCodeLine{00148\ \textcolor{preprocessor}{\ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00149\ \textcolor{preprocessor}{\ \(\backslash\)}}
+\DoxyCodeLine{00150\ \textcolor{preprocessor}{\ \ \ \ bool\ NAME\ \#\#\ List\_is\_empty\ (NAME\ \#\#\ List*\ list);\ \(\backslash\)}}
+\DoxyCodeLine{00151\ \textcolor{preprocessor}{\ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00152\ \textcolor{preprocessor}{\ \(\backslash\)}}
+\DoxyCodeLine{00153\ \textcolor{preprocessor}{\ \ \ \ void\ NAME\ \#\#\ List\_free\ (NAME\ \#\#\ List*\ list);}}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00168\ \textcolor{preprocessor}{\#define\ DEF\_LIST\_IMPL(NAME,\ ELEMTYPE,\ FREEFUNC)\ \(\backslash\)}}
+\DoxyCodeLine{00169\ \textcolor{preprocessor}{\ \ \ \ NAME\ \#\#\ List*\ NAME\ \#\#\ List\_new\ (void)\ \(\backslash\)}}
+\DoxyCodeLine{00170\ \textcolor{preprocessor}{\ \ \ \ \{\ \(\backslash\)}}
+\DoxyCodeLine{00171\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ NAME\ \#\#\ List*\ list\ =\ (NAME\ \#\#\ List*)calloc(1,\ sizeof(NAME\ \#\#\ List));\ \(\backslash\)}}
+\DoxyCodeLine{00172\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ CHECK\_MALLOC\_PTR(list);\ \(\backslash\)}}
+\DoxyCodeLine{00173\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ list-\/>head\ =\ NULL;\ \(\backslash\)}}
+\DoxyCodeLine{00174\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ list-\/>tail\ =\ NULL;\ \(\backslash\)}}
+\DoxyCodeLine{00175\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ list-\/>size\ =\ 0;\ \(\backslash\)}}
+\DoxyCodeLine{00176\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ return\ list;\ \(\backslash\)}}
+\DoxyCodeLine{00177\ \textcolor{preprocessor}{\ \ \ \ \}\ \(\backslash\)}}
+\DoxyCodeLine{00178\ \textcolor{preprocessor}{\ \ \ \ void\ NAME\ \#\#\ List\_add\ (NAME\ \#\#\ List*\ list,\ ELEMTYPE\ item)\ \(\backslash\)}}
+\DoxyCodeLine{00179\ \textcolor{preprocessor}{\ \ \ \ \{\ \(\backslash\)}}
+\DoxyCodeLine{00180\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (list-\/>head\ ==\ NULL)\ \{\ \(\backslash\)}}
+\DoxyCodeLine{00181\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ list-\/>head\ =\ item;\ \(\backslash\)}}
+\DoxyCodeLine{00182\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ list-\/>tail\ =\ item;\ \(\backslash\)}}
+\DoxyCodeLine{00183\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}\ else\ \{\ \(\backslash\)}}
+\DoxyCodeLine{00184\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ list-\/>tail-\/>next\ =\ item;\ \(\backslash\)}}
+\DoxyCodeLine{00185\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ list-\/>tail\ =\ item;\ \(\backslash\)}}
+\DoxyCodeLine{00186\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}\ \(\backslash\)}}
+\DoxyCodeLine{00187\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ list-\/>size++;\ \(\backslash\)}}
+\DoxyCodeLine{00188\ \textcolor{preprocessor}{\ \ \ \ \}\ \(\backslash\)}}
+\DoxyCodeLine{00189\ \textcolor{preprocessor}{\ \ \ \ int\ NAME\ \#\#\ List\_size\ (NAME\ \#\#\ List*\ list)\ \(\backslash\)}}
+\DoxyCodeLine{00190\ \textcolor{preprocessor}{\ \ \ \ \{\ \(\backslash\)}}
+\DoxyCodeLine{00191\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ return\ list-\/>size;\ \(\backslash\)}}
+\DoxyCodeLine{00192\ \textcolor{preprocessor}{\ \ \ \ \}\ \(\backslash\)}}
+\DoxyCodeLine{00193\ \textcolor{preprocessor}{\ \ \ \ bool\ NAME\ \#\#\ List\_is\_empty\ (NAME\ \#\#\ List*\ list)\ \(\backslash\)}}
+\DoxyCodeLine{00194\ \textcolor{preprocessor}{\ \ \ \ \{\ \(\backslash\)}}
+\DoxyCodeLine{00195\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ return\ (list-\/>size\ ==\ 0);\ \(\backslash\)}}
+\DoxyCodeLine{00196\ \textcolor{preprocessor}{\ \ \ \ \}\ \(\backslash\)}}
+\DoxyCodeLine{00197\ \textcolor{preprocessor}{\ \ \ \ void\ NAME\ \#\#\ List\_free\ (NAME\ \#\#\ List*\ list)\ \(\backslash\)}}
+\DoxyCodeLine{00198\ \textcolor{preprocessor}{\ \ \ \ \{\ \(\backslash\)}}
+\DoxyCodeLine{00199\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ ELEMTYPE\ next\ =\ list-\/>head;\ \(\backslash\)}}
+\DoxyCodeLine{00200\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ while\ (next\ !=\ NULL)\ \{\ \(\backslash\)}}
+\DoxyCodeLine{00201\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ ELEMTYPE\ cur\ =\ next;\ \(\backslash\)}}
+\DoxyCodeLine{00202\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ next\ =\ cur-\/>next;\ \(\backslash\)}}
+\DoxyCodeLine{00203\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ FREEFUNC(cur);\ \(\backslash\)}}
+\DoxyCodeLine{00204\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}\ \(\backslash\)}}
+\DoxyCodeLine{00205\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ free(list);\ \(\backslash\)}}
+\DoxyCodeLine{00206\ \textcolor{preprocessor}{\ \ \ \ \}}}
+\DoxyCodeLine{00207\ }
+\DoxyCodeLine{00214\ \textcolor{preprocessor}{\#define\ FOR\_EACH(TYPE,\ VARIABLE,\ CONTAINER)\ \(\backslash\)}}
+\DoxyCodeLine{00215\ \textcolor{preprocessor}{\ \ \ \ for\ (TYPE\ VARIABLE\ =\ (CONTAINER)-\/>head;\ \(\backslash\)}}
+\DoxyCodeLine{00216\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ VARIABLE\ !=\ NULL;\ \(\backslash\)}}
+\DoxyCodeLine{00217\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ VARIABLE\ =\ VARIABLE-\/>next)}}
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00219\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

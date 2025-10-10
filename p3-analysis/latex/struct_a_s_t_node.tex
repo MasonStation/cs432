@@ -1,0 +1,90 @@
+\doxysection{ASTNode Struct Reference}
+\hypertarget{struct_a_s_t_node}{}\label{struct_a_s_t_node}\index{ASTNode@{ASTNode}}
+
+
+Main AST node structure.  
+
+
+
+
+{\ttfamily \#include $<$ast.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{struct_a_s_t_node_a34086f3bc5af008f08f255c8ec57ba21}\label{struct_a_s_t_node_a34086f3bc5af008f08f255c8ec57ba21} 
+\mbox{\hyperlink{ast_8h_acac9cbaeea226ed297804c012dc12b16}{Node\+Type}} {\bfseries type}
+\begin{DoxyCompactList}\small\item\em Node type (discriminator/tag for the anonymous union) \end{DoxyCompactList}\item 
+\Hypertarget{struct_a_s_t_node_a5f81bcdfa6764fade0aab3601270b865}\label{struct_a_s_t_node_a5f81bcdfa6764fade0aab3601270b865} 
+int {\bfseries source\+\_\+line}
+\begin{DoxyCompactList}\small\item\em Source code line number. \end{DoxyCompactList}\item 
+\Hypertarget{struct_a_s_t_node_ab4c3fe287f15108a48803f7f3f5a3caf}\label{struct_a_s_t_node_ab4c3fe287f15108a48803f7f3f5a3caf} 
+\mbox{\hyperlink{struct_attribute}{Attribute}} \texorpdfstring{$\ast$}{*} {\bfseries attributes}
+\begin{DoxyCompactList}\small\item\em \doxylink{struct_attribute}{Attribute} list (not a formal list because of the provided accessor methods) \end{DoxyCompactList}\item 
+\Hypertarget{struct_a_s_t_node_a30de95e963aa70517822403cdc57e4a9}\label{struct_a_s_t_node_a30de95e963aa70517822403cdc57e4a9} 
+struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*} {\bfseries next}
+\begin{DoxyCompactList}\small\item\em Next node (if stored in a list) \end{DoxyCompactList}\item 
+\Hypertarget{struct_a_s_t_node_aae4de742907e2bb63b8e221a63de5254}\label{struct_a_s_t_node_aae4de742907e2bb63b8e221a63de5254} 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>struct \mbox{\hyperlink{struct_program_node}{ProgramNode}} {\bfseries program}\\
+\>struct \mbox{\hyperlink{struct_var_decl_node}{VarDeclNode}} {\bfseries vardecl}\\
+\>struct \mbox{\hyperlink{struct_func_decl_node}{FuncDeclNode}} {\bfseries funcdecl}\\
+\>struct \mbox{\hyperlink{struct_block_node}{BlockNode}} {\bfseries block}\\
+\>struct \mbox{\hyperlink{struct_assignment_node}{AssignmentNode}} {\bfseries assignment}\\
+\>struct \mbox{\hyperlink{struct_conditional_node}{ConditionalNode}} {\bfseries conditional}\\
+\>struct \mbox{\hyperlink{struct_while_loop_node}{WhileLoopNode}} {\bfseries whileloop}\\
+\>struct \mbox{\hyperlink{struct_return_node}{ReturnNode}} {\bfseries funcreturn}\\
+\>struct \mbox{\hyperlink{struct_binary_op_node}{BinaryOpNode}} {\bfseries binaryop}\\
+\>struct \mbox{\hyperlink{struct_unary_op_node}{UnaryOpNode}} {\bfseries unaryop}\\
+\>struct \mbox{\hyperlink{struct_location_node}{LocationNode}} {\bfseries location}\\
+\>struct \mbox{\hyperlink{struct_func_call_node}{FuncCallNode}} {\bfseries funccall}\\
+\>struct \mbox{\hyperlink{struct_literal_node}{LiteralNode}} {\bfseries literal}\\
+\}; \\
+
+\end{tabbing}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Main AST node structure. 
+
+Provides some basic definitions used across many nodes, such as source code info and attribute management. Storage of type-\/specific node data is managed using a tagged union of the other \texorpdfstring{$\ast$}{*}\+Node structures declared earlier in this file.
+
+AST nodes are designed to be semi-\/mutable even after parsing by means of the {\ttfamily attributes} key-\/value mapping that is stored in every node. List of potential attributes (not exhaustive, and most are irrelevant to Project 2)\+:
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ Key}&\cellcolor{\tableheadbgcolor}\textbf{ Description }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ Key}&\cellcolor{\tableheadbgcolor}\textbf{ Description }\\\cline{1-2}
+\endhead
+{\ttfamily parent} &Uptree parent \doxylink{struct_a_s_t_node}{ASTNode} reference \\\cline{1-2}
+{\ttfamily depth} &Tree depth ({\ttfamily int}) \\\cline{1-2}
+{\ttfamily symbol\+Table} &\doxylink{struct_symbol}{Symbol} table reference (only in program, function, and block nodes) \\\cline{1-2}
+{\ttfamily type} &\doxylink{common_8h_af5878fbe98f23b780b60624fce56a45e}{Decaf\+Type} of node (only in expression nodes) \\\cline{1-2}
+{\ttfamily static\+Size} &Size (in bytes as {\ttfamily int}) of global variables (only in program node) \\\cline{1-2}
+{\ttfamily local\+Size} &Size (in bytes as {\ttfamily int}) of local variables (only in function nodes) \\\cline{1-2}
+{\ttfamily code} &ILOC instructions generated from the subtree rooted at this node \\\cline{1-2}
+{\ttfamily reg} &Register storing the result of the expression rooted at this node (only in expression nodes) \\\cline{1-2}
+\end{longtabu}
+
+
+Generally, the node-\/type-\/specific allocators (e.\+g., \doxylink{ast_8h_a0ae70703f96809efec93f83a47cec58b}{Program\+Node\+\_\+new}) should be used to ensure that all of the node-\/specific data members are initialized correctly. Node structures must be explicitly freed using \doxylink{ast_8h_a4a26fe87ac8120a6e15a59792ea68f0f}{ASTNode\+\_\+free}.
+
+Methods\+:
+\begin{DoxyItemize}
+\item \doxylink{ast_8h_a20db59608d5d54bd3b8bea7803cce116}{ASTNode\+\_\+set\+\_\+attribute}
+\item \doxylink{ast_8h_a64993a4dcdbae98e8dbc5eb2bc0fe78a}{ASTNode\+\_\+set\+\_\+int\+\_\+attribute}
+\item \doxylink{ast_8h_ae733fdacd2796ef46e2ac0d214a2e8f9}{ASTNode\+\_\+set\+\_\+printable\+\_\+attribute}
+\item \doxylink{ast_8h_afee9cb41da85ce03cab12ebec7755a20}{ASTNode\+\_\+has\+\_\+attribute}
+\item \doxylink{ast_8h_ac2b852a479f146acc9f9749d1a2fe68e}{ASTNode\+\_\+get\+\_\+attribute} 
+\end{DoxyItemize}
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{ast_8h}{ast.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,39 @@
+\doxysection{Token\+Queue Struct Reference}
+\hypertarget{struct_token_queue}{}\label{struct_token_queue}\index{TokenQueue@{TokenQueue}}
+
+
+Linked list of tokens.  
+
+
+
+
+{\ttfamily \#include $<$token.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{struct_token_queue_ae506a96f27ebf8850f6c88a22d4fe9a4}\label{struct_token_queue_ae506a96f27ebf8850f6c88a22d4fe9a4} 
+\mbox{\hyperlink{struct_token}{Token}} \texorpdfstring{$\ast$}{*} {\bfseries head}
+\begin{DoxyCompactList}\small\item\em Front of list (or {\ttfamily NULL} if list is empty) \end{DoxyCompactList}\item 
+\Hypertarget{struct_token_queue_adfd764f6306f69689452112b72464bcc}\label{struct_token_queue_adfd764f6306f69689452112b72464bcc} 
+\mbox{\hyperlink{struct_token}{Token}} \texorpdfstring{$\ast$}{*} {\bfseries tail}
+\begin{DoxyCompactList}\small\item\em Back of list (or {\ttfamily NULL} if list is empty) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Linked list of tokens. 
+
+Allocate with \doxylink{token_8h_a46383fdfdae43b9904d7f1aeb40d5f08}{Token\+Queue\+\_\+new} and de-\/allocate with \doxylink{token_8h_a7d25895d7308e7b43eba5fe48846197f}{Token\+Queue\+\_\+free}.
+
+Methods\+:
+\begin{DoxyItemize}
+\item \doxylink{token_8h_af3190d5101bdcab49ea52dca06934988}{Token\+Queue\+\_\+peek}
+\item \doxylink{token_8h_af870f0ccd0437129400e80c97ea0b6a8}{Token\+Queue\+\_\+remove}
+\item \doxylink{token_8h_a8b14b8c342efe43c93de8c7917790e0e}{Token\+Queue\+\_\+is\+\_\+empty}
+\item \doxylink{token_8h_a4d377f756d69f0f84bde2b10a61db53b}{Token\+Queue\+\_\+size}
+\item \doxylink{token_8h_a261354ecd9bc9ae1b74d071733045eb5}{Token\+Queue\+\_\+print} 
+\end{DoxyItemize}
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{token_8h}{token.\+h}}\end{DoxyCompactItemize}

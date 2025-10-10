@@ -1,0 +1,37 @@
+\doxysection{Attribute Struct Reference}
+\hypertarget{struct_attribute}{}\label{struct_attribute}\index{Attribute@{Attribute}}
+
+
+AST attribute (basically a key-\/value store for nodes)  
+
+
+
+
+{\ttfamily \#include $<$ast.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{struct_attribute_a3a6b8e893d17a2b2af04dce9f145a677}\label{struct_attribute_a3a6b8e893d17a2b2af04dce9f145a677} 
+const char \texorpdfstring{$\ast$}{*} {\bfseries key}
+\begin{DoxyCompactList}\small\item\em \doxylink{struct_attribute}{Attribute} key. \end{DoxyCompactList}\item 
+\Hypertarget{struct_attribute_ab26947dfe88e9652b002a19c891d8082}\label{struct_attribute_ab26947dfe88e9652b002a19c891d8082} 
+void \texorpdfstring{$\ast$}{*} {\bfseries value}
+\begin{DoxyCompactList}\small\item\em \doxylink{struct_attribute}{Attribute} value (integral value or pointer to heap) \end{DoxyCompactList}\item 
+\Hypertarget{struct_attribute_a539a176f201f260a7a51191e97cb61f9}\label{struct_attribute_a539a176f201f260a7a51191e97cb61f9} 
+\mbox{\hyperlink{ast_8h_a4295dd28ac38a7b4bcafc3186023ed25}{Attribute\+Value\+DOTPrinter}} {\bfseries dot\+\_\+printer}
+\begin{DoxyCompactList}\small\item\em Pointer to DOT-\/printing function (can be {\ttfamily NULL} if not printable) \end{DoxyCompactList}\item 
+\Hypertarget{struct_attribute_ab8221ff542fe747afd02b7dd4a985b1f}\label{struct_attribute_ab8221ff542fe747afd02b7dd4a985b1f} 
+\mbox{\hyperlink{ast_8h_af55431eb8c62b9e786386abd9c88d964}{Destructor}} {\bfseries dtor}
+\begin{DoxyCompactList}\small\item\em Pointer to destructor function that should be called to deallocate the attribute value (should be {\ttfamily NULL} if it\textquotesingle{}s an integral value) \end{DoxyCompactList}\item 
+\Hypertarget{struct_attribute_a011d8f652215693f00da8b883bc680bc}\label{struct_attribute_a011d8f652215693f00da8b883bc680bc} 
+struct \mbox{\hyperlink{struct_attribute}{Attribute}} \texorpdfstring{$\ast$}{*} {\bfseries next}
+\begin{DoxyCompactList}\small\item\em Next attribute (if stored in a list) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+AST attribute (basically a key-\/value store for nodes) 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{ast_8h}{ast.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,38 @@
+\doxysection{Literal\+Node Struct Reference}
+\hypertarget{struct_literal_node}{}\label{struct_literal_node}\index{LiteralNode@{LiteralNode}}
+
+
+AST literal expression structure.  
+
+
+
+
+{\ttfamily \#include $<$ast.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{struct_literal_node_a12731c2a935b90731c3fc49936b596ec}\label{struct_literal_node_a12731c2a935b90731c3fc49936b596ec} 
+\mbox{\hyperlink{common_8h_af5878fbe98f23b780b60624fce56a45e}{Decaf\+Type}} {\bfseries type}
+\begin{DoxyCompactList}\small\item\em Literal type (discriminator/tag for the anonymous union) \end{DoxyCompactList}\item 
+\Hypertarget{struct_literal_node_a4da564460a51cfa0149cff1a721e9348}\label{struct_literal_node_a4da564460a51cfa0149cff1a721e9348} 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>long {\bfseries integer}\\
+\>\>{\em Integer value (if {\ttfamily type} is {\ttfamily INT}) }\\
+\>bool {\bfseries boolean}\\
+\>\>{\em Boolean value (if {\ttfamily type} is {\ttfamily BOOL}) }\\
+\>char {\bfseries string} \mbox{[}256\mbox{]}\\
+\>\>{\em String value (if {\ttfamily type} is {\ttfamily STR}) }\\
+\}; \\
+
+\end{tabbing}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+AST literal expression structure. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{ast_8h}{ast.\+h}}\end{DoxyCompactItemize}

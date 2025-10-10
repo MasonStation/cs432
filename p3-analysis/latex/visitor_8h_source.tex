@@ -1,0 +1,88 @@
+\doxysection{visitor.\+h}
+\hypertarget{visitor_8h_source}{}\label{visitor_8h_source}\index{include/visitor.h@{include/visitor.h}}
+\mbox{\hyperlink{visitor_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#ifndef\ \_\_VISITOR\_H}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ \_\_VISITOR\_H}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ast_8h}{ast.h}}"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ *\ AST\ TRAVERSAL\ (VISITOR\ PATTERN)}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_node_visitor}{NodeVisitor}}}
+\DoxyCodeLine{00028\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{struct_node_visitor_a2921bae30ee5abe76b8ed24ecb8cdc29}{data}};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{ast_8h_af55431eb8c62b9e786386abd9c88d964}{Destructor}}\ \mbox{\hyperlink{struct_node_visitor_aa2ab3b276c992e538c934f16aa491b19}{dtor}};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00040\ \textcolor{comment}{\ \ \ \ \ *\ Traversal\ routines;\ each\ of\ these\ is\ called\ at\ the\ appropriate\ time\ as}}
+\DoxyCodeLine{00041\ \textcolor{comment}{\ \ \ \ \ *\ the\ visitor\ traverses\ the\ AST.}}
+\DoxyCodeLine{00042\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\ \ \ \ \#ifndef\ SKIP\_IN\_DOXYGEN}}
+\DoxyCodeLine{00045\ \ \ \ \ void\ (*\ previsit\_default)\ \ \ \ \ (\textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_node_visitor}{NodeVisitor}}*\ visitor,\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ node);}
+\DoxyCodeLine{00046\ \ \ \ \ void\ (*postvisit\_default)\ \ \ \ \ (\textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_node_visitor}{NodeVisitor}}*\ visitor,\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ node);}
+\DoxyCodeLine{00047\ \ \ \ \ void\ (*\ previsit\_program)\ \ \ \ \ (\textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_node_visitor}{NodeVisitor}}*\ visitor,\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ node);}
+\DoxyCodeLine{00048\ \ \ \ \ void\ (*postvisit\_program)\ \ \ \ \ (\textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_node_visitor}{NodeVisitor}}*\ visitor,\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ node);}
+\DoxyCodeLine{00049\ \ \ \ \ void\ (*\ previsit\_vardecl)\ \ \ \ \ (\textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_node_visitor}{NodeVisitor}}*\ visitor,\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ node);}
+\DoxyCodeLine{00050\ \ \ \ \ void\ (*postvisit\_vardecl)\ \ \ \ \ (\textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_node_visitor}{NodeVisitor}}*\ visitor,\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ node);}
+\DoxyCodeLine{00051\ \ \ \ \ void\ (*\ previsit\_funcdecl)\ \ \ \ (\textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_node_visitor}{NodeVisitor}}*\ visitor,\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ node);}
+\DoxyCodeLine{00052\ \ \ \ \ void\ (*postvisit\_funcdecl)\ \ \ \ (\textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_node_visitor}{NodeVisitor}}*\ visitor,\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ node);}
+\DoxyCodeLine{00053\ \ \ \ \ void\ (*\ previsit\_block)\ \ \ \ \ \ \ (\textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_node_visitor}{NodeVisitor}}*\ visitor,\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ node);}
+\DoxyCodeLine{00054\ \ \ \ \ void\ (*postvisit\_block)\ \ \ \ \ \ \ (\textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_node_visitor}{NodeVisitor}}*\ visitor,\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ node);}
+\DoxyCodeLine{00055\ \ \ \ \ void\ (*\ previsit\_assignment)\ \ (\textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_node_visitor}{NodeVisitor}}*\ visitor,\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ node);}
+\DoxyCodeLine{00056\ \ \ \ \ void\ (*postvisit\_assignment)\ \ (\textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_node_visitor}{NodeVisitor}}*\ visitor,\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ node);}
+\DoxyCodeLine{00057\ \ \ \ \ void\ (*\ previsit\_conditional)\ (\textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_node_visitor}{NodeVisitor}}*\ visitor,\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ node);}
+\DoxyCodeLine{00058\ \ \ \ \ void\ (*postvisit\_conditional)\ (\textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_node_visitor}{NodeVisitor}}*\ visitor,\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ node);}
+\DoxyCodeLine{00059\ \ \ \ \ void\ (*\ previsit\_whileloop)\ \ \ (\textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_node_visitor}{NodeVisitor}}*\ visitor,\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ node);}
+\DoxyCodeLine{00060\ \ \ \ \ void\ (*postvisit\_whileloop)\ \ \ (\textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_node_visitor}{NodeVisitor}}*\ visitor,\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ node);}
+\DoxyCodeLine{00061\ \ \ \ \ void\ (*\ previsit\_return)\ \ \ \ \ \ (\textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_node_visitor}{NodeVisitor}}*\ visitor,\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ node);}
+\DoxyCodeLine{00062\ \ \ \ \ void\ (*postvisit\_return)\ \ \ \ \ \ (\textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_node_visitor}{NodeVisitor}}*\ visitor,\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ node);}
+\DoxyCodeLine{00063\ \ \ \ \ void\ (*\ previsit\_break)\ \ \ \ \ \ \ (\textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_node_visitor}{NodeVisitor}}*\ visitor,\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ node);}
+\DoxyCodeLine{00064\ \ \ \ \ void\ (*postvisit\_break)\ \ \ \ \ \ \ (\textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_node_visitor}{NodeVisitor}}*\ visitor,\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ node);}
+\DoxyCodeLine{00065\ \ \ \ \ void\ (*\ previsit\_continue)\ \ \ \ (\textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_node_visitor}{NodeVisitor}}*\ visitor,\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ node);}
+\DoxyCodeLine{00066\ \ \ \ \ void\ (*postvisit\_continue)\ \ \ \ (\textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_node_visitor}{NodeVisitor}}*\ visitor,\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ node);}
+\DoxyCodeLine{00067\ \ \ \ \ void\ (*\ previsit\_binaryop)\ \ \ \ (\textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_node_visitor}{NodeVisitor}}*\ visitor,\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ node);}
+\DoxyCodeLine{00068\ \ \ \ \ void\ (*\ \ invisit\_binaryop)\ \ \ \ (\textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_node_visitor}{NodeVisitor}}*\ visitor,\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ node);}
+\DoxyCodeLine{00069\ \ \ \ \ void\ (*postvisit\_binaryop)\ \ \ \ (\textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_node_visitor}{NodeVisitor}}*\ visitor,\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ node);}
+\DoxyCodeLine{00070\ \ \ \ \ void\ (*\ previsit\_unaryop)\ \ \ \ \ (\textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_node_visitor}{NodeVisitor}}*\ visitor,\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ node);}
+\DoxyCodeLine{00071\ \ \ \ \ void\ (*postvisit\_unaryop)\ \ \ \ \ (\textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_node_visitor}{NodeVisitor}}*\ visitor,\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ node);}
+\DoxyCodeLine{00072\ \ \ \ \ void\ (*\ previsit\_location)\ \ \ \ (\textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_node_visitor}{NodeVisitor}}*\ visitor,\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ node);}
+\DoxyCodeLine{00073\ \ \ \ \ void\ (*postvisit\_location)\ \ \ \ (\textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_node_visitor}{NodeVisitor}}*\ visitor,\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ node);}
+\DoxyCodeLine{00074\ \ \ \ \ void\ (*\ previsit\_funccall)\ \ \ \ (\textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_node_visitor}{NodeVisitor}}*\ visitor,\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ node);}
+\DoxyCodeLine{00075\ \ \ \ \ void\ (*postvisit\_funccall)\ \ \ \ (\textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_node_visitor}{NodeVisitor}}*\ visitor,\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ node);}
+\DoxyCodeLine{00076\ \ \ \ \ void\ (*\ previsit\_literal)\ \ \ \ \ (\textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_node_visitor}{NodeVisitor}}*\ visitor,\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ node);}
+\DoxyCodeLine{00077\ \ \ \ \ void\ (*postvisit\_literal)\ \ \ \ \ (\textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_node_visitor}{NodeVisitor}}*\ visitor,\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ node);}
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \}\ \mbox{\hyperlink{struct_node_visitor}{NodeVisitor}};}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00087\ \mbox{\hyperlink{struct_node_visitor}{NodeVisitor}}*\ \mbox{\hyperlink{visitor_8h_a6be3c4aba46dfa123d839ec0a0a54122}{NodeVisitor\_new}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00096\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{visitor_8h_aff996ea6c828cd55a96b935b99ce8a77}{NodeVisitor\_traverse}}\ (\mbox{\hyperlink{struct_node_visitor}{NodeVisitor}}*\ visitor,\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ node);}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00110\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{visitor_8h_a47a3ff928be5b896d543354ce2220c98}{NodeVisitor\_traverse\_and\_free}}\ (\mbox{\hyperlink{struct_node_visitor}{NodeVisitor}}*\ visitor,\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ node);}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00117\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{visitor_8h_a2194070001f06fee9f294f5f3cbeb869}{NodeVisitor\_free}}\ (\mbox{\hyperlink{struct_node_visitor}{NodeVisitor}}*\ visitor);}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00121\ \textcolor{comment}{\ *\ VISITORS}}
+\DoxyCodeLine{00122\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00130\ \mbox{\hyperlink{struct_node_visitor}{NodeVisitor}}*\ \mbox{\hyperlink{visitor_8h_aed1f36acc8ae668c96162d9701ee13fc}{PrintVisitor\_new}}\ (FILE*\ output);}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00144\ \mbox{\hyperlink{struct_node_visitor}{NodeVisitor}}*\ \mbox{\hyperlink{visitor_8h_aecfcbd48a779d9695ec84b8fd425b5fc}{GenerateASTGraph\_new}}\ (FILE*\ output);}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00153\ \mbox{\hyperlink{struct_node_visitor}{NodeVisitor}}*\ \mbox{\hyperlink{visitor_8h_a96e09b155c00dd3db230909a1838d7a0}{SetParentVisitor\_new}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00162\ \mbox{\hyperlink{struct_node_visitor}{NodeVisitor}}*\ \mbox{\hyperlink{visitor_8h_a790a3851372e08ceec4b98fb81107290}{CalcDepthVisitor\_new}}\ (\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

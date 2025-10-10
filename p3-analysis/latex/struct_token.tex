@@ -1,0 +1,36 @@
+\doxysection{Token Struct Reference}
+\hypertarget{struct_token}{}\label{struct_token}\index{Token@{Token}}
+
+
+Single token.  
+
+
+
+
+{\ttfamily \#include $<$token.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{struct_token_a67919af9f3a80dc0b28a0ab1e6d5bf8a}\label{struct_token_a67919af9f3a80dc0b28a0ab1e6d5bf8a} 
+\mbox{\hyperlink{token_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} {\bfseries type}
+\begin{DoxyCompactList}\small\item\em Type of the token. \end{DoxyCompactList}\item 
+\Hypertarget{struct_token_af7000273ca7872cf6e0c1cef812729e4}\label{struct_token_af7000273ca7872cf6e0c1cef812729e4} 
+char {\bfseries text} \mbox{[}256\mbox{]}
+\begin{DoxyCompactList}\small\item\em Raw text of the token. \end{DoxyCompactList}\item 
+\Hypertarget{struct_token_a4b96c2a31d7c374fd2bd1986794f80dd}\label{struct_token_a4b96c2a31d7c374fd2bd1986794f80dd} 
+int {\bfseries line}
+\begin{DoxyCompactList}\small\item\em Source line number. \end{DoxyCompactList}\item 
+\Hypertarget{struct_token_a47fc39ad899e7b794416940e01c8183b}\label{struct_token_a47fc39ad899e7b794416940e01c8183b} 
+struct \mbox{\hyperlink{struct_token}{Token}} \texorpdfstring{$\ast$}{*} {\bfseries next}
+\begin{DoxyCompactList}\small\item\em Pointer to next token (used to store in a list) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Single token. 
+
+Allocate with \doxylink{token_8h_ac754598f23c24fb6adee30f9bd7cb59f}{Token\+\_\+new} and de-\/allocate with \doxylink{token_8h_a5d786072795a12ec3ea539aba45bdc69}{Token\+\_\+free}. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{token_8h}{token.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,303 @@
+\doxysection{include/symbol.h File Reference}
+\hypertarget{symbol_8h}{}\label{symbol_8h}\index{include/symbol.h@{include/symbol.h}}
+
+
+Symbols, symbol tables, and static analysis errors.  
+
+
+{\ttfamily \#include "{}ast.\+h"{}}\newline
+{\ttfamily \#include "{}visitor.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_symbol}{Symbol}}
+\begin{DoxyCompactList}\small\item\em Single Decaf symbol. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_symbol_list}{Symbol\+List}}
+\begin{DoxyCompactList}\small\item\em Linked list of struct Symbol\texorpdfstring{$\ast$}{*} elements. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_symbol_table}{Symbol\+Table}}
+\begin{DoxyCompactList}\small\item\em Stores symbol info for a single lexical scope. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_analysis_error}{Analysis\+Error}}
+\begin{DoxyCompactList}\small\item\em Static analysis error structure. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_error_list}{Error\+List}}
+\begin{DoxyCompactList}\small\item\em Linked list of Analysis\+Error\texorpdfstring{$\ast$}{*} elements. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{struct_symbol}{Symbol}} \mbox{\hyperlink{symbol_8h_ac1b95cde05bdecd202e6f33298f78a17}{Symbol}}
+\begin{DoxyCompactList}\small\item\em Single Decaf symbol. \end{DoxyCompactList}\item 
+\Hypertarget{symbol_8h_a8a66f7e261107484f2f74f3217e91f25}\label{symbol_8h_a8a66f7e261107484f2f74f3217e91f25} 
+typedef struct \mbox{\hyperlink{struct_symbol_list}{Symbol\+List}} {\bfseries Symbol\+List}
+\begin{DoxyCompactList}\small\item\em Linked list of struct Symbol\texorpdfstring{$\ast$}{*} elements. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{struct_symbol_table}{Symbol\+Table}} \mbox{\hyperlink{symbol_8h_a0ef213c033eadd9c99ef43c1df3d9bd5}{Symbol\+Table}}
+\begin{DoxyCompactList}\small\item\em Stores symbol info for a single lexical scope. \end{DoxyCompactList}\item 
+\Hypertarget{symbol_8h_abf78b2d43c42c84b2c707190829a6da1}\label{symbol_8h_abf78b2d43c42c84b2c707190829a6da1} 
+typedef struct \mbox{\hyperlink{struct_analysis_error}{Analysis\+Error}} {\bfseries Analysis\+Error}
+\begin{DoxyCompactList}\small\item\em Static analysis error structure. \end{DoxyCompactList}\item 
+\Hypertarget{symbol_8h_afda2183eb717b7a147dbd99b6f58f58a}\label{symbol_8h_afda2183eb717b7a147dbd99b6f58f58a} 
+typedef struct \mbox{\hyperlink{struct_error_list}{Error\+List}} {\bfseries Error\+List}
+\begin{DoxyCompactList}\small\item\em Linked list of Analysis\+Error\texorpdfstring{$\ast$}{*} elements. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{symbol_8h_a47c7b2bd6b6529c8e00117c7ea7e6554}\label{symbol_8h_a47c7b2bd6b6529c8e00117c7ea7e6554} 
+void {\bfseries type\+\_\+attr\+\_\+print} (void \texorpdfstring{$\ast$}{*}value, FILE \texorpdfstring{$\ast$}{*}output)
+\begin{DoxyCompactList}\small\item\em Simple "{}print"{} function that prints an attribute value as a Decaf type. \end{DoxyCompactList}\item 
+\Hypertarget{symbol_8h_a1e7bdabed2ae432d2b3096c5ec695c23}\label{symbol_8h_a1e7bdabed2ae432d2b3096c5ec695c23} 
+void {\bfseries symtable\+\_\+attr\+\_\+print} (void \texorpdfstring{$\ast$}{*}value, FILE \texorpdfstring{$\ast$}{*}output)
+\begin{DoxyCompactList}\small\item\em Function that prints a symbol table attribute using DOT formatting. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_symbol}{Symbol}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{symbol_8h_a597e2e753cbd65912bbfb4afb9a553f5}{Symbol\+\_\+new}} (const char \texorpdfstring{$\ast$}{*}name, \mbox{\hyperlink{common_8h_af5878fbe98f23b780b60624fce56a45e}{Decaf\+Type}} type)
+\begin{DoxyCompactList}\small\item\em Create a new scalar symbol. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_symbol}{Symbol}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{symbol_8h_af6a2d771b6ba0df2533472e4a688b0d0}{Symbol\+\_\+new\+\_\+array}} (const char \texorpdfstring{$\ast$}{*}name, \mbox{\hyperlink{common_8h_af5878fbe98f23b780b60624fce56a45e}{Decaf\+Type}} type, int length)
+\begin{DoxyCompactList}\small\item\em Create a new array symbol. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_symbol}{Symbol}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{symbol_8h_ac15b37632b8b77f45225b986dd3b825a}{Symbol\+\_\+new\+\_\+function}} (const char \texorpdfstring{$\ast$}{*}name, \mbox{\hyperlink{common_8h_af5878fbe98f23b780b60624fce56a45e}{Decaf\+Type}} return\+\_\+type, \mbox{\hyperlink{struct_parameter_list}{Parameter\+List}} \texorpdfstring{$\ast$}{*}parameters)
+\begin{DoxyCompactList}\small\item\em Create a new function symbol. \end{DoxyCompactList}\item 
+\Hypertarget{symbol_8h_a74b14b4f34ea7bf8ef9bd901e2abd00b}\label{symbol_8h_a74b14b4f34ea7bf8ef9bd901e2abd00b} 
+void {\bfseries Symbol\+\_\+print} (\mbox{\hyperlink{struct_symbol}{Symbol}} \texorpdfstring{$\ast$}{*}symbol, FILE \texorpdfstring{$\ast$}{*}output)
+\begin{DoxyCompactList}\small\item\em Print simplified string representation. \end{DoxyCompactList}\item 
+\Hypertarget{symbol_8h_aecf7754fad8bdca2a1380817268efd74}\label{symbol_8h_aecf7754fad8bdca2a1380817268efd74} 
+void {\bfseries Symbol\+\_\+free} (\mbox{\hyperlink{struct_symbol}{Symbol}} \texorpdfstring{$\ast$}{*}symbol)
+\begin{DoxyCompactList}\small\item\em Deallocate a symbol. \end{DoxyCompactList}\item 
+\Hypertarget{symbol_8h_ae302178b3d575d87de87ff39698066a1}\label{symbol_8h_ae302178b3d575d87de87ff39698066a1} 
+\mbox{\hyperlink{struct_symbol_list}{Symbol\+List}} \texorpdfstring{$\ast$}{*} {\bfseries Symbol\+List\+\_\+new} (void)
+\begin{DoxyCompactList}\small\item\em Allocate and initialize a new, empty list. \end{DoxyCompactList}\item 
+\Hypertarget{symbol_8h_a4334790edbbcaa9c7f9b48ac892ab96b}\label{symbol_8h_a4334790edbbcaa9c7f9b48ac892ab96b} 
+void {\bfseries Symbol\+List\+\_\+add} (\mbox{\hyperlink{struct_symbol_list}{Symbol\+List}} \texorpdfstring{$\ast$}{*}list, struct \mbox{\hyperlink{struct_symbol}{Symbol}} \texorpdfstring{$\ast$}{*}item)
+\begin{DoxyCompactList}\small\item\em Add an item to the end of a list. \end{DoxyCompactList}\item 
+\Hypertarget{symbol_8h_aa4b196e824e250c001e1041fffc301db}\label{symbol_8h_aa4b196e824e250c001e1041fffc301db} 
+int {\bfseries Symbol\+List\+\_\+size} (\mbox{\hyperlink{struct_symbol_list}{Symbol\+List}} \texorpdfstring{$\ast$}{*}list)
+\begin{DoxyCompactList}\small\item\em Look up the size of a list. \end{DoxyCompactList}\item 
+\Hypertarget{symbol_8h_afa4d99974c26d678b3822ce25fb3f898}\label{symbol_8h_afa4d99974c26d678b3822ce25fb3f898} 
+bool {\bfseries Symbol\+List\+\_\+is\+\_\+empty} (\mbox{\hyperlink{struct_symbol_list}{Symbol\+List}} \texorpdfstring{$\ast$}{*}list)
+\begin{DoxyCompactList}\small\item\em Test a list to see if it is empty. \end{DoxyCompactList}\item 
+\Hypertarget{symbol_8h_a7a2a1f503934f19d8b15bbf12cd23546}\label{symbol_8h_a7a2a1f503934f19d8b15bbf12cd23546} 
+void {\bfseries Symbol\+List\+\_\+free} (\mbox{\hyperlink{struct_symbol_list}{Symbol\+List}} \texorpdfstring{$\ast$}{*}list)
+\begin{DoxyCompactList}\small\item\em Deallocate a list and any contained items. \end{DoxyCompactList}\item 
+\Hypertarget{symbol_8h_a62731b07a48e35df0968f812d3542520}\label{symbol_8h_a62731b07a48e35df0968f812d3542520} 
+\mbox{\hyperlink{struct_symbol_table}{Symbol\+Table}} \texorpdfstring{$\ast$}{*} {\bfseries Symbol\+Table\+\_\+new} (void)
+\begin{DoxyCompactList}\small\item\em Create a new symbol table with no parent link. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_symbol_table}{Symbol\+Table}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{symbol_8h_a589b14d38d1e02bded323878e99dfe56}{Symbol\+Table\+\_\+new\+\_\+child}} (\mbox{\hyperlink{struct_symbol_table}{Symbol\+Table}} \texorpdfstring{$\ast$}{*}parent)
+\begin{DoxyCompactList}\small\item\em Create a new symbol table with a parent link. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{symbol_8h_a6d413e0b197676609aff2fab9cd07cf2}{Symbol\+Table\+\_\+insert}} (\mbox{\hyperlink{struct_symbol_table}{Symbol\+Table}} \texorpdfstring{$\ast$}{*}table, \mbox{\hyperlink{struct_symbol}{Symbol}} \texorpdfstring{$\ast$}{*}symbol)
+\begin{DoxyCompactList}\small\item\em Add a symbol to a table. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_symbol}{Symbol}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{symbol_8h_a153497121ac092063f1d89cf0b6f3ec3}{Symbol\+Table\+\_\+lookup}} (\mbox{\hyperlink{struct_symbol_table}{Symbol\+Table}} \texorpdfstring{$\ast$}{*}table, const char \texorpdfstring{$\ast$}{*}name)
+\begin{DoxyCompactList}\small\item\em Retrieve a symbol from a table. \end{DoxyCompactList}\item 
+\Hypertarget{symbol_8h_adb807258d139f19a9d2ab111ec2d39e1}\label{symbol_8h_adb807258d139f19a9d2ab111ec2d39e1} 
+void {\bfseries Symbol\+Table\+\_\+free} (\mbox{\hyperlink{struct_symbol_table}{Symbol\+Table}} \texorpdfstring{$\ast$}{*}table)
+\begin{DoxyCompactList}\small\item\em Deallocate a symbol table. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_symbol}{Symbol}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{symbol_8h_a1dab6a1e037bc705c03f5090853625f4}{lookup\+\_\+symbol}} (\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}node, const char \texorpdfstring{$\ast$}{*}name)
+\begin{DoxyCompactList}\small\item\em Look up a symbol in an AST. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_node_visitor}{Node\+Visitor}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{symbol_8h_a42ebeb59b46cde9d4230b97545305dc6}{Build\+Symbol\+Tables\+Visitor\+\_\+new}} (void)
+\begin{DoxyCompactList}\small\item\em Create a new visitor that builds symbol tables. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_node_visitor}{Node\+Visitor}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{symbol_8h_ab3ce4efc8c1a7b2252dbb664ca1f0158}{Print\+Symbols\+Visitor\+\_\+new}} (FILE \texorpdfstring{$\ast$}{*}output)
+\begin{DoxyCompactList}\small\item\em Create a new visitor that prints symbol tables. \end{DoxyCompactList}\item 
+\Hypertarget{symbol_8h_ac14176665427ba3827c0d933e6fc8e54}\label{symbol_8h_ac14176665427ba3827c0d933e6fc8e54} 
+\mbox{\hyperlink{struct_error_list}{Error\+List}} \texorpdfstring{$\ast$}{*} {\bfseries Error\+List\+\_\+new} (void)
+\begin{DoxyCompactList}\small\item\em Allocate and initialize a new, empty list. \end{DoxyCompactList}\item 
+\Hypertarget{symbol_8h_aae90490522ba2ec36b4c0ee62044383a}\label{symbol_8h_aae90490522ba2ec36b4c0ee62044383a} 
+void {\bfseries Error\+List\+\_\+add} (\mbox{\hyperlink{struct_error_list}{Error\+List}} \texorpdfstring{$\ast$}{*}list, \mbox{\hyperlink{struct_analysis_error}{Analysis\+Error}} \texorpdfstring{$\ast$}{*}item)
+\begin{DoxyCompactList}\small\item\em Add an item to the end of a list. \end{DoxyCompactList}\item 
+\Hypertarget{symbol_8h_a61a1204631a91a5151893d1a350ca970}\label{symbol_8h_a61a1204631a91a5151893d1a350ca970} 
+int {\bfseries Error\+List\+\_\+size} (\mbox{\hyperlink{struct_error_list}{Error\+List}} \texorpdfstring{$\ast$}{*}list)
+\begin{DoxyCompactList}\small\item\em Look up the size of a list. \end{DoxyCompactList}\item 
+\Hypertarget{symbol_8h_a388cd6b3be4a6533e22b3ae19b68f153}\label{symbol_8h_a388cd6b3be4a6533e22b3ae19b68f153} 
+bool {\bfseries Error\+List\+\_\+is\+\_\+empty} (\mbox{\hyperlink{struct_error_list}{Error\+List}} \texorpdfstring{$\ast$}{*}list)
+\begin{DoxyCompactList}\small\item\em Test a list to see if it is empty. \end{DoxyCompactList}\item 
+\Hypertarget{symbol_8h_afb2f7cde9bd2470cccc59856ff8eeec5}\label{symbol_8h_afb2f7cde9bd2470cccc59856ff8eeec5} 
+void {\bfseries Error\+List\+\_\+free} (\mbox{\hyperlink{struct_error_list}{Error\+List}} \texorpdfstring{$\ast$}{*}list)
+\begin{DoxyCompactList}\small\item\em Deallocate a list and any contained items. \end{DoxyCompactList}\item 
+\Hypertarget{symbol_8h_af6ae204758c2e3edab7e231546fe71d5}\label{symbol_8h_af6ae204758c2e3edab7e231546fe71d5} 
+void {\bfseries Error\+List\+\_\+printf} (\mbox{\hyperlink{struct_error_list}{Error\+List}} \texorpdfstring{$\ast$}{*}list, const char \texorpdfstring{$\ast$}{*}format,...)
+\begin{DoxyCompactList}\small\item\em Add an error message to a list of errors using {\ttfamily printf} syntax. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Symbols, symbol tables, and static analysis errors. 
+
+This module provides declarations for the symbol table and static analysis framework. The declarations in this file will be will be critical for Project 3 (static analysis) and 4 (code generation). 
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{symbol_8h_ac1b95cde05bdecd202e6f33298f78a17}\label{symbol_8h_ac1b95cde05bdecd202e6f33298f78a17} 
+\index{symbol.h@{symbol.h}!Symbol@{Symbol}}
+\index{Symbol@{Symbol}!symbol.h@{symbol.h}}
+\doxysubsubsection{\texorpdfstring{Symbol}{Symbol}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct_symbol}{Symbol}} \mbox{\hyperlink{struct_symbol}{Symbol}}}
+
+
+
+Single Decaf symbol. 
+
+Might represent a scalar variable, an array, or a formal function parameter. \Hypertarget{symbol_8h_a0ef213c033eadd9c99ef43c1df3d9bd5}\label{symbol_8h_a0ef213c033eadd9c99ef43c1df3d9bd5} 
+\index{symbol.h@{symbol.h}!SymbolTable@{SymbolTable}}
+\index{SymbolTable@{SymbolTable}!symbol.h@{symbol.h}}
+\doxysubsubsection{\texorpdfstring{SymbolTable}{SymbolTable}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct_symbol_table}{Symbol\+Table}} \mbox{\hyperlink{struct_symbol_table}{Symbol\+Table}}}
+
+
+
+Stores symbol info for a single lexical scope. 
+
+\doxylink{struct_symbol}{Symbol} tables are generated using a simple AST traversal algorithm, and are used during code generation to look up type and location information for individual symbols. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{symbol_8h_a42ebeb59b46cde9d4230b97545305dc6}\label{symbol_8h_a42ebeb59b46cde9d4230b97545305dc6} 
+\index{symbol.h@{symbol.h}!BuildSymbolTablesVisitor\_new@{BuildSymbolTablesVisitor\_new}}
+\index{BuildSymbolTablesVisitor\_new@{BuildSymbolTablesVisitor\_new}!symbol.h@{symbol.h}}
+\doxysubsubsection{\texorpdfstring{BuildSymbolTablesVisitor\_new()}{BuildSymbolTablesVisitor\_new()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_node_visitor}{Node\+Visitor}} \texorpdfstring{$\ast$}{*} Build\+Symbol\+Tables\+Visitor\+\_\+new (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Create a new visitor that builds symbol tables. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to visitor structure 
+\end{DoxyReturn}
+\Hypertarget{symbol_8h_a1dab6a1e037bc705c03f5090853625f4}\label{symbol_8h_a1dab6a1e037bc705c03f5090853625f4} 
+\index{symbol.h@{symbol.h}!lookup\_symbol@{lookup\_symbol}}
+\index{lookup\_symbol@{lookup\_symbol}!symbol.h@{symbol.h}}
+\doxysubsubsection{\texorpdfstring{lookup\_symbol()}{lookup\_symbol()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_symbol}{Symbol}} \texorpdfstring{$\ast$}{*} lookup\+\_\+symbol (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}}]{node,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{name }\end{DoxyParamCaption})}
+
+
+
+Look up a symbol in an AST. 
+
+The search has two phases\+: 1) searching AST nodes for a symbol table as a "{}symbol\+Table"{} attribute and following "{}parent"{} attributes as necessary (requires the links as set up by a Set\+Parent\+Visitor), and 2) searching symbol tables for the given symbol name and following parent pointers as necessary.
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & AST node to begin the search at \\
+\hline
+{\em name} & Name of symbol to find \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The \doxylink{struct_symbol}{Symbol} if found, otherwise {\ttfamily NULL} 
+\end{DoxyReturn}
+\Hypertarget{symbol_8h_ab3ce4efc8c1a7b2252dbb664ca1f0158}\label{symbol_8h_ab3ce4efc8c1a7b2252dbb664ca1f0158} 
+\index{symbol.h@{symbol.h}!PrintSymbolsVisitor\_new@{PrintSymbolsVisitor\_new}}
+\index{PrintSymbolsVisitor\_new@{PrintSymbolsVisitor\_new}!symbol.h@{symbol.h}}
+\doxysubsubsection{\texorpdfstring{PrintSymbolsVisitor\_new()}{PrintSymbolsVisitor\_new()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_node_visitor}{Node\+Visitor}} \texorpdfstring{$\ast$}{*} Print\+Symbols\+Visitor\+\_\+new (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{output }\end{DoxyParamCaption})}
+
+
+
+Create a new visitor that prints symbol tables. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em output} & File stream for the print output \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to visitor structure 
+\end{DoxyReturn}
+\Hypertarget{symbol_8h_a597e2e753cbd65912bbfb4afb9a553f5}\label{symbol_8h_a597e2e753cbd65912bbfb4afb9a553f5} 
+\index{symbol.h@{symbol.h}!Symbol\_new@{Symbol\_new}}
+\index{Symbol\_new@{Symbol\_new}!symbol.h@{symbol.h}}
+\doxysubsubsection{\texorpdfstring{Symbol\_new()}{Symbol\_new()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_symbol}{Symbol}} \texorpdfstring{$\ast$}{*} Symbol\+\_\+new (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name,  }\item[{\mbox{\hyperlink{common_8h_af5878fbe98f23b780b60624fce56a45e}{Decaf\+Type}}}]{type }\end{DoxyParamCaption})}
+
+
+
+Create a new scalar symbol. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name in source code \\
+\hline
+{\em type} & Data type \\
+\hline
+\end{DoxyParams}
+\Hypertarget{symbol_8h_af6a2d771b6ba0df2533472e4a688b0d0}\label{symbol_8h_af6a2d771b6ba0df2533472e4a688b0d0} 
+\index{symbol.h@{symbol.h}!Symbol\_new\_array@{Symbol\_new\_array}}
+\index{Symbol\_new\_array@{Symbol\_new\_array}!symbol.h@{symbol.h}}
+\doxysubsubsection{\texorpdfstring{Symbol\_new\_array()}{Symbol\_new\_array()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_symbol}{Symbol}} \texorpdfstring{$\ast$}{*} Symbol\+\_\+new\+\_\+array (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name,  }\item[{\mbox{\hyperlink{common_8h_af5878fbe98f23b780b60624fce56a45e}{Decaf\+Type}}}]{type,  }\item[{int}]{length }\end{DoxyParamCaption})}
+
+
+
+Create a new array symbol. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name in source code \\
+\hline
+{\em type} & Data type \\
+\hline
+{\em length} & Array length \\
+\hline
+\end{DoxyParams}
+\Hypertarget{symbol_8h_ac15b37632b8b77f45225b986dd3b825a}\label{symbol_8h_ac15b37632b8b77f45225b986dd3b825a} 
+\index{symbol.h@{symbol.h}!Symbol\_new\_function@{Symbol\_new\_function}}
+\index{Symbol\_new\_function@{Symbol\_new\_function}!symbol.h@{symbol.h}}
+\doxysubsubsection{\texorpdfstring{Symbol\_new\_function()}{Symbol\_new\_function()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_symbol}{Symbol}} \texorpdfstring{$\ast$}{*} Symbol\+\_\+new\+\_\+function (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name,  }\item[{\mbox{\hyperlink{common_8h_af5878fbe98f23b780b60624fce56a45e}{Decaf\+Type}}}]{return\+\_\+type,  }\item[{\mbox{\hyperlink{struct_parameter_list}{Parameter\+List}} \texorpdfstring{$\ast$}{*}}]{parameters }\end{DoxyParamCaption})}
+
+
+
+Create a new function symbol. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name in source code \\
+\hline
+{\em return\+\_\+type} & Function return type \\
+\hline
+{\em parameters} & List of formal parameter names and data types \\
+\hline
+\end{DoxyParams}
+\Hypertarget{symbol_8h_a6d413e0b197676609aff2fab9cd07cf2}\label{symbol_8h_a6d413e0b197676609aff2fab9cd07cf2} 
+\index{symbol.h@{symbol.h}!SymbolTable\_insert@{SymbolTable\_insert}}
+\index{SymbolTable\_insert@{SymbolTable\_insert}!symbol.h@{symbol.h}}
+\doxysubsubsection{\texorpdfstring{SymbolTable\_insert()}{SymbolTable\_insert()}}
+{\footnotesize\ttfamily void Symbol\+Table\+\_\+insert (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_symbol_table}{Symbol\+Table}} \texorpdfstring{$\ast$}{*}}]{table,  }\item[{\mbox{\hyperlink{struct_symbol}{Symbol}} \texorpdfstring{$\ast$}{*}}]{symbol }\end{DoxyParamCaption})}
+
+
+
+Add a symbol to a table. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & \doxylink{struct_symbol}{Symbol} table to insert the symbol into \\
+\hline
+{\em symbol} & \doxylink{struct_symbol}{Symbol} to insert \\
+\hline
+\end{DoxyParams}
+\Hypertarget{symbol_8h_a153497121ac092063f1d89cf0b6f3ec3}\label{symbol_8h_a153497121ac092063f1d89cf0b6f3ec3} 
+\index{symbol.h@{symbol.h}!SymbolTable\_lookup@{SymbolTable\_lookup}}
+\index{SymbolTable\_lookup@{SymbolTable\_lookup}!symbol.h@{symbol.h}}
+\doxysubsubsection{\texorpdfstring{SymbolTable\_lookup()}{SymbolTable\_lookup()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_symbol}{Symbol}} \texorpdfstring{$\ast$}{*} Symbol\+Table\+\_\+lookup (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_symbol_table}{Symbol\+Table}} \texorpdfstring{$\ast$}{*}}]{table,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{name }\end{DoxyParamCaption})}
+
+
+
+Retrieve a symbol from a table. 
+
+Looks through parent tables if the symbol is not found in the local table.
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & \doxylink{struct_symbol}{Symbol} table to search \\
+\hline
+{\em name} & Name of symbol to find \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The \doxylink{struct_symbol}{Symbol} if found, otherwise {\ttfamily NULL} 
+\end{DoxyReturn}
+\Hypertarget{symbol_8h_a589b14d38d1e02bded323878e99dfe56}\label{symbol_8h_a589b14d38d1e02bded323878e99dfe56} 
+\index{symbol.h@{symbol.h}!SymbolTable\_new\_child@{SymbolTable\_new\_child}}
+\index{SymbolTable\_new\_child@{SymbolTable\_new\_child}!symbol.h@{symbol.h}}
+\doxysubsubsection{\texorpdfstring{SymbolTable\_new\_child()}{SymbolTable\_new\_child()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_symbol_table}{Symbol\+Table}} \texorpdfstring{$\ast$}{*} Symbol\+Table\+\_\+new\+\_\+child (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_symbol_table}{Symbol\+Table}} \texorpdfstring{$\ast$}{*}}]{parent }\end{DoxyParamCaption})}
+
+
+
+Create a new symbol table with a parent link. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & Pointer to parent table \\
+\hline
+\end{DoxyParams}

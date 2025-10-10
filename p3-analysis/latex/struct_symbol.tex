@@ -1,0 +1,64 @@
+\doxysection{Symbol Struct Reference}
+\hypertarget{struct_symbol}{}\label{struct_symbol}\index{Symbol@{Symbol}}
+
+
+Single Decaf symbol.  
+
+
+
+
+{\ttfamily \#include $<$symbol.\+h$>$}
+
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{struct_symbol_a41a1022cd2a3b90ad4f6af09b256d255}\label{struct_symbol_a41a1022cd2a3b90ad4f6af09b256d255} 
+enum \{ {\bfseries SCALAR\+\_\+\+SYMBOL}
+, {\bfseries ARRAY\+\_\+\+SYMBOL}
+, {\bfseries FUNCTION\+\_\+\+SYMBOL}
+ \}
+\begin{DoxyCompactList}\small\item\em Kind of symbol (scalar, array, or function) \end{DoxyCompactList}\item 
+\Hypertarget{struct_symbol_a2190e7eb34b4f999413195f2bfe32284}\label{struct_symbol_a2190e7eb34b4f999413195f2bfe32284} 
+enum \{ {\bfseries UNKNOWN\+\_\+\+LOC}
+, {\bfseries STATIC\+\_\+\+VAR}
+, {\bfseries STACK\+\_\+\+PARAM}
+, {\bfseries STACK\+\_\+\+LOCAL}
+ \}
+\begin{DoxyCompactList}\small\item\em Memory access location (initialized during code generation) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{struct_symbol_ae7187cad86748eb9e4108f1d265b17d0}\label{struct_symbol_ae7187cad86748eb9e4108f1d265b17d0} 
+enum Symbol\+:: \{ ... \}  {\bfseries symbol\+\_\+type}
+\begin{DoxyCompactList}\small\item\em Kind of symbol (scalar, array, or function) \end{DoxyCompactList}\item 
+\Hypertarget{struct_symbol_a5a88862742d0cf994ab94e104325496c}\label{struct_symbol_a5a88862742d0cf994ab94e104325496c} 
+char {\bfseries name} \mbox{[}256\mbox{]}
+\begin{DoxyCompactList}\small\item\em Name of symbol in code. \end{DoxyCompactList}\item 
+\Hypertarget{struct_symbol_a80838a102791e6de641647ad8ef530be}\label{struct_symbol_a80838a102791e6de641647ad8ef530be} 
+\mbox{\hyperlink{common_8h_af5878fbe98f23b780b60624fce56a45e}{Decaf\+Type}} {\bfseries type}
+\begin{DoxyCompactList}\small\item\em Variable or function return type. \end{DoxyCompactList}\item 
+\Hypertarget{struct_symbol_a06723e60c98de2bf09c71ec47844d555}\label{struct_symbol_a06723e60c98de2bf09c71ec47844d555} 
+int {\bfseries length}
+\begin{DoxyCompactList}\small\item\em Length (for array symbols only) \end{DoxyCompactList}\item 
+\Hypertarget{struct_symbol_a11e883ddf05e7493e225581670e46846}\label{struct_symbol_a11e883ddf05e7493e225581670e46846} 
+\mbox{\hyperlink{struct_parameter_list}{Parameter\+List}} \texorpdfstring{$\ast$}{*} {\bfseries parameters}
+\begin{DoxyCompactList}\small\item\em List of parameters (for function symbols only) \end{DoxyCompactList}\item 
+\Hypertarget{struct_symbol_ae1cff0cb1e9b3b47ed6acc0f44a5ef4d}\label{struct_symbol_ae1cff0cb1e9b3b47ed6acc0f44a5ef4d} 
+enum Symbol\+:: \{ ... \}  {\bfseries location}
+\begin{DoxyCompactList}\small\item\em Memory access location (initialized during code generation) \end{DoxyCompactList}\item 
+\Hypertarget{struct_symbol_aff81931a602a225a6087fdddbbd4fb63}\label{struct_symbol_aff81931a602a225a6087fdddbbd4fb63} 
+int {\bfseries offset}
+\begin{DoxyCompactList}\small\item\em Memory offset (initialized during code generation) \end{DoxyCompactList}\item 
+\Hypertarget{struct_symbol_af5a223ab45f0e4f002dbe8108c6085a9}\label{struct_symbol_af5a223ab45f0e4f002dbe8108c6085a9} 
+struct \mbox{\hyperlink{struct_symbol}{Symbol}} \texorpdfstring{$\ast$}{*} {\bfseries next}
+\begin{DoxyCompactList}\small\item\em Next symbol (if stored in a list) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Single Decaf symbol. 
+
+Might represent a scalar variable, an array, or a formal function parameter. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{symbol_8h}{symbol.\+h}}\end{DoxyCompactItemize}

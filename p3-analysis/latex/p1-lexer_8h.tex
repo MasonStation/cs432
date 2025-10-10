@@ -1,0 +1,40 @@
+\doxysection{include/p1-\/lexer.h File Reference}
+\hypertarget{p1-lexer_8h}{}\label{p1-lexer_8h}\index{include/p1-\/lexer.h@{include/p1-\/lexer.h}}
+
+
+Interface for Project 1 (Lexer)  
+
+
+{\ttfamily \#include "{}common.\+h"{}}\newline
+{\ttfamily \#include "{}token.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_token_queue}{Token\+Queue}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{p1-lexer_8h_a94fe6e8f60839b8f67f8e8196751b9dc}{lex}} (const char \texorpdfstring{$\ast$}{*}text)
+\begin{DoxyCompactList}\small\item\em Convert a string containing a Decaf program into a queue of tokens. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface for Project 1 (Lexer) 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{p1-lexer_8h_a94fe6e8f60839b8f67f8e8196751b9dc}\label{p1-lexer_8h_a94fe6e8f60839b8f67f8e8196751b9dc} 
+\index{p1-\/lexer.h@{p1-\/lexer.h}!lex@{lex}}
+\index{lex@{lex}!p1-\/lexer.h@{p1-\/lexer.h}}
+\doxysubsubsection{\texorpdfstring{lex()}{lex()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_token_queue}{Token\+Queue}} \texorpdfstring{$\ast$}{*} lex (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{text }\end{DoxyParamCaption})}
+
+
+
+Convert a string containing a Decaf program into a queue of tokens. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & String to lex \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Newly-\/created queue of tokens 
+\end{DoxyReturn}

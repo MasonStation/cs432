@@ -5,4 +5,4 @@
 
 run_test    D_undefined_var             "inputs/undefined_var.decaf"
 run_test    B_add                       "inputs/add.decaf"
-
+run_test    t1                          "inputs/t1.decaf"

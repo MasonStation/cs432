@@ -1,0 +1,33 @@
+\doxysection{Conditional\+Node Struct Reference}
+\hypertarget{struct_conditional_node}{}\label{struct_conditional_node}\index{ConditionalNode@{ConditionalNode}}
+
+
+AST conditional structure.  
+
+
+
+
+{\ttfamily \#include $<$ast.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{struct_conditional_node_a0f76118e1f787b5caae71d7e61ee28fe}\label{struct_conditional_node_a0f76118e1f787b5caae71d7e61ee28fe} 
+struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*} {\bfseries condition}
+\begin{DoxyCompactList}\small\item\em Guard condition (expression) \end{DoxyCompactList}\item 
+\Hypertarget{struct_conditional_node_abe5aa1942e800e45ad951c1525b179f6}\label{struct_conditional_node_abe5aa1942e800e45ad951c1525b179f6} 
+struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*} {\bfseries if\+\_\+block}
+\begin{DoxyCompactList}\small\item\em Block to be executed if the condition is true. \end{DoxyCompactList}\item 
+\Hypertarget{struct_conditional_node_a9c1508c01769fb17ad3aadb3ba2425a6}\label{struct_conditional_node_a9c1508c01769fb17ad3aadb3ba2425a6} 
+struct \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*} {\bfseries else\+\_\+block}
+\begin{DoxyCompactList}\small\item\em Block to be executed if the condition is false (can be {\ttfamily NULL} if there is no else-\/block) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+AST conditional structure. 
+
+{\ttfamily else\+\_\+block} can be {\ttfamily NULL} for {\ttfamily if} statements with no {\ttfamily else} clause. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{ast_8h}{ast.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,274 @@
+\doxysection{include/common.h File Reference}
+\hypertarget{common_8h}{}\label{common_8h}\index{include/common.h@{include/common.h}}
+
+
+Includes, constants, declarations, and macros used across the compiler.  
+
+
+{\ttfamily \#include $<$inttypes.\+h$>$}\newline
+{\ttfamily \#include $<$regex.\+h$>$}\newline
+{\ttfamily \#include $<$setjmp.\+h$>$}\newline
+{\ttfamily \#include $<$stdarg.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{common_8h_a649ad5274d988d17a275a3cead056746}\label{common_8h_a649ad5274d988d17a275a3cead056746} 
+\#define {\bfseries MAX\+\_\+\+FILE\+\_\+\+SIZE}~65536
+\begin{DoxyCompactList}\small\item\em Maximum size (in bytes) of any Decaf source file. \end{DoxyCompactList}\item 
+\Hypertarget{common_8h_a09a3b394b8602092d58347b791158062}\label{common_8h_a09a3b394b8602092d58347b791158062} 
+\#define {\bfseries MAX\+\_\+\+LINE\+\_\+\+LEN}~256
+\begin{DoxyCompactList}\small\item\em Maximum length (in characters) of any single line of input. \end{DoxyCompactList}\item 
+\Hypertarget{common_8h_a3f6d16dfdf7920e1e5f1dad5db5347f2}\label{common_8h_a3f6d16dfdf7920e1e5f1dad5db5347f2} 
+\#define {\bfseries MAX\+\_\+\+TOKEN\+\_\+\+LEN}~256
+\begin{DoxyCompactList}\small\item\em Maximum length (in characters) of any single token. \end{DoxyCompactList}\item 
+\Hypertarget{common_8h_a5a780ff4bf3f3cf2974013aa3d9d0ad8}\label{common_8h_a5a780ff4bf3f3cf2974013aa3d9d0ad8} 
+\#define {\bfseries MAX\+\_\+\+ERROR\+\_\+\+LEN}~256
+\begin{DoxyCompactList}\small\item\em Maximum length (in characters) of any error message. \end{DoxyCompactList}\item 
+\Hypertarget{common_8h_acfc3ef13b0eb501f6f6a5411406c9cd7}\label{common_8h_acfc3ef13b0eb501f6f6a5411406c9cd7} 
+\#define {\bfseries MAX\+\_\+\+ID\+\_\+\+LEN}~256
+\begin{DoxyCompactList}\small\item\em Maximum length (in characters) of any identifier. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{common_8h_a02fc3c0b85b09b0c8b0974cec8e50f5a}{CHECK\+\_\+\+MALLOC\+\_\+\+PTR}}(P)
+\begin{DoxyCompactList}\small\item\em Check a pointer for NULL and terminate with an out-\/of-\/memory error. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{common_8h_a5b884a3b26bea1cf003390ebc9d2c09e}{DECL\+\_\+\+LIST\+\_\+\+TYPE}}(NAME,  ELEMTYPE)
+\begin{DoxyCompactList}\small\item\em Declare a singly-\/linked list structure of the given type. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{common_8h_aa81f8efad4b3ec079c1b572d06ac1b60}{DEF\+\_\+\+LIST\+\_\+\+IMPL}}(NAME,  ELEMTYPE,  FREEFUNC)
+\begin{DoxyCompactList}\small\item\em Define a list implementation. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{common_8h_af5e8486fb55d3714d4bab796f0dcfede}{FOR\+\_\+\+EACH}}(TYPE,  VARIABLE,  CONTAINER)
+\begin{DoxyCompactList}\small\item\em Set up a for-\/each style loop over a singly-\/linked list. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef enum \mbox{\hyperlink{common_8h_af5878fbe98f23b780b60624fce56a45e}{Decaf\+Type}} \mbox{\hyperlink{common_8h_a2a00090fcaf9a32ce50942eab66d1f76}{Decaf\+Type}}
+\begin{DoxyCompactList}\small\item\em Valid Decaf types. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{common_8h_af5878fbe98f23b780b60624fce56a45e}{Decaf\+Type}} \{ \newline
+{\bfseries UNKNOWN}
+, {\bfseries INT}
+, {\bfseries BOOL}
+, {\bfseries VOID}
+, \newline
+{\bfseries STR}
+ \}
+\begin{DoxyCompactList}\small\item\em Valid Decaf types. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{common_8h_ae4d5f5c8f6c4f9679174f22a73952f1b}{Decaf\+Type\+\_\+to\+\_\+string}} (\mbox{\hyperlink{common_8h_af5878fbe98f23b780b60624fce56a45e}{Decaf\+Type}} type)
+\begin{DoxyCompactList}\small\item\em Convert a Decaf type to a string for output. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{common_8h_ac2dc33991ba3b54583d4fc8951e92714}{print\+\_\+escaped\+\_\+string}} (const char \texorpdfstring{$\ast$}{*}string, FILE \texorpdfstring{$\ast$}{*}output)
+\begin{DoxyCompactList}\small\item\em Print a Decaf string literal, inserting escape codes as necessary. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{common_8h_a6b628d8dac492f0c37854d2772384393}{print\+\_\+doubly\+\_\+escaped\+\_\+string}} (const char \texorpdfstring{$\ast$}{*}string, FILE \texorpdfstring{$\ast$}{*}output)
+\begin{DoxyCompactList}\small\item\em Print a Decaf string literal, inserting double escape codes as necessary. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{common_8h_a023af5b30140788044b1702f78bf67d2}{Error\+\_\+throw\+\_\+printf}} (const char \texorpdfstring{$\ast$}{*}format,...)
+\begin{DoxyCompactList}\small\item\em Throw an exception with an error message using {\ttfamily printf} syntax. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Includes, constants, declarations, and macros used across the compiler. 
+
+This module declares a list of standard C library dependencies used by most modules, a list of constants used across the compiler, a couple of utility functions, and several useful macros. 
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{common_8h_a02fc3c0b85b09b0c8b0974cec8e50f5a}\label{common_8h_a02fc3c0b85b09b0c8b0974cec8e50f5a} 
+\index{common.h@{common.h}!CHECK\_MALLOC\_PTR@{CHECK\_MALLOC\_PTR}}
+\index{CHECK\_MALLOC\_PTR@{CHECK\_MALLOC\_PTR}!common.h@{common.h}}
+\doxysubsubsection{\texorpdfstring{CHECK\_MALLOC\_PTR}{CHECK\_MALLOC\_PTR}}
+{\footnotesize\ttfamily \#define CHECK\+\_\+\+MALLOC\+\_\+\+PTR(\begin{DoxyParamCaption}\item[{}]{P }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (P\ ==\ NULL)\ \{\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Out\ of\ memory!\(\backslash\)n"{}});\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ exit(EXIT\_FAILURE);\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+Check a pointer for NULL and terminate with an out-\/of-\/memory error. 
+
+This is meant to be called immediately after a malloc/calloc call. \Hypertarget{common_8h_a5b884a3b26bea1cf003390ebc9d2c09e}\label{common_8h_a5b884a3b26bea1cf003390ebc9d2c09e} 
+\index{common.h@{common.h}!DECL\_LIST\_TYPE@{DECL\_LIST\_TYPE}}
+\index{DECL\_LIST\_TYPE@{DECL\_LIST\_TYPE}!common.h@{common.h}}
+\doxysubsubsection{\texorpdfstring{DECL\_LIST\_TYPE}{DECL\_LIST\_TYPE}}
+{\footnotesize\ttfamily \#define DECL\+\_\+\+LIST\+\_\+\+TYPE(\begin{DoxyParamCaption}\item[{}]{NAME,  }\item[{}]{ELEMTYPE }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }NAME\ \#\#\ List\ \{\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ELEMTYPE\ head;\ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ELEMTYPE\ tail;\ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ size;\ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}\ NAME\ \#\#\ List;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \(\backslash\)}
+ \(\backslash\)\DoxyCodeLine{\ \ \ \ NAME\ \#\#\ List*\ NAME\ \#\#\ List\_new\ (\textcolor{keywordtype}{void});\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \(\backslash\)}
+ \(\backslash\)\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ NAME\ \#\#\ List\_add\ (NAME\ \#\#\ List*\ list,\ ELEMTYPE\ item);\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \(\backslash\)}
+ \(\backslash\)\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{int}\ NAME\ \#\#\ List\_size\ (NAME\ \#\#\ List*\ list);\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \(\backslash\)}
+ \(\backslash\)\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{bool}\ NAME\ \#\#\ List\_is\_empty\ (NAME\ \#\#\ List*\ list);\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \(\backslash\)}
+ \(\backslash\)\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ NAME\ \#\#\ List\_free\ (NAME\ \#\#\ List*\ list);}
+
+\end{DoxyCode}
+
+
+Declare a singly-\/linked list structure of the given type. 
+
+This avoids having to declare a separate structure for every type that we need to be able to store in lists.
+
+
+\begin{DoxyParams}{Parameters}
+{\em NAME} & Prefix for the list struct name (actual name will be {\ttfamily NAMEList}) \\
+\hline
+{\em ELEMTYPE} & Type of the elements to be stored (usually a struct pointer) \\
+\hline
+\end{DoxyParams}
+\Hypertarget{common_8h_aa81f8efad4b3ec079c1b572d06ac1b60}\label{common_8h_aa81f8efad4b3ec079c1b572d06ac1b60} 
+\index{common.h@{common.h}!DEF\_LIST\_IMPL@{DEF\_LIST\_IMPL}}
+\index{DEF\_LIST\_IMPL@{DEF\_LIST\_IMPL}!common.h@{common.h}}
+\doxysubsubsection{\texorpdfstring{DEF\_LIST\_IMPL}{DEF\_LIST\_IMPL}}
+{\footnotesize\ttfamily \#define DEF\+\_\+\+LIST\+\_\+\+IMPL(\begin{DoxyParamCaption}\item[{}]{NAME,  }\item[{}]{ELEMTYPE,  }\item[{}]{FREEFUNC }\end{DoxyParamCaption})}
+
+
+
+Define a list implementation. 
+
+This avoids having to implement a separate structure for every type that we need to be able to store in lists.
+
+Requirement\+: {\ttfamily ELEMTYPE} must be a pointer to a struct with a self-\/referencing {\ttfamily next} pointer.
+
+
+\begin{DoxyParams}{Parameters}
+{\em NAME} & Prefix for the list struct name (actual name will be {\ttfamily NAMEList}) \\
+\hline
+{\em ELEMTYPE} & Type of the elements to be stored (must be a struct pointer) \\
+\hline
+{\em FREEFUNC} & Name of the function to call to deallocate each element \\
+\hline
+\end{DoxyParams}
+\Hypertarget{common_8h_af5e8486fb55d3714d4bab796f0dcfede}\label{common_8h_af5e8486fb55d3714d4bab796f0dcfede} 
+\index{common.h@{common.h}!FOR\_EACH@{FOR\_EACH}}
+\index{FOR\_EACH@{FOR\_EACH}!common.h@{common.h}}
+\doxysubsubsection{\texorpdfstring{FOR\_EACH}{FOR\_EACH}}
+{\footnotesize\ttfamily \#define FOR\+\_\+\+EACH(\begin{DoxyParamCaption}\item[{}]{TYPE,  }\item[{}]{VARIABLE,  }\item[{}]{CONTAINER }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{for}\ (TYPE\ VARIABLE\ =\ (CONTAINER)-\/>head;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ VARIABLE\ !=\ NULL;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ VARIABLE\ =\ VARIABLE-\/>next)}
+
+\end{DoxyCode}
+
+
+Set up a for-\/each style loop over a singly-\/linked list. 
+
+Works for all structures declared and implemented with \doxylink{common_8h_a5b884a3b26bea1cf003390ebc9d2c09e}{DECL\+\_\+\+LIST\+\_\+\+TYPE} and \doxylink{common_8h_aa81f8efad4b3ec079c1b572d06ac1b60}{DEF\+\_\+\+LIST\+\_\+\+IMPL}. 
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{common_8h_a2a00090fcaf9a32ce50942eab66d1f76}\label{common_8h_a2a00090fcaf9a32ce50942eab66d1f76} 
+\index{common.h@{common.h}!DecafType@{DecafType}}
+\index{DecafType@{DecafType}!common.h@{common.h}}
+\doxysubsubsection{\texorpdfstring{DecafType}{DecafType}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{common_8h_af5878fbe98f23b780b60624fce56a45e}{Decaf\+Type}} \mbox{\hyperlink{common_8h_af5878fbe98f23b780b60624fce56a45e}{Decaf\+Type}}}
+
+
+
+Valid Decaf types. 
+
+Variables can only be {\ttfamily INT} or {\ttfamily BOOL}; the others are included for tracking the return type of a {\ttfamily void} function or the type of a parameter to {\ttfamily print\+\_\+str}. 
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{common_8h_af5878fbe98f23b780b60624fce56a45e}\label{common_8h_af5878fbe98f23b780b60624fce56a45e} 
+\index{common.h@{common.h}!DecafType@{DecafType}}
+\index{DecafType@{DecafType}!common.h@{common.h}}
+\doxysubsubsection{\texorpdfstring{DecafType}{DecafType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{common_8h_af5878fbe98f23b780b60624fce56a45e}{Decaf\+Type}}}
+
+
+
+Valid Decaf types. 
+
+Variables can only be {\ttfamily INT} or {\ttfamily BOOL}; the others are included for tracking the return type of a {\ttfamily void} function or the type of a parameter to {\ttfamily print\+\_\+str}. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{common_8h_ae4d5f5c8f6c4f9679174f22a73952f1b}\label{common_8h_ae4d5f5c8f6c4f9679174f22a73952f1b} 
+\index{common.h@{common.h}!DecafType\_to\_string@{DecafType\_to\_string}}
+\index{DecafType\_to\_string@{DecafType\_to\_string}!common.h@{common.h}}
+\doxysubsubsection{\texorpdfstring{DecafType\_to\_string()}{DecafType\_to\_string()}}
+{\footnotesize\ttfamily const char \texorpdfstring{$\ast$}{*} Decaf\+Type\+\_\+to\+\_\+string (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{common_8h_af5878fbe98f23b780b60624fce56a45e}{Decaf\+Type}}}]{type }\end{DoxyParamCaption})}
+
+
+
+Convert a Decaf type to a string for output. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & Type to convert \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Static const string representation of the given type 
+\end{DoxyReturn}
+\Hypertarget{common_8h_a023af5b30140788044b1702f78bf67d2}\label{common_8h_a023af5b30140788044b1702f78bf67d2} 
+\index{common.h@{common.h}!Error\_throw\_printf@{Error\_throw\_printf}}
+\index{Error\_throw\_printf@{Error\_throw\_printf}!common.h@{common.h}}
+\doxysubsubsection{\texorpdfstring{Error\_throw\_printf()}{Error\_throw\_printf()}}
+{\footnotesize\ttfamily void Error\+\_\+throw\+\_\+printf (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{format,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+
+
+Throw an exception with an error message using {\ttfamily printf} syntax. 
+
+This function uses the {\ttfamily longjmp} functionality in the standard C library to implement exception handling for the lexing and parsing phases. The code that might throw an exception must be wrapped in a {\ttfamily setjmp} block.
+
+Because this function must have access to the {\ttfamily jmp\+\_\+buf} used to connect the {\ttfamily setjmp} callsite with the {\ttfamily longjmp}, this function must be implemented in the compiler or test driver (where the {\ttfamily setjmp} call will be) in other to avoid having an {\ttfamily extern} static variable. Thus, there is no implementation in {\ttfamily common.\+c}, and it is only declared here so that it can be called in the various front end phases of compilation.
+
+Throw an exception with an error message using {\ttfamily printf} syntax.
+
+This function is declared in \doxylink{common_8h}{common.\+h} but must be defined here in \doxylink{main_8c}{main.\+c} because that\textquotesingle{}s where the {\ttfamily jmp\+\_\+buf} declaration is. \Hypertarget{common_8h_a6b628d8dac492f0c37854d2772384393}\label{common_8h_a6b628d8dac492f0c37854d2772384393} 
+\index{common.h@{common.h}!print\_doubly\_escaped\_string@{print\_doubly\_escaped\_string}}
+\index{print\_doubly\_escaped\_string@{print\_doubly\_escaped\_string}!common.h@{common.h}}
+\doxysubsubsection{\texorpdfstring{print\_doubly\_escaped\_string()}{print\_doubly\_escaped\_string()}}
+{\footnotesize\ttfamily void print\+\_\+doubly\+\_\+escaped\+\_\+string (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{string,  }\item[{FILE \texorpdfstring{$\ast$}{*}}]{output }\end{DoxyParamCaption})}
+
+
+
+Print a Decaf string literal, inserting double escape codes as necessary. 
+
+This is primarily useful for AST output w/ string literals and/or ILOC code.
+
+
+\begin{DoxyParams}{Parameters}
+{\em string} & String literal to print \\
+\hline
+{\em output} & File stream to print the string to \\
+\hline
+\end{DoxyParams}
+\Hypertarget{common_8h_ac2dc33991ba3b54583d4fc8951e92714}\label{common_8h_ac2dc33991ba3b54583d4fc8951e92714} 
+\index{common.h@{common.h}!print\_escaped\_string@{print\_escaped\_string}}
+\index{print\_escaped\_string@{print\_escaped\_string}!common.h@{common.h}}
+\doxysubsubsection{\texorpdfstring{print\_escaped\_string()}{print\_escaped\_string()}}
+{\footnotesize\ttfamily void print\+\_\+escaped\+\_\+string (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{string,  }\item[{FILE \texorpdfstring{$\ast$}{*}}]{output }\end{DoxyParamCaption})}
+
+
+
+Print a Decaf string literal, inserting escape codes as necessary. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em string} & String literal to print \\
+\hline
+{\em output} & File stream to print the string to \\
+\hline
+\end{DoxyParams}

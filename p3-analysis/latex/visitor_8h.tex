@@ -1,0 +1,192 @@
+\doxysection{include/visitor.h File Reference}
+\hypertarget{visitor_8h}{}\label{visitor_8h}\index{include/visitor.h@{include/visitor.h}}
+
+
+AST visitors.  
+
+
+{\ttfamily \#include "{}ast.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_node_visitor}{Node\+Visitor}}
+\begin{DoxyCompactList}\small\item\em Node visitor structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{struct_node_visitor}{Node\+Visitor}} \mbox{\hyperlink{visitor_8h_a3bf40decae7b6eea63805965f4f446a7}{Node\+Visitor}}
+\begin{DoxyCompactList}\small\item\em Node visitor structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_node_visitor}{Node\+Visitor}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{visitor_8h_a6be3c4aba46dfa123d839ec0a0a54122}{Node\+Visitor\+\_\+new}} (void)
+\begin{DoxyCompactList}\small\item\em Allocate a new generic visitor structure. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{visitor_8h_aff996ea6c828cd55a96b935b99ce8a77}{Node\+Visitor\+\_\+traverse}} (\mbox{\hyperlink{struct_node_visitor}{Node\+Visitor}} \texorpdfstring{$\ast$}{*}visitor, \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}node)
+\begin{DoxyCompactList}\small\item\em Perform an AST traversal using the given visitor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{visitor_8h_a47a3ff928be5b896d543354ce2220c98}{Node\+Visitor\+\_\+traverse\+\_\+and\+\_\+free}} (\mbox{\hyperlink{struct_node_visitor}{Node\+Visitor}} \texorpdfstring{$\ast$}{*}visitor, \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}node)
+\begin{DoxyCompactList}\small\item\em Perform an AST traversal using the given visitor and then deallocate the visitor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{visitor_8h_a2194070001f06fee9f294f5f3cbeb869}{Node\+Visitor\+\_\+free}} (\mbox{\hyperlink{struct_node_visitor}{Node\+Visitor}} \texorpdfstring{$\ast$}{*}visitor)
+\begin{DoxyCompactList}\small\item\em Deallocate a visitor structure. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_node_visitor}{Node\+Visitor}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{visitor_8h_aed1f36acc8ae668c96162d9701ee13fc}{Print\+Visitor\+\_\+new}} (FILE \texorpdfstring{$\ast$}{*}output)
+\begin{DoxyCompactList}\small\item\em Create a new AST debug print visitor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_node_visitor}{Node\+Visitor}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{visitor_8h_aecfcbd48a779d9695ec84b8fd425b5fc}{Generate\+ASTGraph\+\_\+new}} (FILE \texorpdfstring{$\ast$}{*}output)
+\begin{DoxyCompactList}\small\item\em Create a new AST debug graph output visitor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_node_visitor}{Node\+Visitor}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{visitor_8h_a96e09b155c00dd3db230909a1838d7a0}{Set\+Parent\+Visitor\+\_\+new}} (void)
+\begin{DoxyCompactList}\small\item\em Create a new visitor that sets up parent pointers as attributes. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_node_visitor}{Node\+Visitor}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{visitor_8h_a790a3851372e08ceec4b98fb81107290}{Calc\+Depth\+Visitor\+\_\+new}} (void)
+\begin{DoxyCompactList}\small\item\em Create a new visitor that calculates node depths as attributes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+AST visitors. 
+
+This module provides declarations of AST visitors. It is not strictly necessary to understand these for Project 2 (parsing), but they are included because the debug output is implemented as a visitor. The declarations in this file will be will be critical for Projects 3 (static analysis) and 4 (code generation). 
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{visitor_8h_a3bf40decae7b6eea63805965f4f446a7}\label{visitor_8h_a3bf40decae7b6eea63805965f4f446a7} 
+\index{visitor.h@{visitor.h}!NodeVisitor@{NodeVisitor}}
+\index{NodeVisitor@{NodeVisitor}!visitor.h@{visitor.h}}
+\doxysubsubsection{\texorpdfstring{NodeVisitor}{NodeVisitor}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct_node_visitor}{Node\+Visitor}} \mbox{\hyperlink{struct_node_visitor}{Node\+Visitor}}}
+
+
+
+Node visitor structure. 
+
+A visitor is basically a collection of function pointers that are invoked as the visitor traverses the AST. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{visitor_8h_a790a3851372e08ceec4b98fb81107290}\label{visitor_8h_a790a3851372e08ceec4b98fb81107290} 
+\index{visitor.h@{visitor.h}!CalcDepthVisitor\_new@{CalcDepthVisitor\_new}}
+\index{CalcDepthVisitor\_new@{CalcDepthVisitor\_new}!visitor.h@{visitor.h}}
+\doxysubsubsection{\texorpdfstring{CalcDepthVisitor\_new()}{CalcDepthVisitor\_new()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_node_visitor}{Node\+Visitor}} \texorpdfstring{$\ast$}{*} Calc\+Depth\+Visitor\+\_\+new (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Create a new visitor that calculates node depths as attributes. 
+
+These depths are used during debug output.
+
+\begin{DoxyReturn}{Returns}
+Pointer to visitor structure 
+\end{DoxyReturn}
+\Hypertarget{visitor_8h_aecfcbd48a779d9695ec84b8fd425b5fc}\label{visitor_8h_aecfcbd48a779d9695ec84b8fd425b5fc} 
+\index{visitor.h@{visitor.h}!GenerateASTGraph\_new@{GenerateASTGraph\_new}}
+\index{GenerateASTGraph\_new@{GenerateASTGraph\_new}!visitor.h@{visitor.h}}
+\doxysubsubsection{\texorpdfstring{GenerateASTGraph\_new()}{GenerateASTGraph\_new()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_node_visitor}{Node\+Visitor}} \texorpdfstring{$\ast$}{*} Generate\+ASTGraph\+\_\+new (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{output }\end{DoxyParamCaption})}
+
+
+
+Create a new AST debug graph output visitor. 
+
+The output is in DOT format\+: \href{https://graphviz.org}{\texttt{ https\+://graphviz.\+org}}
+
+To convert the output to a PNG (for example)\+: \begin{DoxyVerb}dot -Tpng -o ast.png ast.dot
+\end{DoxyVerb}
+ 
+\begin{DoxyParams}{Parameters}
+{\em output} & File stream for the DOT output \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to visitor structure 
+\end{DoxyReturn}
+\Hypertarget{visitor_8h_a2194070001f06fee9f294f5f3cbeb869}\label{visitor_8h_a2194070001f06fee9f294f5f3cbeb869} 
+\index{visitor.h@{visitor.h}!NodeVisitor\_free@{NodeVisitor\_free}}
+\index{NodeVisitor\_free@{NodeVisitor\_free}!visitor.h@{visitor.h}}
+\doxysubsubsection{\texorpdfstring{NodeVisitor\_free()}{NodeVisitor\_free()}}
+{\footnotesize\ttfamily void Node\+Visitor\+\_\+free (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_node_visitor}{Node\+Visitor}} \texorpdfstring{$\ast$}{*}}]{visitor }\end{DoxyParamCaption})}
+
+
+
+Deallocate a visitor structure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em visitor} & Visitor to deallocate \\
+\hline
+\end{DoxyParams}
+\Hypertarget{visitor_8h_a6be3c4aba46dfa123d839ec0a0a54122}\label{visitor_8h_a6be3c4aba46dfa123d839ec0a0a54122} 
+\index{visitor.h@{visitor.h}!NodeVisitor\_new@{NodeVisitor\_new}}
+\index{NodeVisitor\_new@{NodeVisitor\_new}!visitor.h@{visitor.h}}
+\doxysubsubsection{\texorpdfstring{NodeVisitor\_new()}{NodeVisitor\_new()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_node_visitor}{Node\+Visitor}} \texorpdfstring{$\ast$}{*} Node\+Visitor\+\_\+new (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Allocate a new generic visitor structure. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to the allocated visitor 
+\end{DoxyReturn}
+\Hypertarget{visitor_8h_aff996ea6c828cd55a96b935b99ce8a77}\label{visitor_8h_aff996ea6c828cd55a96b935b99ce8a77} 
+\index{visitor.h@{visitor.h}!NodeVisitor\_traverse@{NodeVisitor\_traverse}}
+\index{NodeVisitor\_traverse@{NodeVisitor\_traverse}!visitor.h@{visitor.h}}
+\doxysubsubsection{\texorpdfstring{NodeVisitor\_traverse()}{NodeVisitor\_traverse()}}
+{\footnotesize\ttfamily void Node\+Visitor\+\_\+traverse (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_node_visitor}{Node\+Visitor}} \texorpdfstring{$\ast$}{*}}]{visitor,  }\item[{\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}}]{node }\end{DoxyParamCaption})}
+
+
+
+Perform an AST traversal using the given visitor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em visitor} & Visitor structure containing function pointers that will be invoked during the traversal \\
+\hline
+{\em node} & Root of AST structure to traverse \\
+\hline
+\end{DoxyParams}
+\Hypertarget{visitor_8h_a47a3ff928be5b896d543354ce2220c98}\label{visitor_8h_a47a3ff928be5b896d543354ce2220c98} 
+\index{visitor.h@{visitor.h}!NodeVisitor\_traverse\_and\_free@{NodeVisitor\_traverse\_and\_free}}
+\index{NodeVisitor\_traverse\_and\_free@{NodeVisitor\_traverse\_and\_free}!visitor.h@{visitor.h}}
+\doxysubsubsection{\texorpdfstring{NodeVisitor\_traverse\_and\_free()}{NodeVisitor\_traverse\_and\_free()}}
+{\footnotesize\ttfamily void Node\+Visitor\+\_\+traverse\+\_\+and\+\_\+free (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_node_visitor}{Node\+Visitor}} \texorpdfstring{$\ast$}{*}}]{visitor,  }\item[{\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}}]{node }\end{DoxyParamCaption})}
+
+
+
+Perform an AST traversal using the given visitor and then deallocate the visitor. 
+
+This is provided as a shortcut so that traversals can be written as a single line in the compiler driver routine. For example\+: \begin{DoxyVerb}NodeVisitor_traverse_and_free(PrintVisitor_new(stdout), tree);
+\end{DoxyVerb}
+ 
+\begin{DoxyParams}{Parameters}
+{\em visitor} & Visitor structure containing function pointers that will be invoked during the traversal \\
+\hline
+{\em node} & Root of AST structure to traverse \\
+\hline
+\end{DoxyParams}
+\Hypertarget{visitor_8h_aed1f36acc8ae668c96162d9701ee13fc}\label{visitor_8h_aed1f36acc8ae668c96162d9701ee13fc} 
+\index{visitor.h@{visitor.h}!PrintVisitor\_new@{PrintVisitor\_new}}
+\index{PrintVisitor\_new@{PrintVisitor\_new}!visitor.h@{visitor.h}}
+\doxysubsubsection{\texorpdfstring{PrintVisitor\_new()}{PrintVisitor\_new()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_node_visitor}{Node\+Visitor}} \texorpdfstring{$\ast$}{*} Print\+Visitor\+\_\+new (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{output }\end{DoxyParamCaption})}
+
+
+
+Create a new AST debug print visitor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em output} & File stream for the print output \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to visitor structure 
+\end{DoxyReturn}
+\Hypertarget{visitor_8h_a96e09b155c00dd3db230909a1838d7a0}\label{visitor_8h_a96e09b155c00dd3db230909a1838d7a0} 
+\index{visitor.h@{visitor.h}!SetParentVisitor\_new@{SetParentVisitor\_new}}
+\index{SetParentVisitor\_new@{SetParentVisitor\_new}!visitor.h@{visitor.h}}
+\doxysubsubsection{\texorpdfstring{SetParentVisitor\_new()}{SetParentVisitor\_new()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_node_visitor}{Node\+Visitor}} \texorpdfstring{$\ast$}{*} Set\+Parent\+Visitor\+\_\+new (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Create a new visitor that sets up parent pointers as attributes. 
+
+These parent pointers are used in other visitors.
+
+\begin{DoxyReturn}{Returns}
+Pointer to visitor structure 
+\end{DoxyReturn}

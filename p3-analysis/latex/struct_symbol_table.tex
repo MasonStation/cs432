@@ -1,0 +1,30 @@
+\doxysection{Symbol\+Table Struct Reference}
+\hypertarget{struct_symbol_table}{}\label{struct_symbol_table}\index{SymbolTable@{SymbolTable}}
+
+
+Stores symbol info for a single lexical scope.  
+
+
+
+
+{\ttfamily \#include $<$symbol.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{struct_symbol_table_a324cb401594339d78968901d808eba9e}\label{struct_symbol_table_a324cb401594339d78968901d808eba9e} 
+\mbox{\hyperlink{struct_symbol_list}{Symbol\+List}} \texorpdfstring{$\ast$}{*} {\bfseries local\+\_\+symbols}
+\begin{DoxyCompactList}\small\item\em List of symbols defined in the scope associated with this table. \end{DoxyCompactList}\item 
+\Hypertarget{struct_symbol_table_a6ed1b785adc43f3cd61f127e7153adf3}\label{struct_symbol_table_a6ed1b785adc43f3cd61f127e7153adf3} 
+struct \mbox{\hyperlink{struct_symbol_table}{Symbol\+Table}} \texorpdfstring{$\ast$}{*} {\bfseries parent}
+\begin{DoxyCompactList}\small\item\em Link to parent table. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Stores symbol info for a single lexical scope. 
+
+\doxylink{struct_symbol}{Symbol} tables are generated using a simple AST traversal algorithm, and are used during code generation to look up type and location information for individual symbols. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{symbol_8h}{symbol.\+h}}\end{DoxyCompactItemize}

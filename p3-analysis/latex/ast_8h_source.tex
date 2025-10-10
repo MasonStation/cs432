@@ -1,0 +1,228 @@
+\doxysection{ast.\+h}
+\hypertarget{ast_8h_source}{}\label{ast_8h_source}\index{include/ast.h@{include/ast.h}}
+\mbox{\hyperlink{ast_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#ifndef\ \_\_AST\_H}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ \_\_AST\_H}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{common_8h}{common.h}}"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{typedef}\ void\ (*\mbox{\hyperlink{ast_8h_a4295dd28ac38a7b4bcafc3186023ed25}{AttributeValueDOTPrinter}})(\textcolor{keywordtype}{void}*,\ FILE*);}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{typedef}\ void\ (*\mbox{\hyperlink{ast_8h_af55431eb8c62b9e786386abd9c88d964}{Destructor}})(\textcolor{keywordtype}{void}*);}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00032\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{ast_8h_a70d2c761ae418b0168469efd38b16d8a}{dummy\_free}}(\textcolor{keywordtype}{void}*);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00040\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{ast_8h_a6532e377c1c7da4b2533204982f50d4b}{dummy\_print}}(\textcolor{keywordtype}{void}*,\ FILE*);}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00049\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{ast_8h_ad0b1803edc470d3c2e35e5c342c4a123}{int\_attr\_print}}(\textcolor{keywordtype}{void}*,\ FILE*);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00055\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{ast_8h_acac9cbaeea226ed297804c012dc12b16}{NodeType}}\ \{}
+\DoxyCodeLine{00056\ \ \ \ \ PROGRAM,\ VARDECL,\ FUNCDECL,\ BLOCK,}
+\DoxyCodeLine{00057\ \ \ \ \ ASSIGNMENT,\ CONDITIONAL,\ WHILELOOP,\ RETURNSTMT,\ BREAKSTMT,\ CONTINUESTMT,}
+\DoxyCodeLine{00058\ \ \ \ \ BINARYOP,\ UNARYOP,\ LOCATION,\ FUNCCALL,\ LITERAL}
+\DoxyCodeLine{00059\ \}\ \mbox{\hyperlink{ast_8h_acac9cbaeea226ed297804c012dc12b16}{NodeType}};}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00067\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{ast_8h_a924bc16a2f95f151e5f802989970ac72}{NodeType\_to\_string}}(\mbox{\hyperlink{ast_8h_acac9cbaeea226ed297804c012dc12b16}{NodeType}}\ type);}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00072\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_program_node}{ProgramNode}}\ \{}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_node_list}{NodeList}}*\ \mbox{\hyperlink{struct_program_node_a76386782b5fbf78a9e33deb7a82c5f08}{variables}};\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_node_list}{NodeList}}*\ \mbox{\hyperlink{struct_program_node_a849847c3b07867c14a8d4268db87d9dd}{functions}};\ }
+\DoxyCodeLine{00075\ \}\ \mbox{\hyperlink{struct_program_node}{ProgramNode}};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00086\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ \mbox{\hyperlink{ast_8h_a0ae70703f96809efec93f83a47cec58b}{ProgramNode\_new}}\ (\textcolor{keyword}{struct}\ \mbox{\hyperlink{struct_node_list}{NodeList}}*\ vars,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{struct_node_list}{NodeList}}*\ funcs);}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00091\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_var_decl_node}{VarDeclNode}}\ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_var_decl_node_abe3f7370f88d4f6bd45c5ae106175491}{name}}[\mbox{\hyperlink{common_8h_acfc3ef13b0eb501f6f6a5411406c9cd7}{MAX\_ID\_LEN}}];\ \ \ \ \ \ }
+\DoxyCodeLine{00093\ \ \ \ \ \mbox{\hyperlink{common_8h_af5878fbe98f23b780b60624fce56a45e}{DecafType}}\ \mbox{\hyperlink{struct_var_decl_node_ac2000521801032568df9c06120e8e882}{type}};\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_var_decl_node_a3cb8296fe16f647a7e6340ac6bef08d3}{is\_array}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_var_decl_node_aa8793e3b0b5fc5a352982310e050fa59}{array\_length}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00096\ \}\ \mbox{\hyperlink{struct_var_decl_node}{VarDeclNode}};}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00108\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ \mbox{\hyperlink{ast_8h_aa9eaf1ae674859f8177375a35f4216fc}{VarDeclNode\_new}}\ (\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ name,\ \mbox{\hyperlink{common_8h_af5878fbe98f23b780b60624fce56a45e}{DecafType}}\ \mbox{\hyperlink{struct_a_s_t_node_a34086f3bc5af008f08f255c8ec57ba21}{type}},}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ is\_array,\ \textcolor{keywordtype}{int}\ array\_length,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_a_s_t_node_a5f81bcdfa6764fade0aab3601270b865}{source\_line}});}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00114\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_parameter}{Parameter}}\ \{}
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_parameter_a36cbb74007f1728d95a88c0eed182107}{name}}[\mbox{\hyperlink{common_8h_acfc3ef13b0eb501f6f6a5411406c9cd7}{MAX\_ID\_LEN}}];\ \ \ \ \ \ }
+\DoxyCodeLine{00116\ \ \ \ \ \mbox{\hyperlink{common_8h_af5878fbe98f23b780b60624fce56a45e}{DecafType}}\ \mbox{\hyperlink{struct_parameter_a9d7464ef0c473f43fa5f1c0bc8469793}{type}};\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_parameter}{Parameter}}*\ \mbox{\hyperlink{struct_parameter_a8d805c8208fba600aa1b07b6212ecdd2}{next}};\ \ \ \ \ }
+\DoxyCodeLine{00118\ \}\ \mbox{\hyperlink{struct_parameter}{Parameter}};}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00121\ \textcolor{comment}{\ *\ Declare\ ParameterList\ to\ be\ a\ linked\ list\ of\ Parameter*\ elements.}}
+\DoxyCodeLine{00122\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00123\ \mbox{\hyperlink{common_8h_a5b884a3b26bea1cf003390ebc9d2c09e}{DECL\_LIST\_TYPE}}(\mbox{\hyperlink{struct_parameter}{Parameter}},\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{struct_parameter}{Parameter}}*)}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00133\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{ast_8h_a02b2c37ad54c8d5f5961774154b8a2cf}{ParameterList\_add\_new}}\ (\mbox{\hyperlink{struct_parameter_list}{ParameterList}}*\ list,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{struct_parameter_a36cbb74007f1728d95a88c0eed182107}{name}},\ \mbox{\hyperlink{common_8h_af5878fbe98f23b780b60624fce56a45e}{DecafType}}\ \mbox{\hyperlink{struct_parameter_a9d7464ef0c473f43fa5f1c0bc8469793}{type}});}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00138\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_func_decl_node}{FuncDeclNode}}\ \{}
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_func_decl_node_a6c102197c9761592d3b3c61b9a88af97}{name}}[\mbox{\hyperlink{common_8h_acfc3ef13b0eb501f6f6a5411406c9cd7}{MAX\_ID\_LEN}}];\ \ \ \ \ \ }
+\DoxyCodeLine{00140\ \ \ \ \ \mbox{\hyperlink{common_8h_af5878fbe98f23b780b60624fce56a45e}{DecafType}}\ \mbox{\hyperlink{struct_func_decl_node_a37909f3163dcdc85ecc7ccd460013e58}{return\_type}};\ \ \ \ \ \ }
+\DoxyCodeLine{00141\ \ \ \ \ \mbox{\hyperlink{struct_parameter_list}{ParameterList}}*\ \mbox{\hyperlink{struct_func_decl_node_a40916c4cd4893a99efe25b7e671fe402}{parameters}};\ \ }
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ \mbox{\hyperlink{struct_func_decl_node_ad90e5c9602fd25fbc56fd20b356eadd8}{body}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00143\ \}\ \mbox{\hyperlink{struct_func_decl_node}{FuncDeclNode}};}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00155\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ \mbox{\hyperlink{ast_8h_af754d8f000d5f5a02cc357270fd3079f}{FuncDeclNode\_new}}\ (\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ name,\ \mbox{\hyperlink{common_8h_af5878fbe98f23b780b60624fce56a45e}{DecafType}}\ return\_type,\ \mbox{\hyperlink{struct_parameter_list}{ParameterList}}*\ parameters,}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ body,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_a_s_t_node_a5f81bcdfa6764fade0aab3601270b865}{source\_line}});}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00161\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_block_node}{BlockNode}}\ \{}
+\DoxyCodeLine{00162\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_node_list}{NodeList}}*\ \mbox{\hyperlink{struct_block_node_a1853dfefecfe50cf27c67f6b0af9b3d4}{variables}};\ }
+\DoxyCodeLine{00163\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_node_list}{NodeList}}*\ \mbox{\hyperlink{struct_block_node_af844d62c6b6690228f79527ae8b97ce1}{statements}};}
+\DoxyCodeLine{00164\ \}\ \mbox{\hyperlink{struct_block_node}{BlockNode}};}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00174\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ \mbox{\hyperlink{ast_8h_ac246ba919272cf0e4843dc18d5ef58b5}{BlockNode\_new}}\ (\textcolor{keyword}{struct}\ \mbox{\hyperlink{struct_node_list}{NodeList}}*\ vars,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{struct_node_list}{NodeList}}*\ stmts,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_a_s_t_node_a5f81bcdfa6764fade0aab3601270b865}{source\_line}});}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00179\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_assignment_node}{AssignmentNode}}\ \{}
+\DoxyCodeLine{00180\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ \mbox{\hyperlink{struct_assignment_node_abdc47fb924d646c8f4010ca7bd055131}{location}};\ \ \ }
+\DoxyCodeLine{00181\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ \mbox{\hyperlink{struct_assignment_node_ac1f816d01f1f81b0985a7e08db767d05}{value}};\ \ \ \ \ \ }
+\DoxyCodeLine{00182\ \}\ \mbox{\hyperlink{struct_assignment_node}{AssignmentNode}};}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00192\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ \mbox{\hyperlink{ast_8h_ad5a9584dd2a85f41ce9c636791211b1c}{AssignmentNode\_new}}\ (\textcolor{keyword}{struct}\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ location,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ value,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_a_s_t_node_a5f81bcdfa6764fade0aab3601270b865}{source\_line}});}
+\DoxyCodeLine{00193\ }
+\DoxyCodeLine{00199\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_conditional_node}{ConditionalNode}}\ \{}
+\DoxyCodeLine{00200\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ \mbox{\hyperlink{struct_conditional_node_a0f76118e1f787b5caae71d7e61ee28fe}{condition}};\ \ }
+\DoxyCodeLine{00201\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ \mbox{\hyperlink{struct_conditional_node_abe5aa1942e800e45ad951c1525b179f6}{if\_block}};\ \ \ }
+\DoxyCodeLine{00202\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ \mbox{\hyperlink{struct_conditional_node_a9c1508c01769fb17ad3aadb3ba2425a6}{else\_block}};\ }
+\DoxyCodeLine{00204\ \}\ \mbox{\hyperlink{struct_conditional_node}{ConditionalNode}};}
+\DoxyCodeLine{00205\ }
+\DoxyCodeLine{00216\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ \mbox{\hyperlink{ast_8h_a4eb3c38814585bc1460a9dec1dd9ac14}{ConditionalNode\_new}}\ (\textcolor{keyword}{struct}\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ condition,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ if\_block,}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ else\_block,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_a_s_t_node_a5f81bcdfa6764fade0aab3601270b865}{source\_line}});}
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00222\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_while_loop_node}{WhileLoopNode}}\ \{}
+\DoxyCodeLine{00223\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ \mbox{\hyperlink{struct_while_loop_node_aa607b7e64638bf2dcd9360f2833ec2e5}{condition}};\ \ }
+\DoxyCodeLine{00224\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ \mbox{\hyperlink{struct_while_loop_node_a58faf8a0dd908ff63edcdfab84a521be}{body}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00225\ \}\ \mbox{\hyperlink{struct_while_loop_node}{WhileLoopNode}};}
+\DoxyCodeLine{00226\ }
+\DoxyCodeLine{00235\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ \mbox{\hyperlink{ast_8h_a04cf08d95b63ee0f8fa922c658247ff0}{WhileLoopNode\_new}}\ (\textcolor{keyword}{struct}\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ condition,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ body,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_a_s_t_node_a5f81bcdfa6764fade0aab3601270b865}{source\_line}});}
+\DoxyCodeLine{00236\ }
+\DoxyCodeLine{00242\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_return_node}{ReturnNode}}\ \{}
+\DoxyCodeLine{00243\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ \mbox{\hyperlink{struct_return_node_a82467e5ba259eb6c6d9af3c497648c3b}{value}};\ \ \ \ \ \ }
+\DoxyCodeLine{00244\ \}\ \mbox{\hyperlink{struct_return_node}{ReturnNode}};}
+\DoxyCodeLine{00245\ }
+\DoxyCodeLine{00253\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ \mbox{\hyperlink{ast_8h_a274f2c4e64c877970fe29dd748da3d34}{ReturnNode\_new}}\ (\textcolor{keyword}{struct}\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ value,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_a_s_t_node_a5f81bcdfa6764fade0aab3601270b865}{source\_line}});}
+\DoxyCodeLine{00254\ }
+\DoxyCodeLine{00261\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ \mbox{\hyperlink{ast_8h_ad0b7fbae7bab162d36e486bdaa42f585}{BreakNode\_new}}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_a_s_t_node_a5f81bcdfa6764fade0aab3601270b865}{source\_line}});}
+\DoxyCodeLine{00262\ }
+\DoxyCodeLine{00269\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ \mbox{\hyperlink{ast_8h_aa4f64bc5c7a3e04a77d4dc4aafd7355c}{ContinueNode\_new}}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_a_s_t_node_a5f81bcdfa6764fade0aab3601270b865}{source\_line}});}
+\DoxyCodeLine{00270\ }
+\DoxyCodeLine{00274\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{ast_8h_a41ef0fe64d0a177e2749cd27c49d07da}{BinaryOpType}}\ \{}
+\DoxyCodeLine{00275\ \ \ \ \ OROP,\ ANDOP,\ EQOP,\ NEQOP,\ LTOP,\ LEOP,\ GEOP,\ GTOP,}
+\DoxyCodeLine{00276\ \ \ \ \ ADDOP,\ SUBOP,\ MULOP,\ DIVOP,\ MODOP}
+\DoxyCodeLine{00277\ \}\ \mbox{\hyperlink{ast_8h_a41ef0fe64d0a177e2749cd27c49d07da}{BinaryOpType}};}
+\DoxyCodeLine{00278\ }
+\DoxyCodeLine{00285\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{ast_8h_ae36b9edcda0e741981b1ae9ce15f58d6}{BinaryOpToString}}(\mbox{\hyperlink{ast_8h_a41ef0fe64d0a177e2749cd27c49d07da}{BinaryOpType}}\ op);}
+\DoxyCodeLine{00286\ }
+\DoxyCodeLine{00290\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_binary_op_node}{BinaryOpNode}}\ \{}
+\DoxyCodeLine{00291\ \ \ \ \ \mbox{\hyperlink{ast_8h_a41ef0fe64d0a177e2749cd27c49d07da}{BinaryOpType}}\ \textcolor{keyword}{operator};\ \ \ \ \ \ }
+\DoxyCodeLine{00292\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ \mbox{\hyperlink{struct_binary_op_node_a4b012e3a8c880a827955cea56d052402}{left}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00293\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ \mbox{\hyperlink{struct_binary_op_node_a9332f17ee3fea91d8fe45bdfd9fce04a}{right}};\ \ \ \ \ \ }
+\DoxyCodeLine{00294\ \}\ \mbox{\hyperlink{struct_binary_op_node}{BinaryOpNode}};}
+\DoxyCodeLine{00295\ }
+\DoxyCodeLine{00305\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ \mbox{\hyperlink{ast_8h_aa069efe7f292cc84dd249a6d73e9a58f}{BinaryOpNode\_new}}\ (\mbox{\hyperlink{ast_8h_a41ef0fe64d0a177e2749cd27c49d07da}{BinaryOpType}}\ \textcolor{keyword}{operator},}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ left,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ right,}
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_a_s_t_node_a5f81bcdfa6764fade0aab3601270b865}{source\_line}});}
+\DoxyCodeLine{00308\ }
+\DoxyCodeLine{00312\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{ast_8h_a74e29410145add8d916ee79e6e3fcde0}{UnaryOpType}}\ \{}
+\DoxyCodeLine{00313\ \ \ \ \ NEGOP,\ NOTOP}
+\DoxyCodeLine{00314\ \}\ \mbox{\hyperlink{ast_8h_a74e29410145add8d916ee79e6e3fcde0}{UnaryOpType}};}
+\DoxyCodeLine{00315\ }
+\DoxyCodeLine{00322\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{ast_8h_a1e30a90844ca7bb920175d32b6ea50ba}{UnaryOpToString}}(\mbox{\hyperlink{ast_8h_a74e29410145add8d916ee79e6e3fcde0}{UnaryOpType}}\ op);}
+\DoxyCodeLine{00323\ }
+\DoxyCodeLine{00327\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_unary_op_node}{UnaryOpNode}}\ \{}
+\DoxyCodeLine{00328\ \ \ \ \ \mbox{\hyperlink{ast_8h_a74e29410145add8d916ee79e6e3fcde0}{UnaryOpType}}\ \textcolor{keyword}{operator};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00329\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ \mbox{\hyperlink{struct_unary_op_node_ab9a63b4d8df0e34a1da9add90b53182a}{child}};\ \ \ \ \ \ }
+\DoxyCodeLine{00330\ \}\ \mbox{\hyperlink{struct_unary_op_node}{UnaryOpNode}};}
+\DoxyCodeLine{00331\ }
+\DoxyCodeLine{00340\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ \mbox{\hyperlink{ast_8h_aa3ebf056d5d28b02e0fedc4f60c44f69}{UnaryOpNode\_new}}\ (\mbox{\hyperlink{ast_8h_a74e29410145add8d916ee79e6e3fcde0}{UnaryOpType}}\ \textcolor{keyword}{operator},\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ child,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_a_s_t_node_a5f81bcdfa6764fade0aab3601270b865}{source\_line}});}
+\DoxyCodeLine{00341\ }
+\DoxyCodeLine{00347\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_location_node}{LocationNode}}\ \{}
+\DoxyCodeLine{00348\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_location_node_a9a6604664c7f6d0da6fcb0cfef2f3f94}{name}}[\mbox{\hyperlink{common_8h_acfc3ef13b0eb501f6f6a5411406c9cd7}{MAX\_ID\_LEN}}];\ \ \ \ \ \ }
+\DoxyCodeLine{00349\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ \mbox{\hyperlink{struct_location_node_a15f5ad66ca666f918b00e4bddf0783df}{index}};\ \ \ \ \ \ }
+\DoxyCodeLine{00350\ \}\ \mbox{\hyperlink{struct_location_node}{LocationNode}};}
+\DoxyCodeLine{00351\ }
+\DoxyCodeLine{00360\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ \mbox{\hyperlink{ast_8h_ad0a7213121f70da1c464822de50f8dd7}{LocationNode\_new}}\ (\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ name,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ index,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_a_s_t_node_a5f81bcdfa6764fade0aab3601270b865}{source\_line}});}
+\DoxyCodeLine{00361\ }
+\DoxyCodeLine{00365\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_func_call_node}{FuncCallNode}}\ \{}
+\DoxyCodeLine{00366\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_func_call_node_ad44e3c7b00142272b3d41bd00cc1e7b1}{name}}[\mbox{\hyperlink{common_8h_acfc3ef13b0eb501f6f6a5411406c9cd7}{MAX\_ID\_LEN}}];\ \ \ \ \ \ }
+\DoxyCodeLine{00367\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_node_list}{NodeList}}*\ \mbox{\hyperlink{struct_func_call_node_a19156db358f27fc3b30bda96f91ca1e7}{arguments}};\ }
+\DoxyCodeLine{00368\ \}\ \mbox{\hyperlink{struct_func_call_node}{FuncCallNode}};}
+\DoxyCodeLine{00369\ }
+\DoxyCodeLine{00378\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ \mbox{\hyperlink{ast_8h_afe4a033727f1ff276d6e3dd822308f55}{FuncCallNode\_new}}\ (\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ name,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{struct_node_list}{NodeList}}*\ args,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_a_s_t_node_a5f81bcdfa6764fade0aab3601270b865}{source\_line}});}
+\DoxyCodeLine{00379\ }
+\DoxyCodeLine{00383\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_literal_node}{LiteralNode}}\ \{}
+\DoxyCodeLine{00384\ \ \ \ \ \mbox{\hyperlink{common_8h_af5878fbe98f23b780b60624fce56a45e}{DecafType}}\ \mbox{\hyperlink{struct_literal_node_a12731c2a935b90731c3fc49936b596ec}{type}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00385\ \ \ \ \ \textcolor{keyword}{union\ }\{}
+\DoxyCodeLine{00386\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{struct_literal_node_ab508246131915abb5072a7d32a1a8b10}{integer}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00387\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_literal_node_a719e63af8ddc3e17bbf6d784feb9fa7c}{boolean}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00388\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ \textcolor{keywordtype}{string}[\mbox{\hyperlink{common_8h_a09a3b394b8602092d58347b791158062}{MAX\_LINE\_LEN}}];\ \ }
+\DoxyCodeLine{00389\ \ \ \ \ \};}
+\DoxyCodeLine{00390\ \}\ \mbox{\hyperlink{struct_literal_node}{LiteralNode}};}
+\DoxyCodeLine{00391\ }
+\DoxyCodeLine{00399\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ \mbox{\hyperlink{ast_8h_a6ee7e79504a66c0575c6eb72de0550ab}{LiteralNode\_new\_int}}\ (\textcolor{keywordtype}{long}\ value,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_a_s_t_node_a5f81bcdfa6764fade0aab3601270b865}{source\_line}});}
+\DoxyCodeLine{00400\ }
+\DoxyCodeLine{00408\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ \mbox{\hyperlink{ast_8h_aac9ae28e96a66974cb79da189a6878a4}{LiteralNode\_new\_bool}}\ (\textcolor{keywordtype}{bool}\ value,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_a_s_t_node_a5f81bcdfa6764fade0aab3601270b865}{source\_line}});}
+\DoxyCodeLine{00409\ }
+\DoxyCodeLine{00417\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ \mbox{\hyperlink{ast_8h_ad5f092d96a79bac1233a0644f55a8993}{LiteralNode\_new\_string}}\ (\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ value,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_a_s_t_node_a5f81bcdfa6764fade0aab3601270b865}{source\_line}});}
+\DoxyCodeLine{00418\ }
+\DoxyCodeLine{00422\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_attribute}{Attribute}}}
+\DoxyCodeLine{00423\ \{}
+\DoxyCodeLine{00424\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{struct_attribute_a3a6b8e893d17a2b2af04dce9f145a677}{key}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00425\ \ \ \ \ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{struct_attribute_ab26947dfe88e9652b002a19c891d8082}{value}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00426\ \ \ \ \ \mbox{\hyperlink{ast_8h_a4295dd28ac38a7b4bcafc3186023ed25}{AttributeValueDOTPrinter}}\ \mbox{\hyperlink{struct_attribute_a539a176f201f260a7a51191e97cb61f9}{dot\_printer}};\ \ \ }
+\DoxyCodeLine{00428\ \ \ \ \ \mbox{\hyperlink{ast_8h_af55431eb8c62b9e786386abd9c88d964}{Destructor}}\ \mbox{\hyperlink{struct_attribute_ab8221ff542fe747afd02b7dd4a985b1f}{dtor}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00431\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_attribute}{Attribute}}*\ \mbox{\hyperlink{struct_attribute_a011d8f652215693f00da8b883bc680bc}{next}};\ }
+\DoxyCodeLine{00432\ \}\ \mbox{\hyperlink{struct_attribute}{Attribute}};}
+\DoxyCodeLine{00433\ }
+\DoxyCodeLine{00470\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}}
+\DoxyCodeLine{00471\ \{}
+\DoxyCodeLine{00472\ \ \ \ \ \mbox{\hyperlink{ast_8h_acac9cbaeea226ed297804c012dc12b16}{NodeType}}\ \mbox{\hyperlink{struct_a_s_t_node_a34086f3bc5af008f08f255c8ec57ba21}{type}};\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00473\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_a_s_t_node_a5f81bcdfa6764fade0aab3601270b865}{source\_line}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00474\ \ \ \ \ \mbox{\hyperlink{struct_attribute}{Attribute}}*\ \mbox{\hyperlink{struct_a_s_t_node_ab4c3fe287f15108a48803f7f3f5a3caf}{attributes}};\ \ }
+\DoxyCodeLine{00475\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ \mbox{\hyperlink{struct_a_s_t_node_a30de95e963aa70517822403cdc57e4a9}{next}};\ \ \ }
+\DoxyCodeLine{00477\ \ \ \ \ \textcolor{comment}{/*\ anonymous\ union\ of\ type-\/specific\ node\ data\ (C\ polymorphism)\ */}}
+\DoxyCodeLine{00478\ \ \ \ \ \textcolor{keyword}{union\ }\{}
+\DoxyCodeLine{00479\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_program_node}{ProgramNode}}\ program;}
+\DoxyCodeLine{00480\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_var_decl_node}{VarDeclNode}}\ vardecl;}
+\DoxyCodeLine{00481\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_func_decl_node}{FuncDeclNode}}\ funcdecl;}
+\DoxyCodeLine{00482\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_block_node}{BlockNode}}\ block;}
+\DoxyCodeLine{00483\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_assignment_node}{AssignmentNode}}\ assignment;}
+\DoxyCodeLine{00484\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_conditional_node}{ConditionalNode}}\ conditional;}
+\DoxyCodeLine{00485\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_while_loop_node}{WhileLoopNode}}\ whileloop;}
+\DoxyCodeLine{00486\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_return_node}{ReturnNode}}\ funcreturn;}
+\DoxyCodeLine{00487\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_binary_op_node}{BinaryOpNode}}\ binaryop;}
+\DoxyCodeLine{00488\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_unary_op_node}{UnaryOpNode}}\ unaryop;}
+\DoxyCodeLine{00489\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_location_node}{LocationNode}}\ location;}
+\DoxyCodeLine{00490\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_func_call_node}{FuncCallNode}}\ funccall;}
+\DoxyCodeLine{00491\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_literal_node}{LiteralNode}}\ literal;}
+\DoxyCodeLine{00492\ \ \ \ \ \};}
+\DoxyCodeLine{00493\ \}\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}};}
+\DoxyCodeLine{00494\ }
+\DoxyCodeLine{00495\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00496\ \textcolor{comment}{\ *\ Declare\ NodeList\ to\ be\ a\ linked\ list\ of\ ASTNode*\ elements.}}
+\DoxyCodeLine{00497\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00498\ \mbox{\hyperlink{common_8h_a5b884a3b26bea1cf003390ebc9d2c09e}{DECL\_LIST\_TYPE}}(Node,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*)}
+\DoxyCodeLine{00499\ }
+\DoxyCodeLine{00500\ }
+\DoxyCodeLine{00516\ \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ \mbox{\hyperlink{ast_8h_a4959fb61c6c3413aeb52f66f92e04aec}{ASTNode\_new}}\ (\mbox{\hyperlink{ast_8h_acac9cbaeea226ed297804c012dc12b16}{NodeType}}\ \mbox{\hyperlink{struct_literal_node_a12731c2a935b90731c3fc49936b596ec}{type}},\ \textcolor{keywordtype}{int}\ line);}
+\DoxyCodeLine{00517\ }
+\DoxyCodeLine{00533\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{ast_8h_a20db59608d5d54bd3b8bea7803cce116}{ASTNode\_set\_attribute}}\ (\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ node,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ key,\ \textcolor{keywordtype}{void}*\ value,\ \mbox{\hyperlink{ast_8h_af55431eb8c62b9e786386abd9c88d964}{Destructor}}\ dtor);}
+\DoxyCodeLine{00534\ }
+\DoxyCodeLine{00550\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{ast_8h_ae733fdacd2796ef46e2ac0d214a2e8f9}{ASTNode\_set\_printable\_attribute}}\ (\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ node,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ key,\ \textcolor{keywordtype}{void}*\ value,}
+\DoxyCodeLine{00551\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{ast_8h_a4295dd28ac38a7b4bcafc3186023ed25}{AttributeValueDOTPrinter}}\ dot\_printer,\ \mbox{\hyperlink{ast_8h_af55431eb8c62b9e786386abd9c88d964}{Destructor}}\ dtor);}
+\DoxyCodeLine{00552\ }
+\DoxyCodeLine{00564\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{ast_8h_a64993a4dcdbae98e8dbc5eb2bc0fe78a}{ASTNode\_set\_int\_attribute}}\ (\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ node,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ key,\ \textcolor{keywordtype}{int}\ value);}
+\DoxyCodeLine{00565\ }
+\DoxyCodeLine{00573\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{ast_8h_afee9cb41da85ce03cab12ebec7755a20}{ASTNode\_has\_attribute}}\ (\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ node,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ key);}
+\DoxyCodeLine{00574\ }
+\DoxyCodeLine{00585\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{ast_8h_ac2b852a479f146acc9f9749d1a2fe68e}{ASTNode\_get\_attribute}}\ (\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ node,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ key);}
+\DoxyCodeLine{00586\ }
+\DoxyCodeLine{00596\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{ast_8h_ad716046e684ebb505f08450ed0400908}{ASTNode\_get\_int\_attribute}}\ (\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ node,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ key);}
+\DoxyCodeLine{00597\ }
+\DoxyCodeLine{00609\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{ast_8h_a4a26fe87ac8120a6e15a59792ea68f0f}{ASTNode\_free}}\ (\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ node);}
+\DoxyCodeLine{00610\ }
+\DoxyCodeLine{00611\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

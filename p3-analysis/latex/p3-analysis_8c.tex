@@ -1,0 +1,139 @@
+\doxysection{src/p3-\/analysis.c File Reference}
+\hypertarget{p3-analysis_8c}{}\label{p3-analysis_8c}\index{src/p3-\/analysis.c@{src/p3-\/analysis.c}}
+
+
+Compiler phase 3\+: static analysis.  
+
+
+{\ttfamily \#include "{}p3-\/analysis.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_analysis_data}{Analysis\+Data}}
+\begin{DoxyCompactList}\small\item\em State/data for static analysis visitor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{p3-analysis_8c_aad9ae913bdfab20dd94ad04ee2d5b045}\label{p3-analysis_8c_aad9ae913bdfab20dd94ad04ee2d5b045} 
+\#define {\bfseries DATA}~((\mbox{\hyperlink{struct_analysis_data}{Analysis\+Data}}\texorpdfstring{$\ast$}{*})visitor-\/$>$data)
+\begin{DoxyCompactList}\small\item\em Macro for more convenient access to the data inside a Analysis\+Visitor data structure. \end{DoxyCompactList}\item 
+\Hypertarget{p3-analysis_8c_aac8fd6f2fdcea6a63e16d89e4be67b3d}\label{p3-analysis_8c_aac8fd6f2fdcea6a63e16d89e4be67b3d} 
+\#define {\bfseries ERROR\+\_\+\+LIST}~(((\mbox{\hyperlink{struct_analysis_data}{Analysis\+Data}}\texorpdfstring{$\ast$}{*})visitor-\/$>$data)-\/$>$errors)
+\begin{DoxyCompactList}\small\item\em Macro for more convenient access to the error list inside a Analysis\+Visitor data structure. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{p3-analysis_8c_aee381a1cc2ddd945e774a12ed81eaad8}{SET\+\_\+\+INFERRED\+\_\+\+TYPE}}(T)
+\begin{DoxyCompactList}\small\item\em Macro for shorter storing of the inferred {\ttfamily type} attribute. \end{DoxyCompactList}\item 
+\Hypertarget{p3-analysis_8c_a76290c43a9dd621f602f96f17f51a963}\label{p3-analysis_8c_a76290c43a9dd621f602f96f17f51a963} 
+\#define {\bfseries GET\+\_\+\+INFERRED\+\_\+\+TYPE}(N)~(\mbox{\hyperlink{common_8h_af5878fbe98f23b780b60624fce56a45e}{Decaf\+Type}})(long)\mbox{\hyperlink{ast_8h_ac2b852a479f146acc9f9749d1a2fe68e}{ASTNode\+\_\+get\+\_\+attribute}}(N, "{}type"{})
+\begin{DoxyCompactList}\small\item\em Macro for shorter retrieval of the inferred {\ttfamily type} attribute. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{p3-analysis_8c_ae9e0b1ec7aab236644a3ca7f5663ac96}\label{p3-analysis_8c_ae9e0b1ec7aab236644a3ca7f5663ac96} 
+typedef struct \mbox{\hyperlink{struct_analysis_data}{Analysis\+Data}} {\bfseries Analysis\+Data}
+\begin{DoxyCompactList}\small\item\em State/data for static analysis visitor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_analysis_data}{Analysis\+Data}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{p3-analysis_8c_a70d0cbea2bae8cc58a0918bfc8a7f8a2}{Analysis\+Data\+\_\+new}} (void)
+\begin{DoxyCompactList}\small\item\em Allocate memory for analysis data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{p3-analysis_8c_a8e07c4a9b33d98fce1e7f84622404fa8}{Analysis\+Data\+\_\+free}} (\mbox{\hyperlink{struct_analysis_data}{Analysis\+Data}} \texorpdfstring{$\ast$}{*}data)
+\begin{DoxyCompactList}\small\item\em Deallocate memory for analysis data. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_symbol}{Symbol}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{p3-analysis_8c_a5af88b0932fb8987bde8e9714b590b9c}{lookup\+\_\+symbol\+\_\+with\+\_\+reporting}} (\mbox{\hyperlink{struct_node_visitor}{Node\+Visitor}} \texorpdfstring{$\ast$}{*}visitor, \mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}node, const char \texorpdfstring{$\ast$}{*}name)
+\begin{DoxyCompactList}\small\item\em Wrapper for \doxylink{symbol_8h_a1dab6a1e037bc705c03f5090853625f4}{lookup\+\_\+symbol} that reports an error if the symbol isn\textquotesingle{}t found. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_error_list}{Error\+List}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{p3-analysis_8c_ac9c170d0da6d27d940fd81f51af4b9c9}{analyze}} (\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}tree)
+\begin{DoxyCompactList}\small\item\em Perform static analysis on an AST and return a list of errors. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Compiler phase 3\+: static analysis. 
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{p3-analysis_8c_aee381a1cc2ddd945e774a12ed81eaad8}\label{p3-analysis_8c_aee381a1cc2ddd945e774a12ed81eaad8} 
+\index{p3-\/analysis.c@{p3-\/analysis.c}!SET\_INFERRED\_TYPE@{SET\_INFERRED\_TYPE}}
+\index{SET\_INFERRED\_TYPE@{SET\_INFERRED\_TYPE}!p3-\/analysis.c@{p3-\/analysis.c}}
+\doxysubsubsection{\texorpdfstring{SET\_INFERRED\_TYPE}{SET\_INFERRED\_TYPE}}
+{\footnotesize\ttfamily \#define SET\+\_\+\+INFERRED\+\_\+\+TYPE(\begin{DoxyParamCaption}\item[{}]{T }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{ast_8h_ae733fdacd2796ef46e2ac0d214a2e8f9}{ASTNode\_set\_printable\_attribute}}(node,\ \textcolor{stringliteral}{"{}type"{}},\ (\textcolor{keywordtype}{void}*)(T),\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{symbol_8h_a47c7b2bd6b6529c8e00117c7ea7e6554}{type\_attr\_print}},\ \mbox{\hyperlink{ast_8h_a70d2c761ae418b0168469efd38b16d8a}{dummy\_free}})}
+
+\end{DoxyCode}
+
+
+Macro for shorter storing of the inferred {\ttfamily type} attribute. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{p3-analysis_8c_a8e07c4a9b33d98fce1e7f84622404fa8}\label{p3-analysis_8c_a8e07c4a9b33d98fce1e7f84622404fa8} 
+\index{p3-\/analysis.c@{p3-\/analysis.c}!AnalysisData\_free@{AnalysisData\_free}}
+\index{AnalysisData\_free@{AnalysisData\_free}!p3-\/analysis.c@{p3-\/analysis.c}}
+\doxysubsubsection{\texorpdfstring{AnalysisData\_free()}{AnalysisData\_free()}}
+{\footnotesize\ttfamily void Analysis\+Data\+\_\+free (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_analysis_data}{Analysis\+Data}} \texorpdfstring{$\ast$}{*}}]{data }\end{DoxyParamCaption})}
+
+
+
+Deallocate memory for analysis data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Pointer to the structure to be deallocated \\
+\hline
+\end{DoxyParams}
+\Hypertarget{p3-analysis_8c_a70d0cbea2bae8cc58a0918bfc8a7f8a2}\label{p3-analysis_8c_a70d0cbea2bae8cc58a0918bfc8a7f8a2} 
+\index{p3-\/analysis.c@{p3-\/analysis.c}!AnalysisData\_new@{AnalysisData\_new}}
+\index{AnalysisData\_new@{AnalysisData\_new}!p3-\/analysis.c@{p3-\/analysis.c}}
+\doxysubsubsection{\texorpdfstring{AnalysisData\_new()}{AnalysisData\_new()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_analysis_data}{Analysis\+Data}} \texorpdfstring{$\ast$}{*} Analysis\+Data\+\_\+new (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Allocate memory for analysis data. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to allocated structure 
+\end{DoxyReturn}
+\Hypertarget{p3-analysis_8c_ac9c170d0da6d27d940fd81f51af4b9c9}\label{p3-analysis_8c_ac9c170d0da6d27d940fd81f51af4b9c9} 
+\index{p3-\/analysis.c@{p3-\/analysis.c}!analyze@{analyze}}
+\index{analyze@{analyze}!p3-\/analysis.c@{p3-\/analysis.c}}
+\doxysubsubsection{\texorpdfstring{analyze()}{analyze()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_error_list}{Error\+List}} \texorpdfstring{$\ast$}{*} analyze (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}}]{tree }\end{DoxyParamCaption})}
+
+
+
+Perform static analysis on an AST and return a list of errors. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tree} & Root of AST \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+List of static analysis errors found (the list should be empty if no errors were found) 
+\end{DoxyReturn}
+\Hypertarget{p3-analysis_8c_a5af88b0932fb8987bde8e9714b590b9c}\label{p3-analysis_8c_a5af88b0932fb8987bde8e9714b590b9c} 
+\index{p3-\/analysis.c@{p3-\/analysis.c}!lookup\_symbol\_with\_reporting@{lookup\_symbol\_with\_reporting}}
+\index{lookup\_symbol\_with\_reporting@{lookup\_symbol\_with\_reporting}!p3-\/analysis.c@{p3-\/analysis.c}}
+\doxysubsubsection{\texorpdfstring{lookup\_symbol\_with\_reporting()}{lookup\_symbol\_with\_reporting()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_symbol}{Symbol}} \texorpdfstring{$\ast$}{*} lookup\+\_\+symbol\+\_\+with\+\_\+reporting (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_node_visitor}{Node\+Visitor}} \texorpdfstring{$\ast$}{*}}]{visitor,  }\item[{\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}} \texorpdfstring{$\ast$}{*}}]{node,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{name }\end{DoxyParamCaption})}
+
+
+
+Wrapper for \doxylink{symbol_8h_a1dab6a1e037bc705c03f5090853625f4}{lookup\+\_\+symbol} that reports an error if the symbol isn\textquotesingle{}t found. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em visitor} & Visitor with the error list for reporting \\
+\hline
+{\em node} & AST node to begin the search at \\
+\hline
+{\em name} & Name of symbol to find \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The \doxylink{struct_symbol}{Symbol} if found, otherwise {\ttfamily NULL} 
+\end{DoxyReturn}

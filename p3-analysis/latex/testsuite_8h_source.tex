@@ -1,0 +1,43 @@
+\doxysection{testsuite.\+h}
+\hypertarget{testsuite_8h_source}{}\label{testsuite_8h_source}\index{tests/testsuite.h@{tests/testsuite.h}}
+\mbox{\hyperlink{testsuite_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <assert.h>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <time.h>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <check.h>}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{p1-lexer_8h}{p1-\/lexer.h}}"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{p2-parser_8h}{p2-\/parser.h}}"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{p3-analysis_8h}{p3-\/analysis.h}}"{}}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ TEST\_VALID(NAME,TEXT)\ START\_TEST\ (NAME)\ \(\backslash\)}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\{\ ck\_assert\ (valid\_program(TEXT));\ \}\ \(\backslash\)}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{END\_TEST}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ TEST\_INVALID(NAME,TEXT)\ START\_TEST\ (NAME)\ \(\backslash\)}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\{\ ck\_assert\ (invalid\_program(TEXT));\ \}\ \(\backslash\)}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{END\_TEST}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#define\ TEST\_VALID\_MAIN(NAME,TEXT)\ START\_TEST\ (NAME)\ \(\backslash\)}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\{\ ck\_assert\ (valid\_program("{}def\ int\ main\ ()\ \{\ "{}\ TEXT\ "{}\ \}"{}));\ \}\ \(\backslash\)}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{END\_TEST}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#define\ TEST\_INVALID\_MAIN(NAME,TEXT)\ START\_TEST\ (NAME)\ \(\backslash\)}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\{\ ck\_assert\ (invalid\_program("{}def\ int\ main\ ()\ \{\ "{}\ TEXT\ "{}\ \}"{}));\ \}\ \(\backslash\)}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{END\_TEST}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#define\ TEST(NAME)\ tcase\_add\_test\ (tc,\ NAME)}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00058\ \mbox{\hyperlink{struct_error_list}{ErrorList}}*\ \mbox{\hyperlink{testsuite_8h_af14eaee21f7a62c812052150b45eba63}{run\_analysis}}\ (\textcolor{keywordtype}{char}*\ text);}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00066\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{testsuite_8h_afef3012b8a38ca3d1b3ed1490738328e}{invalid\_program}}\ (\textcolor{keywordtype}{char}*\ text);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00075\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{testsuite_8h_acee3cb8385464faf4c51e5c2e49f99da}{valid\_program}}\ (\textcolor{keywordtype}{char}*\ text);}
+
+\end{DoxyCode}

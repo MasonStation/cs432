@@ -1,0 +1,88 @@
+\doxysection{src/main.c File Reference}
+\hypertarget{main_8c}{}\label{main_8c}\index{src/main.c@{src/main.c}}
+
+
+Compiler driver.  
+
+
+{\ttfamily \#include "{}p1-\/lexer.\+h"{}}\newline
+{\ttfamily \#include "{}p2-\/parser.\+h"{}}\newline
+{\ttfamily \#include "{}p3-\/analysis.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{main_8c_a023af5b30140788044b1702f78bf67d2}{Error\+\_\+throw\+\_\+printf}} (const char \texorpdfstring{$\ast$}{*}format,...)
+\begin{DoxyCompactList}\small\item\em Throw an exception with an error message using printf syntax. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{main_8c_a91ee12fd60cf5b4e423459cf2eeb9949}{read\+\_\+file}} (const char \texorpdfstring{$\ast$}{*}filename, char \texorpdfstring{$\ast$}{*}text)
+\begin{DoxyCompactList}\small\item\em Read all text data from a file. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{main_8c_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}argv)
+\begin{DoxyCompactList}\small\item\em Compiler entry point. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{main_8c_ab5e53a36451277e4a52a70c963e58fb3}\label{main_8c_ab5e53a36451277e4a52a70c963e58fb3} 
+char {\bfseries decaf\+\_\+error\+\_\+msg} \mbox{[}\mbox{\hyperlink{common_8h_a5a780ff4bf3f3cf2974013aa3d9d0ad8}{MAX\+\_\+\+ERROR\+\_\+\+LEN}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Error message buffer. \end{DoxyCompactList}\item 
+\Hypertarget{main_8c_a2c8fd34e12d16a7bac5f1c3f0578dc0b}\label{main_8c_a2c8fd34e12d16a7bac5f1c3f0578dc0b} 
+jmp\+\_\+buf {\bfseries decaf\+\_\+error}
+\begin{DoxyCompactList}\small\item\em Data structure used by {\ttfamily setjmp} / {\ttfamily longjmp} for exception handling. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Compiler driver. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{main_8c_a023af5b30140788044b1702f78bf67d2}\label{main_8c_a023af5b30140788044b1702f78bf67d2} 
+\index{main.c@{main.c}!Error\_throw\_printf@{Error\_throw\_printf}}
+\index{Error\_throw\_printf@{Error\_throw\_printf}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{Error\_throw\_printf()}{Error\_throw\_printf()}}
+{\footnotesize\ttfamily void Error\+\_\+throw\+\_\+printf (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{format,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+
+
+Throw an exception with an error message using printf syntax. 
+
+Throw an exception with an error message using {\ttfamily printf} syntax.
+
+This function is declared in \doxylink{common_8h}{common.\+h} but must be defined here in \doxylink{main_8c}{main.\+c} because that\textquotesingle{}s where the {\ttfamily jmp\+\_\+buf} declaration is. \Hypertarget{main_8c_a3c04138a5bfe5d72780bb7e82a18e627}\label{main_8c_a3c04138a5bfe5d72780bb7e82a18e627} 
+\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{argv }\end{DoxyParamCaption})}
+
+
+
+Compiler entry point. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & Number of command-\/line arguments \\
+\hline
+{\em argv} & Array of command-\/line argument strings \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily EXIT\+\_\+\+SUCCESS} if the compilation succeeds and {\ttfamily EXIT\+\_\+\+FAILURE} otherwise 
+\end{DoxyReturn}
+\Hypertarget{main_8c_a91ee12fd60cf5b4e423459cf2eeb9949}\label{main_8c_a91ee12fd60cf5b4e423459cf2eeb9949} 
+\index{main.c@{main.c}!read\_file@{read\_file}}
+\index{read\_file@{read\_file}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{read\_file()}{read\_file()}}
+{\footnotesize\ttfamily bool read\+\_\+file (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{filename,  }\item[{char \texorpdfstring{$\ast$}{*}}]{text }\end{DoxyParamCaption})}
+
+
+
+Read all text data from a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Name of file to read \\
+\hline
+{\em text} & String buffer destination (must be \doxylink{common_8h_a649ad5274d988d17a275a3cead056746}{MAX\+\_\+\+FILE\+\_\+\+SIZE} characters long) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if and only if the file read was successful. 
+\end{DoxyReturn}

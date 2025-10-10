@@ -1,0 +1,173 @@
+\doxysection{tests/testsuite.h File Reference}
+\hypertarget{testsuite_8h}{}\label{testsuite_8h}\index{tests/testsuite.h@{tests/testsuite.h}}
+
+
+Testing utility functions.  
+
+
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$check.\+h$>$}\newline
+{\ttfamily \#include "{}p1-\/lexer.\+h"{}}\newline
+{\ttfamily \#include "{}p2-\/parser.\+h"{}}\newline
+{\ttfamily \#include "{}p3-\/analysis.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{testsuite_8h_adbf572d06b40701eb775bb7d7a8be5d2}{TEST\+\_\+\+VALID}}(NAME,  TEXT)
+\begin{DoxyCompactList}\small\item\em Define a test case with a valid program. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{testsuite_8h_ad2c3816d114f46c0a24cd9a7a6f72630}{TEST\+\_\+\+INVALID}}(NAME,  TEXT)
+\begin{DoxyCompactList}\small\item\em Define a test case with an invalid program. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{testsuite_8h_a04654d03e9cbb4161f6460a81f684b39}{TEST\+\_\+\+VALID\+\_\+\+MAIN}}(NAME,  TEXT)
+\begin{DoxyCompactList}\small\item\em Define a test case with a valid main function. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{testsuite_8h_afa3aa5b2e5e7c2009d5f6f5d318bb6d2}{TEST\+\_\+\+INVALID\+\_\+\+MAIN}}(NAME,  TEXT)
+\begin{DoxyCompactList}\small\item\em Define a test case with an invalid main function. \end{DoxyCompactList}\item 
+\Hypertarget{testsuite_8h_a3a8dd86e1cab36109f7149282150152d}\label{testsuite_8h_a3a8dd86e1cab36109f7149282150152d} 
+\#define {\bfseries TEST}(NAME)~tcase\+\_\+add\+\_\+test (tc, NAME)
+\begin{DoxyCompactList}\small\item\em Add a test to the test suite. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_error_list}{Error\+List}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{testsuite_8h_af14eaee21f7a62c812052150b45eba63}{run\+\_\+analysis}} (char \texorpdfstring{$\ast$}{*}text)
+\begin{DoxyCompactList}\small\item\em Run lexer, parser, and analysis on given text. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{testsuite_8h_afef3012b8a38ca3d1b3ed1490738328e}{invalid\+\_\+program}} (char \texorpdfstring{$\ast$}{*}text)
+\begin{DoxyCompactList}\small\item\em Run lexer and parser on given text and verify that it throws an exception. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{testsuite_8h_acee3cb8385464faf4c51e5c2e49f99da}{valid\+\_\+program}} (char \texorpdfstring{$\ast$}{*}text)
+\begin{DoxyCompactList}\small\item\em Run lexer and parser on given text and verify that it returns an AST and does not throw an exception. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Testing utility functions. 
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{testsuite_8h_ad2c3816d114f46c0a24cd9a7a6f72630}\label{testsuite_8h_ad2c3816d114f46c0a24cd9a7a6f72630} 
+\index{testsuite.h@{testsuite.h}!TEST\_INVALID@{TEST\_INVALID}}
+\index{TEST\_INVALID@{TEST\_INVALID}!testsuite.h@{testsuite.h}}
+\doxysubsubsection{\texorpdfstring{TEST\_INVALID}{TEST\_INVALID}}
+{\footnotesize\ttfamily \#define TEST\+\_\+\+INVALID(\begin{DoxyParamCaption}\item[{}]{NAME,  }\item[{}]{TEXT }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{START\_TEST\ (NAME)\ \(\backslash\)}
+\DoxyCodeLine{\{\ ck\_assert\ (\mbox{\hyperlink{testsuite_8h_afef3012b8a38ca3d1b3ed1490738328e}{invalid\_program}}(TEXT));\ \}\ \(\backslash\)}
+\DoxyCodeLine{END\_TEST}
+
+\end{DoxyCode}
+
+
+Define a test case with an invalid program. 
+
+\Hypertarget{testsuite_8h_afa3aa5b2e5e7c2009d5f6f5d318bb6d2}\label{testsuite_8h_afa3aa5b2e5e7c2009d5f6f5d318bb6d2} 
+\index{testsuite.h@{testsuite.h}!TEST\_INVALID\_MAIN@{TEST\_INVALID\_MAIN}}
+\index{TEST\_INVALID\_MAIN@{TEST\_INVALID\_MAIN}!testsuite.h@{testsuite.h}}
+\doxysubsubsection{\texorpdfstring{TEST\_INVALID\_MAIN}{TEST\_INVALID\_MAIN}}
+{\footnotesize\ttfamily \#define TEST\+\_\+\+INVALID\+\_\+\+MAIN(\begin{DoxyParamCaption}\item[{}]{NAME,  }\item[{}]{TEXT }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{START\_TEST\ (NAME)\ \(\backslash\)}
+\DoxyCodeLine{\{\ ck\_assert\ (\mbox{\hyperlink{testsuite_8h_afef3012b8a38ca3d1b3ed1490738328e}{invalid\_program}}(\textcolor{stringliteral}{"{}def\ int\ main\ ()\ \{\ "{}}\ TEXT\ \textcolor{stringliteral}{"{}\ \}"{}}));\ \}\ \(\backslash\)}
+\DoxyCodeLine{END\_TEST}
+
+\end{DoxyCode}
+
+
+Define a test case with an invalid main function. 
+
+\Hypertarget{testsuite_8h_adbf572d06b40701eb775bb7d7a8be5d2}\label{testsuite_8h_adbf572d06b40701eb775bb7d7a8be5d2} 
+\index{testsuite.h@{testsuite.h}!TEST\_VALID@{TEST\_VALID}}
+\index{TEST\_VALID@{TEST\_VALID}!testsuite.h@{testsuite.h}}
+\doxysubsubsection{\texorpdfstring{TEST\_VALID}{TEST\_VALID}}
+{\footnotesize\ttfamily \#define TEST\+\_\+\+VALID(\begin{DoxyParamCaption}\item[{}]{NAME,  }\item[{}]{TEXT }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{START\_TEST\ (NAME)\ \(\backslash\)}
+\DoxyCodeLine{\{\ ck\_assert\ (\mbox{\hyperlink{testsuite_8h_acee3cb8385464faf4c51e5c2e49f99da}{valid\_program}}(TEXT));\ \}\ \(\backslash\)}
+\DoxyCodeLine{END\_TEST}
+
+\end{DoxyCode}
+
+
+Define a test case with a valid program. 
+
+\Hypertarget{testsuite_8h_a04654d03e9cbb4161f6460a81f684b39}\label{testsuite_8h_a04654d03e9cbb4161f6460a81f684b39} 
+\index{testsuite.h@{testsuite.h}!TEST\_VALID\_MAIN@{TEST\_VALID\_MAIN}}
+\index{TEST\_VALID\_MAIN@{TEST\_VALID\_MAIN}!testsuite.h@{testsuite.h}}
+\doxysubsubsection{\texorpdfstring{TEST\_VALID\_MAIN}{TEST\_VALID\_MAIN}}
+{\footnotesize\ttfamily \#define TEST\+\_\+\+VALID\+\_\+\+MAIN(\begin{DoxyParamCaption}\item[{}]{NAME,  }\item[{}]{TEXT }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{START\_TEST\ (NAME)\ \(\backslash\)}
+\DoxyCodeLine{\{\ ck\_assert\ (\mbox{\hyperlink{testsuite_8h_acee3cb8385464faf4c51e5c2e49f99da}{valid\_program}}(\textcolor{stringliteral}{"{}def\ int\ main\ ()\ \{\ "{}}\ TEXT\ \textcolor{stringliteral}{"{}\ \}"{}}));\ \}\ \(\backslash\)}
+\DoxyCodeLine{END\_TEST}
+
+\end{DoxyCode}
+
+
+Define a test case with a valid main function. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{testsuite_8h_afef3012b8a38ca3d1b3ed1490738328e}\label{testsuite_8h_afef3012b8a38ca3d1b3ed1490738328e} 
+\index{testsuite.h@{testsuite.h}!invalid\_program@{invalid\_program}}
+\index{invalid\_program@{invalid\_program}!testsuite.h@{testsuite.h}}
+\doxysubsubsection{\texorpdfstring{invalid\_program()}{invalid\_program()}}
+{\footnotesize\ttfamily bool invalid\+\_\+program (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{text }\end{DoxyParamCaption})}
+
+
+
+Run lexer and parser on given text and verify that it throws an exception. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & Code to lex and parse \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if and only if the lexer or parser threw an exception 
+\end{DoxyReturn}
+\Hypertarget{testsuite_8h_af14eaee21f7a62c812052150b45eba63}\label{testsuite_8h_af14eaee21f7a62c812052150b45eba63} 
+\index{testsuite.h@{testsuite.h}!run\_analysis@{run\_analysis}}
+\index{run\_analysis@{run\_analysis}!testsuite.h@{testsuite.h}}
+\doxysubsubsection{\texorpdfstring{run\_analysis()}{run\_analysis()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_error_list}{Error\+List}} \texorpdfstring{$\ast$}{*} run\+\_\+analysis (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{text }\end{DoxyParamCaption})}
+
+
+
+Run lexer, parser, and analysis on given text. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & Code to lex, parse, and analyze \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+AST or {\ttfamily NULL} if there was an error 
+\end{DoxyReturn}
+\Hypertarget{testsuite_8h_acee3cb8385464faf4c51e5c2e49f99da}\label{testsuite_8h_acee3cb8385464faf4c51e5c2e49f99da} 
+\index{testsuite.h@{testsuite.h}!valid\_program@{valid\_program}}
+\index{valid\_program@{valid\_program}!testsuite.h@{testsuite.h}}
+\doxysubsubsection{\texorpdfstring{valid\_program()}{valid\_program()}}
+{\footnotesize\ttfamily bool valid\+\_\+program (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{text }\end{DoxyParamCaption})}
+
+
+
+Run lexer and parser on given text and verify that it returns an AST and does not throw an exception. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & Code to lex and parse \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if and only if the text was lexed and parsed successfully 
+\end{DoxyReturn}

@@ -1,0 +1,95 @@
+\doxysection{symbol.\+h}
+\hypertarget{symbol_8h_source}{}\label{symbol_8h_source}\index{include/symbol.h@{include/symbol.h}}
+\mbox{\hyperlink{symbol_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifndef\ \_\_ANALYSIS\_H}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ \_\_ANALYSIS\_H}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ast_8h}{ast.h}}"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{visitor_8h}{visitor.h}}"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00018\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{symbol_8h_a47c7b2bd6b6529c8e00117c7ea7e6554}{type\_attr\_print}}(\textcolor{keywordtype}{void}*\ value,\ FILE*\ output);}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00023\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{symbol_8h_a1e7bdabed2ae432d2b3096c5ec695c23}{symtable\_attr\_print}}(\textcolor{keywordtype}{void}*\ value,\ FILE*\ output);}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_symbol}{Symbol}}}
+\DoxyCodeLine{00031\ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ SCALAR\_SYMBOL,}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ ARRAY\_SYMBOL,}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ FUNCTION\_SYMBOL}
+\DoxyCodeLine{00039\ \ \ \ \ \}\ \mbox{\hyperlink{struct_symbol_ae7187cad86748eb9e4108f1d265b17d0}{symbol\_type}};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_symbol_a5a88862742d0cf994ab94e104325496c}{name}}[\mbox{\hyperlink{common_8h_acfc3ef13b0eb501f6f6a5411406c9cd7}{MAX\_ID\_LEN}}];}
+\DoxyCodeLine{00045\ \ \ \ \ }
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{common_8h_af5878fbe98f23b780b60624fce56a45e}{DecafType}}\ \mbox{\hyperlink{struct_symbol_a80838a102791e6de641647ad8ef530be}{type}};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_symbol_a06723e60c98de2bf09c71ec47844d555}{length}};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00059\ \ \ \ \ \mbox{\hyperlink{struct_parameter_list}{ParameterList}}*\ \mbox{\hyperlink{struct_symbol_a11e883ddf05e7493e225581670e46846}{parameters}};}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ UNKNOWN\_LOC,}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ STATIC\_VAR,}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ STACK\_PARAM,}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ STACK\_LOCAL}
+\DoxyCodeLine{00069\ \ \ \ \ \}\ \mbox{\hyperlink{struct_symbol_ae1cff0cb1e9b3b47ed6acc0f44a5ef4d}{location}};}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_symbol_aff81931a602a225a6087fdddbbd4fb63}{offset}};}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_symbol}{Symbol}}*\ \mbox{\hyperlink{struct_symbol_af5a223ab45f0e4f002dbe8108c6085a9}{next}};}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \}\ \mbox{\hyperlink{struct_symbol}{Symbol}};}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00089\ \mbox{\hyperlink{struct_symbol}{Symbol}}*\ \mbox{\hyperlink{symbol_8h_a597e2e753cbd65912bbfb4afb9a553f5}{Symbol\_new}}\ (\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{struct_symbol_a5a88862742d0cf994ab94e104325496c}{name}},\ \mbox{\hyperlink{common_8h_af5878fbe98f23b780b60624fce56a45e}{DecafType}}\ \mbox{\hyperlink{struct_symbol_a80838a102791e6de641647ad8ef530be}{type}});}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00098\ \mbox{\hyperlink{struct_symbol}{Symbol}}*\ \mbox{\hyperlink{symbol_8h_af6a2d771b6ba0df2533472e4a688b0d0}{Symbol\_new\_array}}\ (\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{struct_symbol_a5a88862742d0cf994ab94e104325496c}{name}},\ \mbox{\hyperlink{common_8h_af5878fbe98f23b780b60624fce56a45e}{DecafType}}\ \mbox{\hyperlink{struct_symbol_a80838a102791e6de641647ad8ef530be}{type}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_symbol_a06723e60c98de2bf09c71ec47844d555}{length}});}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00107\ \mbox{\hyperlink{struct_symbol}{Symbol}}*\ \mbox{\hyperlink{symbol_8h_ac15b37632b8b77f45225b986dd3b825a}{Symbol\_new\_function}}\ (\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{struct_symbol_a5a88862742d0cf994ab94e104325496c}{name}},\ \mbox{\hyperlink{common_8h_af5878fbe98f23b780b60624fce56a45e}{DecafType}}\ return\_type,\ \mbox{\hyperlink{struct_parameter_list}{ParameterList}}*\ \mbox{\hyperlink{struct_symbol_a11e883ddf05e7493e225581670e46846}{parameters}});}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00112\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{symbol_8h_a74b14b4f34ea7bf8ef9bd901e2abd00b}{Symbol\_print}}\ (\mbox{\hyperlink{struct_symbol}{Symbol}}*\ symbol,\ FILE*\ output);}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00117\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{symbol_8h_aecf7754fad8bdca2a1380817268efd74}{Symbol\_free}}\ (\mbox{\hyperlink{struct_symbol}{Symbol}}*\ symbol);}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \mbox{\hyperlink{common_8h_a5b884a3b26bea1cf003390ebc9d2c09e}{DECL\_LIST\_TYPE}}(\mbox{\hyperlink{struct_symbol}{Symbol}},\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{struct_symbol}{Symbol}}*)}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00128\ typedef\ struct\ \mbox{\hyperlink{struct_symbol_table}{SymbolTable}}}
+\DoxyCodeLine{00129\ \{}
+\DoxyCodeLine{00133\ \ \ \ \ \mbox{\hyperlink{struct_symbol_list}{SymbolList}}*\ \mbox{\hyperlink{struct_symbol_table_a324cb401594339d78968901d808eba9e}{local\_symbols}};}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_symbol_table}{SymbolTable}}*\ \mbox{\hyperlink{struct_symbol_table_a6ed1b785adc43f3cd61f127e7153adf3}{parent}};}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \}\ \mbox{\hyperlink{struct_symbol_table}{SymbolTable}};}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00145\ \mbox{\hyperlink{struct_symbol_table}{SymbolTable}}*\ \mbox{\hyperlink{symbol_8h_a62731b07a48e35df0968f812d3542520}{SymbolTable\_new}}\ (\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00152\ \mbox{\hyperlink{struct_symbol_table}{SymbolTable}}*\ \mbox{\hyperlink{symbol_8h_a589b14d38d1e02bded323878e99dfe56}{SymbolTable\_new\_child}}\ (\mbox{\hyperlink{struct_symbol_table}{SymbolTable}}*\ \mbox{\hyperlink{struct_symbol_table_a6ed1b785adc43f3cd61f127e7153adf3}{parent}});}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00160\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{symbol_8h_a6d413e0b197676609aff2fab9cd07cf2}{SymbolTable\_insert}}\ (\mbox{\hyperlink{struct_symbol_table}{SymbolTable}}*\ table,\ \mbox{\hyperlink{struct_symbol}{Symbol}}*\ symbol);}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00171\ \mbox{\hyperlink{struct_symbol}{Symbol}}*\ \mbox{\hyperlink{symbol_8h_a153497121ac092063f1d89cf0b6f3ec3}{SymbolTable\_lookup}}\ (\mbox{\hyperlink{struct_symbol_table}{SymbolTable}}*\ table,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ name);}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00176\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{symbol_8h_adb807258d139f19a9d2ab111ec2d39e1}{SymbolTable\_free}}\ (\mbox{\hyperlink{struct_symbol_table}{SymbolTable}}*\ table);}
+\DoxyCodeLine{00177\ }
+\DoxyCodeLine{00191\ \mbox{\hyperlink{struct_symbol}{Symbol}}*\ \mbox{\hyperlink{symbol_8h_a1dab6a1e037bc705c03f5090853625f4}{lookup\_symbol}}(\mbox{\hyperlink{struct_a_s_t_node}{ASTNode}}*\ node,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ name);}
+\DoxyCodeLine{00192\ }
+\DoxyCodeLine{00198\ \mbox{\hyperlink{struct_node_visitor}{NodeVisitor}}*\ \mbox{\hyperlink{symbol_8h_a42ebeb59b46cde9d4230b97545305dc6}{BuildSymbolTablesVisitor\_new}}\ (\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00199\ }
+\DoxyCodeLine{00206\ \mbox{\hyperlink{struct_node_visitor}{NodeVisitor}}*\ \mbox{\hyperlink{symbol_8h_ab3ce4efc8c1a7b2252dbb664ca1f0158}{PrintSymbolsVisitor\_new}}\ (FILE*\ output);}
+\DoxyCodeLine{00207\ }
+\DoxyCodeLine{00211\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_analysis_error}{AnalysisError}}}
+\DoxyCodeLine{00212\ \{}
+\DoxyCodeLine{00213\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_analysis_error_aaa1f07cf0eedbc047956f7627ee9f571}{message}}[\mbox{\hyperlink{common_8h_a5a780ff4bf3f3cf2974013aa3d9d0ad8}{MAX\_ERROR\_LEN}}];\ \ \ \ }
+\DoxyCodeLine{00214\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_analysis_error}{AnalysisError}}*\ \mbox{\hyperlink{struct_analysis_error_ad0d61990652594228461ae9367005af1}{next}};\ \ \ \ \ }
+\DoxyCodeLine{00215\ \}\ \mbox{\hyperlink{struct_analysis_error}{AnalysisError}};}
+\DoxyCodeLine{00216\ }
+\DoxyCodeLine{00217\ \mbox{\hyperlink{common_8h_a5b884a3b26bea1cf003390ebc9d2c09e}{DECL\_LIST\_TYPE}}(Error,\ \mbox{\hyperlink{struct_analysis_error}{AnalysisError}}*)}
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00219\ }
+\DoxyCodeLine{00222\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{symbol_8h_af6ae204758c2e3edab7e231546fe71d5}{ErrorList\_printf}}\ (\mbox{\hyperlink{struct_error_list}{ErrorList}}*\ list,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ format,\ ...);}
+\DoxyCodeLine{00223\ }
+\DoxyCodeLine{00224\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
