@@ -85,7 +85,7 @@ Symbol* lookup_symbol_with_reporting(NodeVisitor* visitor, ASTNode* node, const 
  */
 #define GET_INFERRED_TYPE(N) (DecafType)(long)ASTNode_get_attribute(N, "type")
 
-static void AnalysisVisitor_check_program_main(NodeVisitor* visitor, ASTNode* node)
+static void AnalysisVisitor_check_program(NodeVisitor* visitor, ASTNode* node)
 {
     int main_count = 0;
     ASTNode* main_func = NULL;
@@ -128,14 +128,96 @@ static void AnalysisVisitor_check_vardecl(NodeVisitor* visitor, ASTNode* node)
             "Invalid declaration: variable '%s' declared with type void on line %d",
             node->vardecl.name, node->source_line);
     }
+    if (!node->vardecl.is_array && node->vardecl.array_length > 1){
+        ErrorList_printf(ERROR_LIST,
+        "Invalid declaration: variable '%s' declared with an arraylength"
+        );
+    }
     
-    // 
+
+
+    // If array: make sure <1 length
+    // not redeclared in same scope
 }
 
+static void AnalysisVisitor_check_funcdecl(NodeVisitor* visitor, ASTNode* node)
+{
+    //not repeated
+    //valid return type
+
+    //params:
+    //  -   no dups 
+    //  -   no second main
+    //  -   analyze body with params in scope
+    return;
+}
+
+static void AnalysisVisitor_check_block(NodeVisitor* visitor, ASTNode* node)
+{
+    //vars are before statements
+    return;
+}
+
+static void AnalysisVisitor_check_assignment(NodeVisitor* visitor, ASTNode* node)
+{
+    //LHS must be location
+    //type lhs = type rhs
+    //check array index types
+    //
+    return;
+}
+
+static void AnalysisVisitor_check_conditional(NodeVisitor* visitor, ASTNode* node)
+{
+    //if, then else
+    return;
+}
+
+static void AnalysisVisitor_check_whileloop(NodeVisitor* visitor, ASTNode* node)
+{
+    //condition type is bool
+    //break/continue only inside loops
+    return;
+}
+
+static void AnalysisVisitor_check_funcreturn(NodeVisitor* visitor, ASTNode* node)
+{
+    //type match
+    //if void, no expression
+
+    return;
+}
+
+static void AnalysisVisitor_check_binaryop(NodeVisitor* visitor, ASTNode* node)
+{
+    //check operands match (+ - * / %)
+    //make sure for == both sides are same type, and it results in a t/f
+    return;
+}
+
+static void AnalysisVisitor_check_unaryop(NodeVisitor* visitor, ASTNode* node)
+{
+    // !expects bool->bool
+    // - expects int-> int
+    return;
+}
 
 static void AnalysisVisitor_check_location(NodeVisitor* visitor, ASTNode* node)
 {
+    //TODO: identifier must exist in a scope of some kind
     lookup_symbol_with_reporting(visitor, node, node->location.name);
+}
+
+static void AnalysisVisitor_check_funccall(NodeVisitor* visitor, ASTNode* node)
+{
+    //function exists
+    //
+    return;
+}
+
+static void AnalysisVisitor_check_literal(NodeVisitor* visitor, ASTNode* node)
+{
+    return;
 }
 
 ErrorList* analyze (ASTNode* tree)
@@ -146,7 +228,7 @@ ErrorList* analyze (ASTNode* tree)
     v->dtor = (Destructor)AnalysisData_free;
     v->previsit_vardecl   = AnalysisVisitor_check_vardecl;
     v->postvisit_location = AnalysisVisitor_check_location;
-    v->postvisit_program  = AnalysisVisitor_check_program_main;
+    v->postvisit_program  = AnalysisVisitor_check_program;
 
     /* BOILERPLATE: TODO: register analysis callbacks */
 
